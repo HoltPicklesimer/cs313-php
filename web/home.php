@@ -33,6 +33,24 @@
 			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
+		<div class="container-fluid bg-2 text-center">
+			<h3>About Me</h3>
+			<p>Hello, I'm Ethan Picklesimer. I grew up in Ohio and I
+			am studying Computer Science at Brigham Young University - Idaho.
+			I became interested in programming in high school , taking an
+			introductory class in Java and also experimenting in a simple game
+			creation, Game Maker. I especially enjoy app and web development
+			classes and seek to obtain a programming intership. In my free time,
+			I exercise, learn the guitar, and work on side projects in Unity,
+			programming in C#.</p>
+		</div>
+
+		<div class="container-fluid bg-3 text-center">
+			<h3>Skills</h3>
+			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio</p>
+			<p>Familiar with: C#, Python, SQL</p>
+		</div>
+
 	</body>
 
 </html>

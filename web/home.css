@@ -3,6 +3,16 @@
 	color:white;
 }
 
+.bg-2{
+	background-color:rgb(80,89,104);
+	color:white;
+}
+
+.bg-3{
+	background-color:white;
+	color:rgb(80,89,104);
+}
+
 .row{
 	background-color:black;
 }
