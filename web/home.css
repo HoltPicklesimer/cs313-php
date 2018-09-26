@@ -18,6 +18,10 @@
 	height:25%;
 }
 
+.container-fluid{
+	padding:8%;
+}
+
 .row{
 	background-color:black;
 }
