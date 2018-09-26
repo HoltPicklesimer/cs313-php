@@ -25,7 +25,7 @@
 
 	<body>
 
-		<div class="links">
+		<div class="links" id="top">
 			<a href="home.php" class="t1">HOME</a>
 			<a href="assigns.php" class="t1">ASSIGNMENTS</a>
 			<a href="#about" class="t1">ABOUT</a>
@@ -58,8 +58,8 @@
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
-		<div class="container bg-2">
-			<a href="_top">Back to Top</a>
+		<div class="container-fluid bg-2 text-center">
+			<a href="#top">Back to Top</a>
 		</div>
 
 	</body>
