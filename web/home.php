@@ -22,7 +22,7 @@
 
 	<body>
 
-		<div class="container-fluid bg-2 text-left">
+		<div class="container-fluid links">
 			<a href="index.php">ASSIGNMENTS</a>
 			<a href="#about">ABOUT</a>
 			<a href="#skills">SKILLS</a>
