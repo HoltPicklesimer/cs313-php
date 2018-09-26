@@ -35,5 +35,9 @@ h2{
 	background-color:#505968;
 	color, :white;
 	text-align:left;
-	padding:2%;
+	padding:5% 2%;
+}
+
+a:link, a:visited, a:hover, a:active{
+	color:white;
 }
