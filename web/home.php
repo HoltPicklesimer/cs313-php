@@ -15,7 +15,10 @@
 		</script>
 
 		<!-- Latest compiled JavaScript for Bootstrap -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+		</script>
+
+		<script src="home.js"></script>
 
 		<link rel="stylesheet" href="home.css">
 	</head>

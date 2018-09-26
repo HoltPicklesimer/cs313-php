@@ -35,10 +35,15 @@ h2{
 	background-color:#505968;
 	color:white;
 	text-align:left;
-	padding:0%;
+	padding:1%;
 }
 
 a:link, a:visited, a:hover, a:active{
+	background-color:#505968;
 	color:white;
 	padding:2%;
+}
+
+a:hover{
+	background-color:#6f7c91;
 }
