@@ -27,6 +27,10 @@ h2{
 	padding:10px;
 }
 
+p{
+	text-align:justify;
+}
+
 .links{
 	background-color:#505968;
 	color, :white;
