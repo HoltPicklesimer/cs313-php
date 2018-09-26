@@ -59,7 +59,7 @@
 		</div>
 
 		<div class="links">
-			<h3><a href="#top" class="t1">Back to Top</a></h3>
+			<a href="#top" class="t1">Back to Top</a>
 		</div>
 
 	</body>
