@@ -26,6 +26,7 @@
 	<body>
 
 		<div class="links">
+			<a href="home.php" class="t1">HOME</a>
 			<a href="assigns.php" class="t1">ASSIGNMENTS</a>
 			<a href="#about" class="t1">ABOUT</a>
 			<a href="#skills" class="t1">SKILLS</a>
@@ -55,6 +56,10 @@
 			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio,
 			Working in a Team</p>
 			<p>Familiar with: C#, Python, SQL</p>
+		</div>
+
+		<div class="container bg-2">
+			<a href="_top">Back to Top</a>
 		</div>
 
 	</body>
