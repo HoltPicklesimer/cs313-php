@@ -37,7 +37,7 @@
 
 		<div class="container-fluid bg-2 text-center" id="about">
 			<h3>About Me</h3>
-			<p>Hello, I'm Ethan Picklesimer. I grew up in Ohio and I
+			<p class="container">Hello, I'm Ethan Picklesimer. I grew up in Ohio and I
 			am studying Computer Science at Brigham Young University - Idaho.
 			I became interested in programming in high school , taking an
 			introductory class in Java and also experimenting in a simple game
