@@ -30,6 +30,8 @@
 
 		<div class="container-fluid bg1 text-center">
 			<h3>Ethan Picklesimer Home</h3>
+			<img src="me.jpg" class="img-circle" alt="Ethan Picklesimer"
+			title="Ethan Picklesimer">
 			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
