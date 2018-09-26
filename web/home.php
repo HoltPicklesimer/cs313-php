@@ -21,18 +21,18 @@
 	</head>
 
 	<body>
-	
-		<div class="row container-fluid">
-		    <div class="col-sm-4">.col-sm-4</div>
-		    <div class="col-sm-4">.col-sm-4</div>
-		    <div class="col-sm-4">.col-sm-4</div>
+
+		<!-- <div class="row container-fluid">
+		    <div class="col-sm-4 links">.col-sm-4</div>
+		    <div class="col-sm-4 links">.col-sm-4</div>
+		    <div class="col-sm-4 links">.col-sm-4</div>
+		</div> -->
+
+		<div class="container-fluid bg-1 text-center">
+			<h3>Ethan Picklesimer Home</h3>
+			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
-		<div class="container">
-			<h1>Ethan Picklesimer Home</h1>
-			<h2>Welcome to my CS 313 Home Page</h2>
-			<p>This is my first time using Bootstrap</p>
-		</div>
 	</body>
 
 </html>
