@@ -28,14 +28,14 @@
 		    <div class="col-sm-4 links">.col-sm-4</div>
 		</div> -->
 
-		<div class="container-fluid bg1 text-center">
+		<div class="container-fluid bg-1 text-center">
 			<h3>Ethan Picklesimer Home</h3>
 			<img src="me.jpg" class="img-circle" alt="Ethan Picklesimer"
 			title="Ethan Picklesimer">
 			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
-		<div class="container-fluid bg2 text-center">
+		<div class="container-fluid bg-2 text-center">
 			<h3>About Me</h3>
 			<p>Hello, I'm Ethan Picklesimer. I grew up in Ohio and I
 			am studying Computer Science at Brigham Young University - Idaho.
@@ -47,7 +47,7 @@
 			programming in C#.</p>
 		</div>
 
-		<div class="container-fluid bg3 text-center">
+		<div class="container-fluid bg-3 text-center">
 			<h3>Skills</h3>
 			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio</p>
 			<p>Familiar with: C#, Python, SQL</p>
