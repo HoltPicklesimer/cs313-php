@@ -35,7 +35,8 @@
 		<div class="container-fluid bg-1 text-center">
 			<h2>Ethan Picklesimer Home</h2>
 			<img src="me.jpg" class="img-circle img-25 img-responsive"
-			alt="Ethan Picklesimer" title="Ethan Picklesimer">
+			alt="Ethan Picklesimer" title="Ethan Picklesimer"
+			onmouseover="enlarge()">
 			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
@@ -58,7 +59,7 @@
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
-		<div class="links">
+		<div class="links text-center">
 			<a href="#top" class="t1">Back to Top</a>
 		</div>
 
