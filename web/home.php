@@ -24,6 +24,11 @@
 		<h1>Ethan Picklesimer Home</h1>
 		<h2>Welcome to my CS 313 Home Page</h2>
 		<p>This is my first time using Bootstrap</p>
+		<div class="row">
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+	  </div>
 	</div>
 	</body>
 
