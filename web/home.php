@@ -26,9 +26,9 @@
 	<body>
 
 		<div class="links">
-			<a href="assigns.php">ASSIGNMENTS</a>
-			<a href="#about">ABOUT</a>
-			<a href="#skills">SKILLS</a>
+			<a href="assigns.php" class="t1">ASSIGNMENTS</a>
+			<a href="#about" class="t1">ABOUT</a>
+			<a href="#skills" class="t1">SKILLS</a>
 		</div>
 
 		<div class="container-fluid bg-1 text-center">
