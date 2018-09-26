@@ -29,7 +29,7 @@
 		</div> -->
 
 		<div class="container-fluid bg-1 text-center">
-			<h3>Ethan Picklesimer Home</h3>
+			<h2>Ethan Picklesimer Home</h2>
 			<img src="me.jpg" class="img-circle img-25" alt="Ethan Picklesimer"
 			title="Ethan Picklesimer">
 			<h3>Welcome to my CS 313 Home Page</h3>
@@ -43,13 +43,14 @@
 			introductory class in Java and also experimenting in a simple game
 			creation, Game Maker. I especially enjoy app and web development
 			classes and seek to obtain a programming intership. In my free time,
-			I exercise, learn the guitar, and work on side projects in Unity,
-			programming in C#.</p>
+			I exercise, learn the guitar, sketch, and work on side projects in
+			Unity, programming in C#.</p>
 		</div>
 
 		<div class="container-fluid bg-3 text-center">
 			<h3>Skills</h3>
-			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio</p>
+			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio,
+			Working in a Team</p>
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 

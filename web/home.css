@@ -19,7 +19,11 @@
 }
 
 .container-fluid{
-	padding:8%;
+	padding:4%;
+}
+
+h2{
+	padding:10px;
 }
 
 .row{
