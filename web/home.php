@@ -23,10 +23,9 @@
 	<body>
 
 		<div class="container-fluid links">
-			<a href="assigns.php" class="col-sm-1">ASSIGNMENTS</a>
-			<a href="#about" class="col-sm-1">ABOUT</a>
-			<a href="#skills" class="col-sm-1">SKILLS</a>
-			<span class="col-sm-6">
+			<a href="assigns.php">ASSIGNMENTS</a>
+			<a href="#about">ABOUT</a>
+			<a href="#skills">SKILLS</a>
 		</div>
 
 		<div class="container-fluid bg-1 text-center">
