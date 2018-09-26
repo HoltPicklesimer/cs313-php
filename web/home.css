@@ -38,11 +38,14 @@ h2{
 	padding:2% 0%;
 }
 
-a:link, a:visited, a:hover, a:active{
+.a{
+	text-decoration:none;
+	font-size:150%;
 	background-color:#505968;
 	color:white;
+	padding:15px;
 }
 
-a:hover{
+.a:hover{
 	background-color:#6f7c91;
 }
