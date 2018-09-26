@@ -36,7 +36,6 @@ h2{
 	color:white;
 	display:flex;
 	text-align:left;
-	padding:2% 0%;
 }
 
 .t1{
@@ -49,4 +48,5 @@ h2{
 
 .t1:hover{
 	background-color:#6f7c91;
+	color:white;
 }
