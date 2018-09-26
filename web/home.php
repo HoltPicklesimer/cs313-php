@@ -58,8 +58,8 @@
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
-		<div class="container-fluid bg-2 text-center">
-			<a href="#top">Back to Top</a>
+		<div class="container-fluid bg-2 text-center lessPad">
+			<h3><a href="#top">Back to Top</a></h3>
 		</div>
 
 	</body>
