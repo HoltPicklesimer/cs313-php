@@ -16,6 +16,7 @@
 .img-25{
 	width:25%;
 	height:25%;
+	display:inline;
 }
 
 .container-fluid{
@@ -24,13 +25,4 @@
 
 h2{
 	padding:10px;
-}
-
-.row{
-	background-color:black;
-}
-
-.links{
-	background-color:black;
-	color:gray;
 }

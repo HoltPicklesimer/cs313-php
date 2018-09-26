@@ -22,20 +22,20 @@
 
 	<body>
 
-		<!-- <div class="row container-fluid">
-		    <div class="col-sm-4 links">.col-sm-4</div>
-		    <div class="col-sm-4 links">.col-sm-4</div>
-		    <div class="col-sm-4 links">.col-sm-4</div>
-		</div> -->
+		<div class="container-fluid bg-2 text-left">
+			<a href="index.php">ASSIGNMENTS</a>
+			<a href="#about">ABOUT</a>
+			<a href="#skills">SKILLS</a>
+		</div>
 
 		<div class="container-fluid bg-1 text-center">
 			<h2>Ethan Picklesimer Home</h2>
-			<img src="me.jpg" class="img-circle img-25" alt="Ethan Picklesimer"
-			title="Ethan Picklesimer">
+			<img src="me.jpg" class="img-circle img-25 img-responsive"
+			alt="Ethan Picklesimer" title="Ethan Picklesimer">
 			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
-		<div class="container-fluid bg-2 text-center">
+		<div class="container-fluid bg-2 text-center" id="about">
 			<h3>About Me</h3>
 			<p>Hello, I'm Ethan Picklesimer. I grew up in Ohio and I
 			am studying Computer Science at Brigham Young University - Idaho.
@@ -47,7 +47,7 @@
 			Unity, programming in C#.</p>
 		</div>
 
-		<div class="container-fluid bg-3 text-center">
+		<div class="container-fluid bg-3 text-center" id="skills">
 			<h3>Skills</h3>
 			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio,
 			Working in a Team</p>
