@@ -25,7 +25,7 @@
 
 	<body>
 
-		<div class="container-fluid links">
+		<div class="links">
 			<a href="assigns.php">ASSIGNMENTS</a>
 			<a href="#about">ABOUT</a>
 			<a href="#skills">SKILLS</a>
