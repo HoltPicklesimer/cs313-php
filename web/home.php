@@ -49,7 +49,7 @@
 
 		<div class="container-fluid bg-3 text-center" id="skills">
 			<h3>Skills</h3>
-			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio,
+			<p class="container">C++, Java, HTML, CSS, Javascript, PHP, Android Studio,
 			Working in a Team</p>
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
