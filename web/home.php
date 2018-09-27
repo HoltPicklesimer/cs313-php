@@ -50,7 +50,7 @@
 		<div class="container-fluid bg-3 text-center" id="skills">
 			<h3>Skills</h3>
 			<p>C++, Java, HTML, CSS, Javascript, PHP, Android Studio,
-			Working in a Team</p>
+			Working in a Team, GitHub</p>
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
