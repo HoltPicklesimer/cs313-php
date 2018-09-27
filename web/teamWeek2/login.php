@@ -36,8 +36,8 @@
 			<p>Welcome, you are not logged in.</p>
 		</div>
 
-		<button type="button" value="admin" onclick="user.php?user='admin'">Login as Administrator</button>
-		<button type="button" value="tester" onclick="user.php?user='tester'">Login as Tester</button>
+		<button type="button" value="admin" onclick="admin.php">Login as Administrator</button>
+		<button type="button" value="tester" onclick="user.php">Login as Tester</button>
 
 
 	</body>
