@@ -54,7 +54,7 @@
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
-		<form class="container-fluid bg-3 text-center" onreset="clearErrors()">
+		<form class="container-fluid bg-1 text-center" onreset="clearErrors()">
 			<p>Enter "hello" into username and "world"
 			into password to see the secret message.</p>
 			<p>
