@@ -24,11 +24,12 @@
 
 	<body>
 
+			<?php include 'header.php'; ?>
+
 		<div class="container">
 			<h1>ABOUT</h1>
 		</div>
 
-		<?php include 'header.php'; ?>
 
 		<div class="container">
 			<p>We move pianos so your mom doesn't have to.</p>

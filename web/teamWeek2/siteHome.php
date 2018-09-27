@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Piano Movers</title>
+    <title>Piano Movers Home</title>
   	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -24,11 +24,13 @@
 
 	<body>
 
+		<?php include 'header.php'; ?>
+
+
 		<div class="container">
 			<h1>Welcome to the Paino Movers Site</h1>
 		</div>
 
-		<?php include 'header.php'; ?>
 
 	</body>
 

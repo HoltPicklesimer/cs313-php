@@ -6,3 +6,8 @@
 	text-decoration:none;
 	font-size:17px;
 }
+
+.topNav:active{
+	background-color:#0000CD;
+	color:white;
+}
