@@ -1,6 +1,11 @@
-<div class="topNav container">
+<?php
+
+	$page = $_SERVER['PHP_SELF'];
+?>
+
+<div class='topNav container'>
 	<h1>Piano Movers</h1>
-	<a class="active" href="siteHome.php">HOME</a>
-	<a class="active" href="login.php">LOGIN</a>
-	<a class="active" href="aboutUs.php">ABOUT</a>
+	<a class='<?php if ($page == "siteHome.php") echo active; ?>' href='siteHome.php'>HOME</a>
+	<a class='<?php if ($page == "login.php") echo active; ?>' href='login.php'>LOGIN</a>
+	<a class='<?php if ($page == "aboutUs.php") echo active; ?>' href='aboutUs.php'>ABOUT</a>
 </div>
