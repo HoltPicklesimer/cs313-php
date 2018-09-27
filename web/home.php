@@ -25,12 +25,7 @@
 
 	<body>
 
-		<div class="links" id="top">
-			<a href="home.php" class="t1">HOME</a>
-			<a href="assigns.php" class="t1">ASSIGNMENTS</a>
-			<a href="#about" class="t1">ABOUT</a>
-			<a href="#skills" class="t1">SKILLS</a>
-		</div>
+		<?php include 'heading.php'; ?>
 
 		<div class="container-fluid bg-1 text-center">
 			<h2>Ethan Picklesimer Home</h2>
@@ -59,9 +54,7 @@
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
-		<div class="links text-center">
-			<a href="#top" class="t1">Back to Top</a>
-		</div>
+		<?php include 'bottom.php'; ?>
 
 	</body>
 
