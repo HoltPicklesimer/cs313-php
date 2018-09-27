@@ -25,7 +25,7 @@
 
 	<body>
 
-		<?php include 'heading.php'; echo 'what?'; ?>
+		<?php include 'heading.php'; ?>
 
 		<div class="container-fluid bg-1 text-center">
 			<h2>Ethan Picklesimer Home</h2>
