@@ -54,25 +54,27 @@
 			<p>Familiar with: C#, Python, SQL</p>
 		</div>
 
-		<form class="container-fluid bg-1 text-center" onreset="clearErrors()">
-			<p>Enter "hello" into username and "world"
-			into password to see the secret message.</p>
-			<p>
-				Enter Username:<br>
-				<input type="text" id="user"><br>
-				<span id="userError" class="error">Incorrect Username</span><br>
-				Enter Password:<br>
-				<input type="text" id="pass"><br>
-				<span id="passError" class="error">Incorrect Password</span><br>
-				<input type="reset" onclick="clearErrors()">
-				<input type="button" onclick="display()" value="Enter"><br>
-				Secret Message:<br>
-				<div id="secret">
-					"Without hard work, nothing grows but weeds."<br>
-					<i>- Gordon B. Hinckley</i><br>
-				</div>
-			</p>
-		</form>
+		<div class="bg-1">
+			<form class="container-fluid bg-3 text-center" onreset="clearErrors()">
+				<p>Enter "hello" into username and "world"
+				into password to see the secret message.</p>
+				<p>
+					Enter Username:<br>
+					<input type="text" id="user"><br>
+					<span id="userError" class="error">Incorrect Username</span><br>
+					Enter Password:<br>
+					<input type="text" id="pass"><br>
+					<span id="passError" class="error">Incorrect Password</span><br>
+					<input type="reset" onclick="clearErrors()">
+					<input type="button" onclick="display()" value="Enter"><br>
+					Secret Message:<br>
+					<div id="secret">
+						"Without hard work, nothing grows but weeds."<br>
+						<i>- Gordon B. Hinckley</i><br>
+					</div>
+				</p>
+			</form>
+		</div>
 
 		<?php include 'bottom.php'; ?>
 
