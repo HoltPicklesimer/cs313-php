@@ -36,7 +36,7 @@
 			<h2>Ethan Picklesimer Home</h2>
 			<img src="me.jpg" class="img-circle img-25 img-responsive"
 			alt="Ethan Picklesimer" title="Ethan Picklesimer" id="pic"
-			onmouseover="enlarge()">
+			onmouseover="enlarge()" onmouseleave="shrink()">
 			<h3>Welcome to my CS 313 Home Page</h3>
 		</div>
 
