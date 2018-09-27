@@ -7,7 +7,7 @@
 	font-size:17px;
 }
 
-.topNav:active{
+.topNav a.active{
 	background-color:#0000CD;
 	color:white;
 }
