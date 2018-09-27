@@ -66,7 +66,7 @@
 					<input type="text" id="pass"><br>
 					<span id="passError" class="error">Incorrect Password</span><br>
 					<input type="reset" onclick="clearErrors()">
-					<input type="button" onclick="display()" value="Enter"><br>
+					<input type="button" onclick="display()" value="Enter"><br><br>
 					Secret Message:<br>
 					<div id="secret">
 						<i>"Without hard work, nothing grows but weeds."</i><br>
