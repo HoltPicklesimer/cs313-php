@@ -1,0 +1,71 @@
+/* The styles used for my home page */
+.bg-1{
+	background-color:rgb(147,177,226);
+	color:white;
+}
+
+.bg-2{
+	background-color:#505968;
+	color:white;
+}
+
+.bg-3{
+	background-color:white;
+	color:#505968;
+}
+
+.img-25{
+	width:25%;
+	height:25%;
+	display:inline;
+}
+
+.container-fluid{
+	padding:4%;
+}
+
+h2{
+	padding:10px;
+}
+
+.container{
+	text-align:justify;
+}
+
+.links{
+	background-color:#505968;
+	color:white;
+	display:flex;
+	text-align:left;
+}
+
+.t1{
+	text-decoration:none;
+	font-size:150%;
+	background-color:#505968;
+	color:white;
+	padding:15px;
+}
+
+.t1:hover{
+	background-color:#6f7c91;
+	color:white;
+}
+
+.error{
+	color:red;
+	display:none;
+}
+
+#secret{
+	display:none;
+}
+
+/* In case you want to view on a mobile device */
+@media only screen and (max-width: 768px) {
+  /* For medium devices: */
+  .links{
+		flex-direction:column;
+		text-align:center;
+	}
+}
