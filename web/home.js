@@ -32,13 +32,13 @@ function display() {
 
 	if (user != "hello"){
 		error = true;
-		document.getElementById("user").style.backgroundColor = "red";
+		document.getElementById("user").style.backgroundColor = "salmon";
 		document.getElementById("userError").style.display = "inline";
 	}
 
-	if (user != "world"){
+	if (pass != "world"){
 		error = true;
-		document.getElementById("pass").style.backgroundColor = "red";
+		document.getElementById("pass").style.backgroundColor = "salmon";
 		document.getElementById("passError").style.display = "inline";
 	}
 
