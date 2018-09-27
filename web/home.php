@@ -69,8 +69,8 @@
 					<input type="button" onclick="display()" value="Enter"><br>
 					Secret Message:<br>
 					<div id="secret">
-						"Without hard work, nothing grows but weeds."<br>
-						<i>- Gordon B. Hinckley</i><br>
+						<i>"Without hard work, nothing grows but weeds."</i><br>
+						- Gordon B. Hinckley<br>
 					</div>
 				</p>
 			</form>
