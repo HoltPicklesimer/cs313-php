@@ -51,6 +51,15 @@ h2{
 	color:white;
 }
 
+.error{
+	color:red;
+	display:none;
+}
+
+#secret{
+	display:none;
+}
+
 @media only screen and (max-width: 768px) {
   /* For medium devices: */
   .links{
