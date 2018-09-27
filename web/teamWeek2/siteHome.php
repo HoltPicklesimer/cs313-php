@@ -22,7 +22,7 @@
 		</script>
 	</head>
 
-	<body>
+	<body class="mountain-bg">
 
 		<?php include 'header.php'; ?>
 
