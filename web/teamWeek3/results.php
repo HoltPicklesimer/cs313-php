@@ -3,6 +3,8 @@
 	<body>
 
 		<?php
+
+			$continents = $_POST["continents"];
 			
 			$name = $_POST["name"];
 			$email = $_POST["email"];
@@ -13,6 +15,11 @@
 						mailto: $email<br/>
 						Major: $major<br/>
 						Comments: $comment<br/>";
+
+			foreach ($c in $continents) {
+				echo $c . " ";
+			}
+
 		?>
 
 	</body>
