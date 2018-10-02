@@ -18,8 +18,10 @@
 
 			var_dump($continents);
 
-			foreach ($c in $continents) {
-				echo $c . " ";
+			if (!isempty($continents){
+				foreach ($continents as $c) {
+					echo $c . " ";
+				}
 			}
 
 		?>
