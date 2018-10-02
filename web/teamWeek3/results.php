@@ -3,8 +3,6 @@
 	<body>
 
 		<?php
-
-			$continents = $_POST["continents"];
 			
 			$name = $_POST["name"];
 			$email = $_POST["email"];
@@ -19,8 +17,8 @@
 			var_dump($continents);
 
 			if (!isempty($continents){
-				for ($continents as $c) {
-					echo $c . " ";
+				foreach ($_POST["continents"] as $item) {
+					echo $item . " ";
 				}
 			}
 
