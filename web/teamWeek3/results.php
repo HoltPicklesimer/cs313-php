@@ -16,6 +16,8 @@
 						Major: $major<br/>
 						Comments: $comment<br/>";
 
+			var_dump($continents);
+
 			foreach ($c in $continents) {
 				echo $c . " ";
 			}
