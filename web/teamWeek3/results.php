@@ -14,10 +14,8 @@
 						Major: $major<br/>
 						Comments: $comment<br/>";
 
-			if (!isempty($_POST["continents"]){
-				foreach ($_POST["continents"] as $item) {
-					echo $item . " ";
-				}
+			foreach ($_POST["continents"] as $item) {
+				echo $item . " ";
 			}
 
 		?>
