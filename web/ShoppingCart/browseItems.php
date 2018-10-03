@@ -80,7 +80,6 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="submit" name="add_to_cart" class="btn btn-info" value="Add to Cart" />
-
 							</div>
 						</div>
 						<?php
