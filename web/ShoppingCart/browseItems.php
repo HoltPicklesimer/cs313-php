@@ -106,7 +106,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="button" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick='browseItems.php.href="?button1=1"'/>
+								value="Add to Cart" onclick='location.href="?button1=1"'/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
