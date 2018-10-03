@@ -26,7 +26,8 @@
 				"images/blackpanther.jpg"),
 			new Item("The Incredibles 2", 26.0,
 				"images/incredibles2.jpg"),
-			new Item("Jaws", 15.0, "images/jaws.jpg"),
+			new Item("Jaws", 15.0,
+				"images/jaws.jpg"),
 			new Item("Jurassic Park", 12.0,
 				"images/jurassicpark.jpg"),
 			new Item("Raiders of the Lost Ark", 17.0,
@@ -92,7 +93,8 @@
 								<!-- So we can send the values -->
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
-								<input type="submit" name="add_to_cart" class="btn btn-info" value="Add to Cart" />
+								<input type="button" name="add_to_cart" class="btn btn-info"
+								value="Add to Cart" action=<?php $selected->quantity++; ?> />
 							</div>
 						</div>
 						<?php
