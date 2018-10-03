@@ -94,7 +94,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="button" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" action=<?php $selected->quantity+=$_POST["quantity" . $selected->name]; ?> />
+								value="Add to Cart" action=<?php $selected->quantity=$_POST["quantity" . $selected->name]; ?> />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
