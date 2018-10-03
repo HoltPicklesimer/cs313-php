@@ -47,8 +47,20 @@
 			new Item("Titanic", 10.0,
 				"images/titanic.jpg"),
 		);
-
 	}
+
+	if($_POST['button1']){fun1();}
+	if($_POST['button2']){fun2();}
+
+	function fun1()
+	{
+	 <?php $selected->quantity=$_POST["quantity"]; ?>
+	}
+	function fun2()
+	{
+	 //This function will update some column in database to 2
+	}
+
 ?>
 
 <!-- The Home Page -->
@@ -94,7 +106,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="button" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" action=<?php $selected->quantity=$_POST["quantity"]; ?> />
+								value="Add to Cart" action='location.href="?button1=1"'/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
