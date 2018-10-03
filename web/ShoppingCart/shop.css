@@ -10,3 +10,7 @@
 	padding: 16px;
 	margin-bottom: 20px;
 }
+
+img{
+	min-width:100px;
+}
