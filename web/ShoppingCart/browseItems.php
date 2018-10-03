@@ -35,6 +35,8 @@
 				new Item("The Avengers: Infinity War", 26.0,
 					"images/avengersinfinitywar.jpg"),
 				new Item("Back to the Future", 16.0,
+					"images/backtothefuture.jpg"),
+				new Item("Black Panther", 22.0,
 					"images/blackpanther.jpg"),
 				new Item("The Incredibles 2", 26.0,
 					"images/incredibles2.jpg"),
