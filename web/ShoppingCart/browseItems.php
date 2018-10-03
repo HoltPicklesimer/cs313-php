@@ -67,11 +67,10 @@
 
 		<div class="container">
 			<form method="post" action="total.php">
-
+			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
 					foreach ($items as $selected) {
 						?>
-						<!-- Changes width when device gets smaller -->
 						<div class="col-sm-4 col-md-3">
 							<div class="product">
 								<img src="<?php echo $selected->image; ?>" class="img-responsive" />

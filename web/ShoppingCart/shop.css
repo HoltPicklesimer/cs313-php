@@ -9,8 +9,5 @@
 	border-radius: 5px;
 	padding: 16px;
 	margin-bottom: 20px;
-}
-
-img{
-	min-width:100px;
+	min-width:200px;
 }
