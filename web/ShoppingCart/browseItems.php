@@ -81,7 +81,7 @@
 			<form method="post" action="total.php">
 			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
-					foreach ($_SESSION["shopping_cart"] as $selected) {
+					foreach ($_SESSION["shopping_cart"][0] as $selected) {
 						?>
 						<div class="col-sm-4 col-md-3">
 							<div class="product">
