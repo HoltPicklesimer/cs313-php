@@ -11,3 +11,7 @@
 	margin-bottom: 20px;
 	min-height: 400px;
 }
+
+.table{
+	clear: both;
+}

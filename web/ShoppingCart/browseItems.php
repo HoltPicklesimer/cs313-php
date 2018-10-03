@@ -1,3 +1,13 @@
+<?php 
+	session_start();
+
+	if (isset($_SESSION["shopping_cart"])){
+		$count = count($_SESSION["shopping_cart"]);
+	}else{
+		$_SESSION["shopping_cart"][0] = array();
+	}
+?>
+
 <!-- The Home Page -->
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +32,7 @@
 		<link rel="stylesheet" href="shop.css">
 
 		<?php
+			// Create Item class and items array to simulate database
 			class Item{
 				function Item($name, $price, $image){
 					$this->name = $name;
@@ -29,6 +40,7 @@
 					$this->image = $image;
 				}
 			}
+
 			$items = array(
 				new Item("The Avengers", 10.0,
 					"images/avengers.jpg"),
@@ -88,6 +100,67 @@
 				?>
 
 			</form>
+			<br/>
+			<div class="table">
+				<div class="table-responsive">
+					<table class="table">
+
+						<tr><th colspan="5"><h3>Shopping Cart Details</h3></th></tr>
+
+						<tr>
+							<th width="40%">Product</th>
+							<th width="10%">Quantity</th>
+							<th width="20%">Price</th>
+							<th width="15%">Total</th>
+							<th width="5%">Action</th>
+						</tr>
+
+						<?php
+							if (!empty($_SESSION["shopping_cart"])){
+								$total = 0;
+								foreach ($_SESSION["shopping_cart"] as $selected) {
+									?>
+									<tr>
+										<td><?php echo $selected["name"]; ?></td>
+										<td><?php echo $selected["quantity"]; ?></td>
+										<td>$ <?php echo $selected["price"]; ?></td>
+										<td>$ <?php echo money_format('%i',
+										$selected["quantity"] * $selected["price"]); ?></td>
+										<td>
+											<input type="button" name="remove <?php echo $selected["name"]; ?>"
+											class="btn-danger" value="Remove" />
+										</td>
+									</tr>
+
+									<?php
+
+									$total = $total + ($selected["quantity"] * $selected["price"]);
+
+								} // end of the foreach
+							}
+						?>
+						<tr>
+							<td colspan="3" align="right">Total</td>
+							<td align="right">$ <?php echo money_format('%i', $total); ?></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td colspan="5">
+								<?php
+									if (isset($_SESSION["shopping_cart"])){
+										if (count($_SESSION["shopping_cart"] > 0)){
+											?>
+											<a href="#" class="button">Checkout</a>
+											<?php
+										}
+									}
+								?>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 
 	</body>
