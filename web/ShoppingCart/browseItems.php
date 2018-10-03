@@ -74,7 +74,7 @@
 							<div class="product">
 								<img src="<?php echo $selected->image; ?>" class="img-responsive" />
 								<h4 class="text-info"><?php echo $selected->name; ?></h4>
-								<h4>$ <?php echo $selected->price; ?></h4>
+								<h4>$ <?php echo $selected->money_format('$%i', price);; ?></h4>
 								<input type="text" name="quantity" class="form-control" value="0" />
 								<!-- So we can send the values -->
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
