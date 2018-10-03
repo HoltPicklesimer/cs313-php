@@ -54,7 +54,7 @@
 
 	function fun1()
 	{
-	 $_SESSION["shopping_cart"][0][]$selected->quantity=$_POST["quantity"];
+	 // $_SESSION["shopping_cart"][0][]$selected->quantity=$_POST["quantity"];
 	}
 	function fun2()
 	{
