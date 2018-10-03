@@ -54,7 +54,7 @@
 
 	function fun1()
 	{
-	 <?php $selected->quantity=$_POST["quantity"]; ?>
+	 $selected->quantity=$_POST["quantity"];
 	}
 	function fun2()
 	{
