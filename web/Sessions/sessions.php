@@ -20,7 +20,7 @@
 </head>
 <body>
 	<p>This is a page</p>
-	<?php echo "You have visited : " . $_SESSION["visits"] . " time(s).; ?>
+	<?php echo "You have visited : " . $_SESSION["visits"] . " time(s)."; ?>
 
 </body>
 </html>
