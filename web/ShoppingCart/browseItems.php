@@ -59,7 +59,7 @@
 	print_r($_POST);
 
 	echo $_POST["quantity" . str_replace(' ', '_', "The Avengers")];
-	echo $_POST["add_to_cart")];
+	echo $_POST["add_to_cart"];
 
 	function fun1()
 	{
