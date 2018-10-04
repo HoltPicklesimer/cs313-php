@@ -109,6 +109,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="hidden" name="index" value="<?php echo $key; ?>" />
+								<input type="hidden" name="button1" value="1" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
 								value="Add to Cart"/>
 								<?php echo $selected->quantity; ?>
