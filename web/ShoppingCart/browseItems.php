@@ -57,7 +57,7 @@
 	function fun1()
 	{
 		echo $_POST["quantity"];
-		$_SESSION["shopping_cart"][0][$_POST["index"]]->quantity=$_POST["quantity"];
+		$_SESSION["shopping_cart"][0][$_SESSION["index"]]->quantity=$_SESSION["quantity"];
 	}
 	function fun2()
 	{
@@ -111,7 +111,8 @@
 								<input type="hidden" name="index" value="<?php echo $key; ?>" />
 								<input type="hidden" name="button1" value="1" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart"/>
+								value="Add to Cart" action=<?php $_SESSION["quantity"]="quantity" . $selected->name; $_SESSION["index"]=$key; ?>
+								onClick='location.href="?button1=1"' />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
