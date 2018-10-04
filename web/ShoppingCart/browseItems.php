@@ -56,7 +56,7 @@
 
 	function fun1()
 	{
-		echo $_POST["quantity"];
+		echo $_SESSION["quantity"];
 		$_SESSION["shopping_cart"][0][$_SESSION["index"]]->quantity=$_SESSION["quantity"];
 	}
 	function fun2()
