@@ -6,18 +6,15 @@
 			$this->name = $name;
 			$this->price = $price;
 			$this->image = $image;
-			$this->quantity = 0;
 		}
 	}
 
 	if (!isset($_SESSION))
 		session_start();
 
-	if (isset($_SESSION["shopping_cart"])){
-		$count = count($_SESSION["shopping_cart"]);
-	}else{
-		echo "created shopping_cart";
-		$_SESSION["shopping_cart"][0] = array(
+	if (!isset($_SESSION["items"]))
+	{
+		$_SESSION["items"] = array(
 			1=>new Item("The Avengers", 10.0,
 				"images/avengers.jpg", 0),
 			2=>new Item("The Avengers: Infinity War", 26.0,
@@ -49,26 +46,6 @@
 			15=>new Item("Titanic", 10.0,
 				"images/titanic.jpg"),
 		);
-	}
-
-	if(isset($_SESSION['add_to_cart'])){fun1();}
-	if($_POST['button2']){fun2();}
-
-	print_r($_SESSION);
-	echo "<br/>";
-	print_r($_POST);
-
-	echo htmlspecialchars($_POST["quantity" . str_replace(' ', '_', "The Avengers")]);
-	echo $_POST["add_to_cart"];
-
-	function fun1()
-	{
-		echo $_POST["quantity" . str_replace(' ', '_', $_SESSION["shopping_cart"][0][$_POST["add_to_cart"]]->name)];
-		$_SESSION["shopping_cart"][0][$_POST["add_to_cart"]]->quantity = $_POST["quantity" . str_replace(' ', '_', $_SESSION["shopping_cart"][0][$_POST["add_to_cart"]]->name)];
-	}
-	function fun2()
-	{
-	 //This function will update some column in database to 2
 	}
 
 ?>
@@ -104,7 +81,7 @@
 			<form method="post" action="browseItems.php">
 			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
-					foreach ($_SESSION["shopping_cart"][0] as $key => $selected) {
+					foreach ($_SESSION["items"] as $key => $selected) {
 						?>
 						<div class="col-sm-4 col-md-3">
 							<div class="product">
