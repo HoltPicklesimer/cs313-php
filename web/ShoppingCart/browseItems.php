@@ -55,7 +55,10 @@
 	if($_POST['button2']){fun2();}
 
 	print_r($_SESSION);
+	echo "<br/>";
 	print_r($_POST);
+
+	echo $_POST["quantity" . str_replace(' ', '_', $selected->name)];
 
 	function fun1()
 	{
