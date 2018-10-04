@@ -103,7 +103,7 @@
 			<form method="post" action="browseItems.php">
 			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
-					foreach ($_SESSION["shopping_cart"][0] as $key => $selected) { echo $key;
+					foreach ($_SESSION["shopping_cart"][0] as $key => $selected) {
 						?>
 						<div class="col-sm-4 col-md-3">
 							<div class="product">
@@ -112,7 +112,7 @@
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
 								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" value="0" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick=<?php $_SESSION["index"]=$key; $_SESSION["button1"]=1; ?> />
+								value="Add to Cart" onclick=<?php $_SESSION["index"]=$key; $_SESSION["quantity"]="quantity" . $selected->name; $_SESSION["button1"]=1; ?> />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
