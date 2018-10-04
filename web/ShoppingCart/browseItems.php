@@ -54,7 +54,7 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
-		echo $_POST["quantity"];
+	echo $_SESSION["quantity"];
 
 
 	function fun1()
@@ -112,7 +112,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick='location.href="?button1=true&index=1&quantity=4"'/>
+								value="Add to Cart" onclick="<?php $_SESSION['quantity']=1; ?>"/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
