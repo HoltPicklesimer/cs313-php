@@ -15,6 +15,7 @@
 	if (isset($_SESSION["shopping_cart"])){
 		$count = count($_SESSION["shopping_cart"]);
 	}else{
+		echo "created shopping_cart";
 		$_SESSION["shopping_cart"][0] = array(
 			new Item("The Avengers", 10.0,
 				"images/avengers.jpg", 0),
