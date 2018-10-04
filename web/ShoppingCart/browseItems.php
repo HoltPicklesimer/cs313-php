@@ -10,7 +10,8 @@
 		}
 	}
 
-	session_start();
+	if (!isset($_SESSION))
+		session_start();
 
 	if (isset($_SESSION["shopping_cart"])){
 		$count = count($_SESSION["shopping_cart"]);
@@ -96,7 +97,7 @@
 	<body>
 
 		<div class="container">
-			<form method="post" action="total.php">
+			<form method="post" action="browseItems.php">
 			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
 					foreach ($_SESSION["shopping_cart"][0] as $selected) {
@@ -110,8 +111,8 @@
 								<!-- So we can send the values -->
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
-								<input type="button" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" action='location.href="?button1=true&index=1&quantity=4"'/>
+								<input type="submit" name="add_to_cart" class="btn btn-info"
+								value="Add to Cart" onclick='location.href="?button1=true&index=1&quantity=4"'/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
