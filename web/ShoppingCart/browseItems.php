@@ -48,6 +48,8 @@
 		);
 	}
 
+	print_r($_POST);
+
 ?>
 
 
@@ -79,7 +81,7 @@
 
 		<div class="container">
 			<form method="post" action="browseItems.php">
-			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
+				<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
 					foreach ($_SESSION["items"] as $key => $selected) {
 						?>
@@ -88,9 +90,9 @@
 								<img src="<?php echo $selected->image; ?>" class="img-responsive" />
 								<h4 class="text-info"><?php echo $selected->name; ?></h4>
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
-								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" />
+								<input type="text" name="quantity" class="form-control" />
 								<button type="submit" name="add_to_cart" class="btn btn-info"
-								value="<?php echo $key; ?>">Add to Cart</button>
+								value="<?php echo $key . " " . $quantity; ?>">Add to Cart</button>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
