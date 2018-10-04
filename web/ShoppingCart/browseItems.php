@@ -51,8 +51,8 @@
 		);
 	}
 
-	if($_SESSION['button1']){fun1();}
-	if($_SESSION['button2']){fun2();}
+	if($_POST['button1']){fun1();}
+	if($_POST['button2']){fun2();}
 
 	print_r($_SESSION);
 	echo "<br/>";
@@ -64,7 +64,7 @@
 	function fun1()
 	{
 		echo "fun1          " . $_SESSION["shopping_cart"][0][$_SESSION["index"]]->quantity . "                   ";
-		$_SESSION["shopping_cart"][0][$_SESSION["index"]]->quantity = $_POST["quantity" . str_replace(' ', '_', $selected->name)];
+		$_SESSION["shopping_cart"][0][$_POST["index"]]->quantity = $_POST["quantity" . str_replace(' ', '_', $selected->name)];
 	}
 	function fun2()
 	{
@@ -113,7 +113,7 @@
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
 								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" value="0" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick=<?php $_SESSION["index"]=$key; $_SESSION["quantity"]="quantity" . $selected->name; $_SESSION["button1"]=1; ?> />
+								value="Add to Cart" onclick=location.href="?button2=1&index=<?php echo $key; ?>" />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
