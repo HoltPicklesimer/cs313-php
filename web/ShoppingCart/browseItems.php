@@ -53,9 +53,13 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
+		echo $_POST["quantity"];
+	
+
 	function fun1()
 	{
-	 $_SESSION["shopping_cart"][0][$_POST["index"]]->quantity=$_POST["quantity"];
+		echo $_POST["quantity"];
+		$_SESSION["shopping_cart"][0][$_POST["index"]]->quantity=$_POST["quantity"];
 	}
 	function fun2()
 	{
