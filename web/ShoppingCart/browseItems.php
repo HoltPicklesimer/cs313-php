@@ -58,7 +58,7 @@
 	echo "<br/>";
 	print_r($_POST);
 
-	echo $_POST["quantity" . str_replace(' ', '_', "The Avengers")];
+	echo htmlspecialchars($_POST["quantity" . str_replace(' ', '_', "The Avengers")]);
 	echo $_POST["add_to_cart"];
 
 	function fun1()
@@ -113,7 +113,7 @@
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
 								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="<?php echo $key; ?>" />
+								value="<?php echo $key; ?>">Add to Cart</input>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
