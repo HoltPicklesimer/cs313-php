@@ -107,12 +107,12 @@
 								<img src="<?php echo $selected->image; ?>" class="img-responsive" />
 								<h4 class="text-info"><?php echo $selected->name; ?></h4>
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
-								<input type="text" name="quantity" class="form-control" value="0" />
+								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" value="0" />
 								<!-- So we can send the values -->
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick="<?php $_SESSION['quantity']=1; ?>"/>
+								value="Add to Cart" onclick="<?php $_SESSION["shopping_cart"][0][$_POST[1]]->quantity=2; ?>"/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
