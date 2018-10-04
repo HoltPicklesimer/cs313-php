@@ -112,8 +112,8 @@
 								<h4 class="text-info"><?php echo $selected->name; ?></h4>
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
 								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" />
-								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="<?php echo $key; ?>">Add to Cart</input>
+								<button type="submit" name="add_to_cart" class="btn btn-info"
+								value="<?php echo $key; ?>">Add to Cart</button>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
