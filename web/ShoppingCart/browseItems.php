@@ -51,7 +51,7 @@
 		);
 	}
 
-	if($_POST['button1']){fun1();}
+	if(isset($_SESSION['add_to_cart'])){fun1();}
 	if($_POST['button2']){fun2();}
 
 	print_r($_SESSION);
@@ -59,7 +59,7 @@
 	print_r($_POST);
 
 	echo $_POST["quantity" . str_replace(' ', '_', "The Avengers")];
-	echo $_SESSION["index"];
+	echo $_POST["add_to_cart")];
 
 	function fun1()
 	{
@@ -111,9 +111,9 @@
 								<img src="<?php echo $selected->image; ?>" class="img-responsive" />
 								<h4 class="text-info"><?php echo $selected->name; ?></h4>
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
-								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" value="0" />
+								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onClick='browseItems.php.href="?button1=1"' />
+								value="<?php echo $key; ?>" />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
