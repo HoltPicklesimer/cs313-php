@@ -112,7 +112,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick="<?php $_SESSION["shopping_cart"][0][$_POST[1]]->quantity=2; ?>"/>
+								value="Add to Cart" onclick="<?php $_SESSION["shopping_cart"][0][1]->quantity=2; ?>"/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
