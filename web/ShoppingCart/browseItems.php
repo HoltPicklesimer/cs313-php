@@ -57,7 +57,9 @@
 	function fun1()
 	{
 		echo $_SESSION["quantity"];
-		$_SESSION["shopping_cart"][0][$_SESSION["index"]]->quantity=$_SESSION["quantity"];
+		foreach ($_SESSION["shopping_cart"][0] as $key => $value) {
+			$_SESSION["shopping_cart"][0][$key]->quantity = $_POST["quantity" . $selected->name];
+		}
 	}
 	function fun2()
 	{
@@ -105,14 +107,8 @@
 								<h4 class="text-info"><?php echo $selected->name; ?></h4>
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
 								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" value="0" />
-								<!-- So we can send the values -->
-								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
-								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
-								<input type="hidden" name="index" value="<?php echo $key; ?>" />
-								<input type="hidden" name="button1" value="1" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" action=<?php $_SESSION["quantity"]="quantity" . $selected->name; $_SESSION["index"]=$key; ?>
-								onClick='location.href="?button1=1"' />
+								value="Add to Cart" onClick='location.href="?button1=1"' />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
