@@ -63,7 +63,6 @@
 	function fun1()
 	{
 		foreach ($_SESSION["shopping_cart"][0] as $key => $selected) {
-			echo $_POST["quantity" . $selected->name];
 			$_SESSION["shopping_cart"][0][$key]->quantity = $_POST["quantity" . str_replace(' ', '_', $selected->name)];
 		}
 	}
