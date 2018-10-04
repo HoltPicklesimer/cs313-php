@@ -80,11 +80,12 @@
 	<body>
 
 		<div class="container">
-			<form method="post" action="browseItems.php">
-				<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
-				<?php
-					foreach ($_SESSION["items"] as $key => $selected) {
-						?>
+			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
+			<?php
+				foreach ($_SESSION["items"] as $key => $selected) {
+					?>
+					<form method="post" action="browseItems.php">
+
 						<div class="col-sm-4 col-md-3">
 							<div class="product">
 								<img src="<?php echo $selected->image; ?>" class="img-responsive" />
@@ -96,11 +97,12 @@
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
-						<?php
-					}
-				?>
+						
+					</form>
+					<?php
+				}
+			?>
 
-			</form>
 			<br/>
 			<!-- The total and the list of items is displayed. -->
 			<div class="table">
