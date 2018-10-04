@@ -58,7 +58,7 @@
 	echo "<br/>";
 	print_r($_POST);
 
-	echo $_POST["quantity" . str_replace(' ', '_', $selected->name)];
+	echo $_POST["quantity" . str_replace(' ', '_', "The Avengers")];
 
 	function fun1()
 	{
