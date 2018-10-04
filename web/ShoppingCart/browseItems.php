@@ -59,6 +59,7 @@
 	print_r($_POST);
 
 	echo $_POST["quantity" . str_replace(' ', '_', "The Avengers")];
+	echo $_SESSION["index"];
 
 	function fun1()
 	{
