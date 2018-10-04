@@ -54,7 +54,7 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
-	foreach ($_POST as $value) {
+	foreach ($_POST[] as $value) {
 		echo $value;
 	}
 
@@ -114,7 +114,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick="<?php $_SESSION["shopping_cart"][0][1]->quantity=; ?>"/>
+								value="Add to Cart" onclick="<?php $_SESSION["shopping_cart"][0][1]->quantity=2; ?>"/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
