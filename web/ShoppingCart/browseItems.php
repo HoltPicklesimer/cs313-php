@@ -54,7 +54,8 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
-	echo $_POST["quantity" . "The Avengers"];
+	print_r($_SESSION);
+	print_r($_POST);
 
 	function fun1()
 	{
