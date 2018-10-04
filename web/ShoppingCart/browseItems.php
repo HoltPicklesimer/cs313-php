@@ -54,11 +54,6 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
-	foreach ($_POST[] as $value) {
-		echo $value;
-	}
-
-
 	function fun1()
 	{
 		echo $_POST["quantity"];
@@ -102,7 +97,7 @@
 			<form method="post" action="browseItems.php">
 			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 				<?php
-					foreach ($_SESSION["shopping_cart"][0] as $selected) {
+					foreach ($_SESSION["shopping_cart"][0] as $key => $selected) {
 						?>
 						<div class="col-sm-4 col-md-3">
 							<div class="product">
@@ -113,8 +108,9 @@
 								<!-- So we can send the values -->
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
+								<input type="hidden" name="index" value="<?php echo $key; ?>" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick="<?php $_SESSION["shopping_cart"][0][1]->quantity=2; ?>"/>
+								value="Add to Cart"/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
