@@ -54,6 +54,11 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
+	foreach ($_SESSION["shopping_cart"][0] as $key => $value) {
+			echo $_POST["quantity" . $selected->name];
+			$_SESSION["shopping_cart"][0][$key]->quantity = $_POST["quantity" . $selected->name];
+		}
+
 	function fun1()
 	{
 		foreach ($_SESSION["shopping_cart"][0] as $key => $value) {
