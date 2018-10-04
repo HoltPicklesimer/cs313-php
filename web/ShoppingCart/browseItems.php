@@ -63,7 +63,7 @@
 
 	function fun1()
 	{
-		echo "fun1          " . $_SESSION["shopping_cart"][0][$_SESSION["index"]]->quantity . "                   ";
+		echo $_POST["quantity" . str_replace(' ', '_', $_SESSION["shopping_cart"][0][$_POST["add_to_cart"]]->name);
 		$_SESSION["shopping_cart"][0][$_POST["add_to_cart"]]->quantity = $_POST["quantity" . str_replace(' ', '_', $_SESSION["shopping_cart"][0][$_POST["add_to_cart"]]->name)];
 	}
 	function fun2()
