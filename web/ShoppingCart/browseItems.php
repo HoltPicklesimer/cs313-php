@@ -113,7 +113,7 @@
 								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
 								<input type="text" name="quantity<?php echo $selected->name; ?>" class="form-control" value="0" />
 								<input type="submit" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onClick=location.href="?button2=1&index=<?php echo $key; ?>" />
+								value="Add to Cart" onClick=browseItems.href="?button2=1&index=<?php echo $key; ?>" />
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
