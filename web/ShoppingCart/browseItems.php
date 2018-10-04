@@ -54,7 +54,7 @@
 	if($_POST['button2']){fun2();}
 
 		echo $_POST["quantity"];
-	
+
 
 	function fun1()
 	{
@@ -111,7 +111,7 @@
 								<input type="hidden" name="name" value="<?php echo $selected->name; ?>" />
 								<input type="hidden" name="price" value="<?php echo $selected->price; ?>" />
 								<input type="button" name="add_to_cart" class="btn btn-info"
-								value="Add to Cart" onclick='location.href="?button1=true&index=1&quantity=4"'/>
+								value="Add to Cart" action='location.href="?button1=true&index=1&quantity=4"'/>
 								<?php echo $selected->quantity; ?>
 							</div>
 						</div>
