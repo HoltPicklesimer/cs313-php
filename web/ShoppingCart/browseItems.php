@@ -56,8 +56,8 @@
 
 	function fun1()
 	{
-		echo $_SESSION["quantity"];
 		foreach ($_SESSION["shopping_cart"][0] as $key => $value) {
+			echo $_POST["quantity" . $selected->name];
 			$_SESSION["shopping_cart"][0][$key]->quantity = $_POST["quantity" . $selected->name];
 		}
 	}
