@@ -54,7 +54,9 @@
 	if($_POST['button1']){fun1();}
 	if($_POST['button2']){fun2();}
 
-	echo $_POST[];
+	foreach ($_POST as $value) {
+		echo $value;
+	}
 
 
 	function fun1()
