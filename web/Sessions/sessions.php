@@ -1,9 +1,15 @@
 <?php
+
+	//start a session
 	session_start();
-	if (!isset($_SESSION["count"]))
-		$_SESSION["count"] = 0;
+
+	// increase the session variable visits if it exists, if not, create it
+	if (!isset($_SESSION["visits"]))
+		$_SESSION["visits"] = 1;
 	else
-		$_SESSION["count"]++;
+		$_SESSION["visits"]++;
+
+	// Set a cookie
 	setcookie("fav-text", "c is for cookie", time() + (86400 * 7));
 ?>
 
@@ -14,7 +20,7 @@
 </head>
 <body>
 	<p>This is a page</p>
-	<?php echo "count: " . $_SESSION["count"]; ?>
+	<?php echo "You have visited : " . $_SESSION["visits"] . " time(s).; ?>
 
 </body>
 </html>
