@@ -50,19 +50,21 @@
 
 	if (!isset($_SESSION["cart"]))
 		$_SESSION["cart"] = array();
-	else if (isset($_POST))
+	else if ($_POST)
 	{
-		if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
+	  // Execute code (such as database updates) here.
+	  if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
 		{
 			$quantity = htmlspecialchars($_POST["quantity"]);
 			if ((int)$quantity == $quantity && (int)$quantity > 0)
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
+	  // Redirect to this page.
+	  header("Location: " . $_SERVER['REQUEST_URI']);
+	  exit();
 	}
 
-	unset($_POST["add_to_cart"]);
-	unset($_POST["quantity"]);
-	unset($_POST);
+	delete($_POST);
 
 	print_r($_POST);
 	print_r($_SESSION);
