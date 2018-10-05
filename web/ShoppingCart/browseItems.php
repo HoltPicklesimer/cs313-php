@@ -61,11 +61,9 @@
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
 	  // Redirect to this page.
-	  // header("Location: " . $_SERVER['PHP_SELF']);
-	  // exit();
+	  header("Location: " . $_SERVER['REQUEST_URI']);
+	  exit();
 	}
-
-	delete($_POST);
 
 	print_r($_POST);
 	print_r($_SESSION);
