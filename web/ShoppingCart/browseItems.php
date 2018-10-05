@@ -145,7 +145,7 @@
 										<td>
 											<form>
 												<button type="submit" name="remove" class="btn-danger"
-												value="<?php echo $key; ?>"></button>
+												value="<?php echo $key; ?>">Remove</button>
 											</form>
 										</td>
 									</tr>
