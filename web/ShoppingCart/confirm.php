@@ -25,6 +25,8 @@
 	  exit();
 	}
 
+	print_r($_POST);
+
 ?>
 
 
