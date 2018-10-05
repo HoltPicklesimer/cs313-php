@@ -106,7 +106,6 @@
 								<input type="text" name="quantity" class="form-control" />
 								<button type="submit" name="add_to_cart" class="btn btn-info"
 								value="<?php echo $key; ?>">Add to Cart</button>
-								<?php echo $_SESSION["cart"][$key]; ?>
 							</div>
 						</div>
 						
@@ -132,12 +131,12 @@
 						</tr>
 
 						<?php
-							if (!empty($_SESSION["shopping_cart"])){
+							if (!empty($_SESSION["cart"])){
 								$total = 0;
-								foreach ($_SESSION["shopping_cart"] as $selected) {
+								foreach ($_SESSION["cart"] as $key => $quantity) {
 									?>
 									<tr>
-										<td><?php echo $selected["name"]; ?></td>
+										<td><?php echo $_SESSION["items"][$key]->name; ?></td>
 										<td><?php echo $selected["quantity"]; ?></td>
 										<td>$ <?php echo $selected["price"]; ?></td>
 										<td>$ <?php echo money_format('%i',
