@@ -1,8 +1,8 @@
 <?php
 	
 	// Create Item class and items array to simulate database
-	class Item{
-		function Item($name, $price, $image){
+	class Item {
+		function Item($name, $price, $image) {
 			$this->name = $name;
 			$this->price = $price;
 			$this->image = $image;

@@ -1,14 +1,10 @@
 <?php
 
-	session_start();
+	if (!isset($_SESSION))
+		session_start();
 	
 	if ($_POST)
 	{
-	  // Execute code here.
-	  if (isset($_POST["remove"])){
-			// remove item from cart
-			unset($_SESSION["cart"][htmlspecialchars($_POST["remove"])]);
-		}
 	  // Redirect to this page.
 	  header("Location: " . $_SERVER['REQUEST_URI']);
 	  exit();
