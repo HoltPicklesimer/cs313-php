@@ -48,6 +48,18 @@
 		);
 	}
 
+	if (!isset($_SESSION["cart"]))
+		$_SESSION["cart"] = array();
+	else
+	{
+		if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
+		{
+			$quantity = htmlspecialchars($_POST["quantity"]);
+			if ((int)$quantity == $quantity && (int)$quantity > 0)
+				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
+		}
+	}
+
 	print_r($_POST);
 
 ?>
