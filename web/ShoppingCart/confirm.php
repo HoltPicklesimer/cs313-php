@@ -55,23 +55,22 @@
 				<div class="table-responsive">
 					<table class="table">
 
-							<tr><th><h4>Order Complete</h4></th></tr>
-							<tr><td>Sent to Address: <?php
+							<tr width="100%"><th><h4>Order Complete</h4></th></tr>
+							<tr width=100%><td>Sent to Address: <?php
 							echo $street . " " . $number . "<br/>"
 							. $city . ", " . $state . " " . $zip . "<br/>"
 							. $country; ?>
-							<tr>
+							<tr width=100%>
 								<td>Total:</td>
-								<td>$ <?php
-								echo money_format('%i', $_SESSION["total"]); ?>
+								<td>$ <?php echo money_format('%i', $_SESSION["total"]); ?>
 								</td>
 							</tr>
-							<tr><th><h4>Products Purchased</h4></th></tr>
+							<tr width=100%><th><h4>Products Purchased</h4></th></tr>
 
 							<?php
 								foreach ($_SESSION["cart"] as $key => $quantity) {
 									?>
-									<tr>
+									<tr width=100%>
 										<td>
 											<img src="<?php echo $_SESSION['items'][$key]->image; ?>"
 											class="img-responsive" />
