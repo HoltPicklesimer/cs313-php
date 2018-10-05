@@ -58,10 +58,11 @@
 			if ((int)$quantity == $quantity && (int)$quantity > 0)
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
-		unset($_POST["add_to_cart"]);
-		unset($_POST["quantity"]);
-		unset($_POST);
 	}
+
+	unset($_POST["add_to_cart"]);
+	unset($_POST["quantity"]);
+	unset($_POST);
 
 	print_r($_POST);
 	print_r($_SESSION);
