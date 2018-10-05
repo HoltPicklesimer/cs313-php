@@ -77,7 +77,7 @@
 <html lang="en">
 
   <head>
-    <title>Shopping Cart</title>
+    <title>Flickaradise Shopping</title>
   	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -94,21 +94,6 @@
 		</script>
 
 		<link rel="stylesheet" href="shop.css">
-
-		<script type="text/javascript">
-	    var xPos, yPos;
-	    var prm = Sys.WebForms.PageRequestManager.getInstance();
-	    prm.add_beginRequest(BeginRequestHandler);
-	    prm.add_endRequest(EndRequestHandler);
-	    function BeginRequestHandler(sender, args) {
-	        xPos = $get('scrollDiv').scrollLeft;
-	        yPos = $get('scrollDiv').scrollTop;
-	    }
-	    function EndRequestHandler(sender, args) {
-	        $get('scrollDiv').scrollLeft = xPos;
-	        $get('scrollDiv').scrollTop = yPos;
-	    }
-		</script>
 
 	</head>
 
@@ -175,6 +160,7 @@
 									<?php
 
 									$total = $total + ($quantity * $_SESSION["items"][$key]->price);
+									$_SESSION["total"] = $total;
 
 								} // end of the foreach
 							}
@@ -188,10 +174,11 @@
 						<tr>
 							<td colspan="5">
 								<?php
-									if (isset($_SESSION["shopping_cart"])){
-										if (count($_SESSION["shopping_cart"] > 0)){
+									if (isset($_SESSION["cart"])){
+										if (count($_SESSION["cart"] > 0)){
 											?>
-											<a href="#" class="button" align="right">Checkout</a>
+											<a href="viewCart.php" class="button" align="right">View Cart</a><br/>
+											<a href="checkout.php" class="button" align="right">Checkout</a>
 											<?php
 										}
 									}
