@@ -60,6 +60,7 @@
 		}
 		unset($_POST["add_to_cart"]);
 		unset($_POST["quantity"]);
+		unset($_POST);
 	}
 
 	print_r($_POST);
