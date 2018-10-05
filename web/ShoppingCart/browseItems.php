@@ -169,7 +169,7 @@
 						<tr>
 							<td colspan="3" align="right">Total</td>
 							<td align="right">$ <?php echo money_format('%i', $total); ?></td>
-							<td colspan="5"></td>
+							<td colspan="3" align="right"></td>
 						</tr>
 
 						<tr>
