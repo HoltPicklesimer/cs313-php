@@ -128,7 +128,7 @@
 				<div class="table-responsive">
 					<table class="table">
 
-						<tr><th colspan="5"><h3>Checkout Details</h3></th></tr>
+						<tr><th colspan="5"><h3>Shopping Cart Details</h3></th></tr>
 
 						<tr>
 							<th width="40%">Product</th>
