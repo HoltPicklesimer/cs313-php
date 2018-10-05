@@ -60,7 +60,7 @@
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
 	  // Redirect to this page.
-	  header("Location: " . $_SERVER['REQUEST_URI']);
+	  header("Location: " . $_SERVER['PHP_SELF']);
 	  exit();
 	}
 
