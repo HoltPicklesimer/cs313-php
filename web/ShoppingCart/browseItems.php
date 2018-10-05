@@ -53,12 +53,17 @@
 	
 	if ($_POST)
 	{
-	  // Execute code (such as database updates) here.
+	  // Execute code here.
 	  if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
 		{
+			// add quantity of item to cart
 			$quantity = htmlspecialchars($_POST["quantity"]);
 			if ((int)$quantity == $quantity && (int)$quantity > 0)
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
+		}
+		else if (isset($_POST["remove"])){
+			// remove item from cart
+			unset($_SESSION["cart"][htmlspecialchars($_POST["remove"])]);
 		}
 	  // Redirect to this page.
 	  header("Location: " . $_SERVER['REQUEST_URI']);
@@ -148,7 +153,7 @@
 										<td>$ <?php echo money_format('%i',
 										$quantity * $_SESSION["items"][$key]->price); ?></td>
 										<td>
-											<form>
+											<form method="post" action="browseItems.php">
 												<button type="submit" name="remove" class="btn-danger"
 												value="<?php echo $key; ?>">Remove</button>
 											</form>
