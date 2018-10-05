@@ -8,60 +8,11 @@
 			$this->image = $image;
 		}
 	}
-
-	if (!isset($_SESSION))
-		session_start();
-
-	if (!isset($_SESSION["items"]))
-	{
-		$_SESSION["items"] = array(
-			1=>new Item("The Avengers", 10.0,
-				"images/avengers.jpg", 0),
-			2=>new Item("The Avengers: Infinity War", 26.0,
-				"images/avengersinfinitywar.jpg"),
-			3=>new Item("Back to the Future", 16.0,
-				"images/backtothefuture.jpg"),
-			4=>new Item("Black Panther", 22.0,
-				"images/blackpanther.jpg"),
-			5=>new Item("The Incredibles 2", 26.0,
-				"images/incredibles2.jpg"),
-			6=>new Item("Jaws", 15.0,
-				"images/jaws.jpg"),
-			7=>new Item("Jurassic Park", 12.0,
-				"images/jurassicpark.jpg"),
-			8=>new Item("Raiders of the Lost Ark", 17.0,
-				"images/raidersofthelostark.jpg"),
-			9=>new Item("Star Wars: A New Hope", 18.0,
-				"images/starwarsanewhope.jpg"),
-			10=>new Item("Star Wars: The Empire Strikes Back", 18.0,
-				"images/starwarstheempirestrikesback.jpg"),
-			11=>new Item("Star Wars: The Force Awakens", 22.0,
-				"images/starwarstheforceawakens.jpg"),
-			12=>new Item("Star Wars: The Last Jedi", 20.0,
-				"images/starwarsthelastjedi.jpg"),
-			13=>new Item("The Dark Knight", 20.0,
-				"images/thedarkknight.jpg"),
-			14=>new Item("The Godfather", 20.0,
-				"images/thegodfather.jpg"),
-			15=>new Item("Titanic", 10.0,
-				"images/titanic.jpg"),
-		);
-	}
-
-	if (!isset($_SESSION["cart"]))
-		$_SESSION["cart"] = array();
 	
 	if ($_POST)
 	{
 	  // Execute code here.
-	  if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
-		{
-			// add quantity of item to cart
-			$quantity = htmlspecialchars($_POST["quantity"]);
-			if ((int)$quantity == $quantity && (int)$quantity > 0)
-				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
-		}
-		else if (isset($_POST["remove"])){
+	  if (isset($_POST["remove"])){
 			// remove item from cart
 			unset($_SESSION["cart"][htmlspecialchars($_POST["remove"])]);
 		}
@@ -77,7 +28,7 @@
 <html lang="en">
 
   <head>
-    <title>Flickaradise Shopping</title>
+    <title>View Cart</title>
   	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -100,29 +51,7 @@
 	<body>
 
 		<div class="container">
-			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
-			<?php
-				foreach ($_SESSION["items"] as $key => $selected) {
-					?>
-					<form method="post" action="browseItems.php">
 
-						<div class="col-sm-4 col-md-3">
-							<div class="product">
-								<img src="<?php echo $selected->image; ?>" class="img-responsive" />
-								<h4 class="text-info"><?php echo $selected->name; ?></h4>
-								<h4>$ <?php echo money_format('%i', $selected->price); ?></h4>
-								<input type="text" name="quantity" class="form-control" />
-								<button type="submit" name="add_to_cart" class="btn btn-info"
-								value="<?php echo $key; ?>">Add to Cart</button>
-							</div>
-						</div>
-						
-					</form>
-					<?php
-				}
-			?>
-
-			<br/>
 			<!-- The total and the list of items is displayed. -->
 			<div class="table">
 				<div class="table-responsive">
@@ -175,9 +104,9 @@
 							<td colspan="5">
 								<?php
 									if (isset($_SESSION["cart"])){
-										if (count($_SESSION["cart"]) > 0){
+										if (count($_SESSION["cart"] > 0)){
 											?>
-											<a href="viewCart.php" class="button" align="right">View Cart</a><br/>
+											<a href="browseItems.php" class="button" align="right">Add More Items to Cart</a><br/>
 											<a href="checkout.php" class="button" align="right">Checkout</a>
 											<?php
 										}
