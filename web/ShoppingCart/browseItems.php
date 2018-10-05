@@ -50,7 +50,7 @@
 
 	if (!isset($_SESSION["cart"]))
 		$_SESSION["cart"] = array();
-	else
+	else if (isset($_POST))
 	{
 		if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
 		{
@@ -58,7 +58,8 @@
 			if ((int)$quantity == $quantity && (int)$quantity > 0)
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
-		$_POST = array(); // clear the post variable
+		unset($_POST["add_to_cart"]);
+		unset($_POST["quantity"]);
 	}
 
 	print_r($_POST);
@@ -161,7 +162,7 @@
 						<tr>
 							<td colspan="3" align="right">Total</td>
 							<td align="right">$ <?php echo money_format('%i', $total); ?></td>
-							<td></td>
+							<td colspan="3"></td>
 						</tr>
 
 						<tr>
