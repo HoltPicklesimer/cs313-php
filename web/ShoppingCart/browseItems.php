@@ -70,9 +70,6 @@
 	  exit();
 	}
 
-	print_r($_POST);
-	print_r($_SESSION);
-
 ?>
 
 
@@ -97,6 +94,21 @@
 		</script>
 
 		<link rel="stylesheet" href="shop.css">
+
+		<script type="text/javascript">
+	    var xPos, yPos;
+	    var prm = Sys.WebForms.PageRequestManager.getInstance();
+	    prm.add_beginRequest(BeginRequestHandler);
+	    prm.add_endRequest(EndRequestHandler);
+	    function BeginRequestHandler(sender, args) {
+	        xPos = $get('scrollDiv').scrollLeft;
+	        yPos = $get('scrollDiv').scrollTop;
+	    }
+	    function EndRequestHandler(sender, args) {
+	        $get('scrollDiv').scrollLeft = xPos;
+	        $get('scrollDiv').scrollTop = yPos;
+	    }
+		</script>
 
 	</head>
 
