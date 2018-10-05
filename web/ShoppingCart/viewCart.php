@@ -78,11 +78,12 @@
 									<tr>
 										<td><?php echo $_SESSION["items"][$key]->name; ?></td>
 										<td><?php echo $quantity; ?></td>
-										<td>$ <?php echo $_SESSION["items"][$key]->price; ?></td>
+										<td>$ <?php echo money_format('%i',
+										$_SESSION["items"][$key]->price); ?></td>
 										<td>$ <?php echo money_format('%i',
 										$quantity * $_SESSION["items"][$key]->price); ?></td>
 										<td>
-											<form method="post" action="browseItems.php">
+											<form method="post" action="viewCart.php">
 												<button type="submit" name="remove" class="btn-danger"
 												value="<?php echo $key; ?>">Remove</button>
 											</form>

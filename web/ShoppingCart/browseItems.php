@@ -146,7 +146,8 @@
 									<tr>
 										<td><?php echo $_SESSION["items"][$key]->name; ?></td>
 										<td><?php echo $quantity; ?></td>
-										<td>$ <?php echo $_SESSION["items"][$key]->price; ?></td>
+										<td>$ <?php echo money_format('%i',
+										$_SESSION["items"][$key]->price); ?></td>
 										<td>$ <?php echo money_format('%i',
 										$quantity * $_SESSION["items"][$key]->price); ?></td>
 										<td>
