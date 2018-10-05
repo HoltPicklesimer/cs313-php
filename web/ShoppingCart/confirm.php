@@ -14,15 +14,12 @@
 	if ($_POST)
 	{
 	  // Execute code here.
-	  if (isset($_POST["checkout"]))
-	  {
-	  	$street = htmlspecialchars($_SESSION["street"]);
-		  $number = htmlspecialchars($_SESSION["number"]);
-		  $city = htmlspecialchars($_SESSION["city"]);
-		  $state = htmlspecialchars($_SESSION["state"]);
-		  $zip = htmlspecialchars($_SESSION["zip"]);
-		  $country = htmlspecialchars($_SESSION["country"]);
-	  }
+  	$street = htmlspecialchars($_SESSION["street"]);
+	  $number = htmlspecialchars($_SESSION["number"]);
+	  $city = htmlspecialchars($_SESSION["city"]);
+	  $state = htmlspecialchars($_SESSION["state"]);
+	  $zip = htmlspecialchars($_SESSION["zip"]);
+	  $country = htmlspecialchars($_SESSION["country"]);
 	  // Redirect to this page.
 	  header("Location: " . $_SERVER['REQUEST_URI']);
 	  exit();
