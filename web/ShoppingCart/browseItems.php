@@ -51,7 +51,7 @@
 	if (!isset($_SESSION["cart"]))
 		$_SESSION["cart"] = array();
 	
-	// if ($_POST)
+	if ($_POST)
 	{
 	  // Execute code (such as database updates) here.
 	  if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
@@ -61,8 +61,8 @@
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
 	  // Redirect to this page.
-	  header("Location: " . $_SERVER['PHP_SELF']);
-	  exit();
+	  // header("Location: " . $_SERVER['PHP_SELF']);
+	  // exit();
 	}
 
 	delete($_POST);
