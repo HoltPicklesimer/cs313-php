@@ -67,7 +67,7 @@
 							<tr><th><h4>Order Complete</h4></th></tr>
 							<tr><td>Sent to Address: <?php
 							echo $street . " " . $number . "<br/>"
-							. $city . ", " . $state " " . $zip . "<br/>"
+							. $city . ", " . $state . " " . $zip . "<br/>"
 							. $country; ?>
 							<tr>
 								<td>Total:</td>

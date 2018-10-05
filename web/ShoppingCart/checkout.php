@@ -79,8 +79,8 @@
 								<td><a href="browseItems.php" class="button"
 									align="right">Return to Cart</a></td>
 								<td align="right">
-									<button type="submit" name="checkout" class="btn-submit"
-										value="<?php echo $key; ?>">Remove</button>
+									<button type="submit" name="checkout" class="btn-success"
+										value="<?php echo $key; ?>">Checkout</button>
 								</td>
 							</tr>
 
