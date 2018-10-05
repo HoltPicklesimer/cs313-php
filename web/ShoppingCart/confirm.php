@@ -10,22 +10,23 @@
 
 	if (!isset($_SESSION))
 		session_start();
-	
-	if ($_POST)
-	{
-	  // Execute code here.
-  	$street = htmlspecialchars($_POST["street"]);
-	  $number = htmlspecialchars($_POST["number"]);
-	  $city = htmlspecialchars($_POST["city"]);
-	  $state = htmlspecialchars($_POST["state"]);
-	  $zip = htmlspecialchars($_POST["zip"]);
-	  $country = htmlspecialchars($_POST["country"]);
-	  // Redirect to this page.
-	  header("Location: " . $_SERVER['REQUEST_URI']);
-	  exit();
-	}
 
 	print_r($_POST);
+	
+	// if ($_POST)
+	// {
+	//   // Execute code here.
+ //  	$street = htmlspecialchars($_POST["street"]);
+	//   $number = htmlspecialchars($_POST["number"]);
+	//   $city = htmlspecialchars($_POST["city"]);
+	//   $state = htmlspecialchars($_POST["state"]);
+	//   $zip = htmlspecialchars($_POST["zip"]);
+	//   $country = htmlspecialchars($_POST["country"]);
+	//   // Redirect to this page.
+	//   header("Location: " . $_SERVER['REQUEST_URI']);
+	//   exit();
+	// }
+
 
 ?>
 
