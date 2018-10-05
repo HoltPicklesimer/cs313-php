@@ -106,7 +106,7 @@
 								<input type="text" name="quantity" class="form-control" />
 								<button type="submit" name="add_to_cart" class="btn btn-info"
 								value="<?php echo $key; ?>">Add to Cart</button>
-								<?php echo $selected->quantity; ?>
+								<?php echo $_SESSION["cart"][$key]; ?>
 							</div>
 						</div>
 						
