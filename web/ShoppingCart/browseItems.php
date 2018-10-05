@@ -58,6 +58,7 @@
 			if ((int)$quantity == $quantity && (int)$quantity > 0)
 				$_SESSION["cart"][htmlspecialchars($_POST["add_to_cart"])] += (int)$quantity;
 		}
+		$_POST = array(); // clear the post variable
 	}
 
 	print_r($_POST);
@@ -160,6 +161,7 @@
 						<tr>
 							<td colspan="3" align="right">Total</td>
 							<td align="right">$ <?php echo money_format('%i', $total); ?></td>
+							<td></td>
 						</tr>
 
 						<tr>
