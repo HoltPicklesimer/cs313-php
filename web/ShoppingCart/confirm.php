@@ -65,7 +65,7 @@
 								<td>$ <?php echo money_format('%i', $_SESSION["total"]); ?>
 								</td>
 							</tr>
-							<tr><th width=100%><h4>Products Purchased</h4></th></tr>
+							<tr><th><h4>Products Purchased</h4></th></tr>
 
 							<?php
 								foreach ($_SESSION["cart"] as $key => $quantity) {
