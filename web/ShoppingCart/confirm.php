@@ -65,12 +65,12 @@
 								<td>$ <?php echo money_format('%i', $_SESSION["total"]); ?>
 								</td>
 							</tr>
-							<tr width=100%><th><h4>Products Purchased</h4></th></tr>
+							<tr><th width=100%><h4>Products Purchased</h4></th></tr>
 
 							<?php
 								foreach ($_SESSION["cart"] as $key => $quantity) {
 									?>
-									<tr width=100%>
+									<tr>
 										<td>
 											<img src="<?php echo $_SESSION['items'][$key]->image; ?>"
 											class="img-responsive" />
