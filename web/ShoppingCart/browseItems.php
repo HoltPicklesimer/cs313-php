@@ -1,6 +1,6 @@
 <?php
 	
-	// Create Item class and shopping_cart array to simulate database
+	// Create Item class and items array to simulate database
 	class Item{
 		function Item($name, $price, $image){
 			$this->name = $name;

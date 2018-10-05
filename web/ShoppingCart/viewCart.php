@@ -1,6 +1,7 @@
 <?php
-	
-	// Create Item class and shopping_cart array to simulate database
+
+	print_r($_SESSION);
+
 	class Item{
 		function Item($name, $price, $image){
 			$this->name = $name;
@@ -104,7 +105,7 @@
 							<td colspan="5">
 								<?php
 									if (isset($_SESSION["cart"])){
-										if (count($_SESSION["cart"] > 0)){
+										if (count($_SESSION["cart"]) > 0){
 											?>
 											<a href="browseItems.php" class="button" align="right">Add More Items to Cart</a><br/>
 											<a href="checkout.php" class="button" align="right">Checkout</a>
