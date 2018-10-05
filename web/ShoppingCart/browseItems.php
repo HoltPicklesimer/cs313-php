@@ -138,19 +138,21 @@
 									?>
 									<tr>
 										<td><?php echo $_SESSION["items"][$key]->name; ?></td>
-										<td><?php echo $selected["quantity"]; ?></td>
-										<td>$ <?php echo $selected["price"]; ?></td>
+										<td><?php echo $quantity; ?></td>
+										<td>$ <?php echo $_SESSION["items"][$key]->price; ?></td>
 										<td>$ <?php echo money_format('%i',
-										$selected["quantity"] * $selected["price"]); ?></td>
+										$quantity * $_SESSION["items"][$key]->price); ?></td>
 										<td>
-											<input type="button" name="remove <?php echo $selected["name"]; ?>"
-											class="btn-danger" value="Remove" />
+											<form>
+												<button type="submit" name="remove" class="btn-danger"
+												value="<?php echo $key; ?>"></button>
+											</form>
 										</td>
 									</tr>
 
 									<?php
 
-									$total = $total + ($selected["quantity"] * $selected["price"]);
+									$total = $total + ($quantity * $_SESSION["items"][$key]->price);
 
 								} // end of the foreach
 							}
