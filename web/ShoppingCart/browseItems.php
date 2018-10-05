@@ -51,7 +51,7 @@
 	if (!isset($_SESSION["cart"]))
 		$_SESSION["cart"] = array();
 	
-	if ($_POST)
+	// if ($_POST)
 	{
 	  // Execute code (such as database updates) here.
 	  if (isset($_POST["add_to_cart"]) && isset($_POST["quantity"]))
