@@ -14,12 +14,12 @@
 	if ($_POST)
 	{
 	  // Execute code here.
-  	$street = htmlspecialchars($_SESSION["street"]);
-	  $number = htmlspecialchars($_SESSION["number"]);
-	  $city = htmlspecialchars($_SESSION["city"]);
-	  $state = htmlspecialchars($_SESSION["state"]);
-	  $zip = htmlspecialchars($_SESSION["zip"]);
-	  $country = htmlspecialchars($_SESSION["country"]);
+  	$street = htmlspecialchars($_POST["street"]);
+	  $number = htmlspecialchars($_POST["number"]);
+	  $city = htmlspecialchars($_POST["city"]);
+	  $state = htmlspecialchars($_POST["state"]);
+	  $zip = htmlspecialchars($_POST["zip"]);
+	  $country = htmlspecialchars($_POST["country"]);
 	  // Redirect to this page.
 	  header("Location: " . $_SERVER['REQUEST_URI']);
 	  exit();
