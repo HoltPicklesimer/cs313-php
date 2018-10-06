@@ -22,8 +22,12 @@
 
 body {
   background-color: black;
+  padding: 0;
 }
 
 .container {
   background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
