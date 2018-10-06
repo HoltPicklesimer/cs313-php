@@ -15,3 +15,8 @@
 .table{
 	clear: both;
 }
+
+.banner{
+	align-self: center;
+	margin-bottom: 20px;
+}

@@ -102,6 +102,11 @@
 		<?php include "header.php"; ?>
 
 		<div class="container">
+			<h1>Welcome to FlickParadise!</h1>
+			<h3>FlickParadise is there for all your movie needs!</h3>
+		</div>
+
+		<div class="container">
 			<!-- col-sm-4 and col-sm-3 changes width when device gets smaller -->
 			<?php
 				foreach ($_SESSION["items"] as $key => $selected) {
