@@ -17,6 +17,6 @@
 }
 
 .banner{
-	align-self: center;
+	float: center;
 	margin-bottom: 20px;
 }
