@@ -39,6 +39,8 @@
 
 	<body>
 
+		<?php include "header.php"; ?>
+
 		<div class="container">
 
 			<!-- The total and the list of items is displayed. -->

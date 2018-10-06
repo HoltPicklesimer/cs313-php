@@ -48,6 +48,8 @@
 
 	<body>
 
+		<?php include "header.php"; ?>
+
 		<div class="container">
 
 			<!-- The total and the list of items is displayed. -->
@@ -65,7 +67,7 @@
 								<td>$ <?php echo money_format('%i', $_SESSION["total"]); ?>
 								</td>
 							</tr>
-							<tr><th><h4 width=100%>Products Purchased</h4></th></tr>
+							<tr><th><h4>Products Purchased</h4></th></tr>
 
 							<?php
 								foreach ($_SESSION["cart"] as $key => $quantity) {
