@@ -50,7 +50,7 @@
 
 	</head>
 
-	<body style="background:black">
+	<body>
 
 		<?php include "header.php"; ?>
 
