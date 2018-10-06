@@ -1,9 +1,9 @@
 <?php
 echo '
-<div class="container-fluid">
+<div class="container-fluid" width=100%>
 
 	<img src="images/banner.png" alt="banner"
-	class="img-responsive banner" width=100% />
+	class="img-responsive banner" />
 	
 </div>';
 ?>
