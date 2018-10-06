@@ -29,8 +29,7 @@
 
 		<div class="container-fluid bg-3 text-center">
 			<h2>Assignments</h2>
-			<p>Coming soon...</p>
-			<ul></ul>
+			<ul><a href="../ShoppingCart/browseItems.php"></a></ul>
 		</div>
 
 		<?php include 'bottom.php'; ?>
