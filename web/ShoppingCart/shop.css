@@ -1,6 +1,5 @@
-body{
-  background-color: black;
-  padding: 0;
+body, html {
+  background-color: black !important;
 }
 
 .container{
