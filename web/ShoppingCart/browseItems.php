@@ -97,7 +97,7 @@
 
 	</head>
 
-	<body style="background-color: black">
+	<body>
 
 		<?php include "header.php"; ?>
 
