@@ -19,3 +19,11 @@
 .banner{
 	margin-bottom: 20px;
 }
+
+body {
+  background-color: black;
+}
+
+.container {
+  background-color: white;
+}
