@@ -3,6 +3,11 @@ require "dbConnect.php";
 
 $book = $_GET["book"];
 
+$stmt = $db->prepare('SELECT * FROM Scriptures WHERE book=:book');
+$stmt->bindValue(':book', $book, PDO::PARAM_STR);
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ $book = $_GET["book"];
 
 	if ($book != "")
 	{
-		foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = :book") as $row) // good practice to do each one
+		foreach ($rows as $row) // good practice to do each one
 		{
 		  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
 		}
