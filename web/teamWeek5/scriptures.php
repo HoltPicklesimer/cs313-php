@@ -6,6 +6,11 @@ $query = "";
 if (isset($_GET))
 	$query = $_GET["name"];
 
+$search = true;
+
+if ($query == "")
+	$search = false;
+
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +25,14 @@ if (isset($_GET))
 
 	<?php
 
-	foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = $query") as $row) // good practice to do each one
+	if ($search)
 	{
-	  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
+		foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = $query") as $row) // good practice to do each one
+		{
+		  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
+		}
 	}
+	
 
 	?>
 
