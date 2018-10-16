@@ -12,7 +12,7 @@
 
 	<?php
 
-	foreach ($db->query('SELECT * FROM Scriptures') as $row)
+	foreach ($db->query('SELECT book, chapter, verse, content FROM Scriptures') as $row) // good practice to do each one
 	{
 	  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
 	}
