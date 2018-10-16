@@ -1,15 +1,7 @@
 <?php
 require "dbConnect.php";
 
-$query = "";
-
-if (isset($_GET))
-	$query = $_GET["name"];
-
-$search = true;
-
-if ($query == "")
-	$search = false;
+$book = $_GET["book"];
 
 ?>
 
@@ -25,9 +17,9 @@ if ($query == "")
 
 	<?php
 
-	if ($search)
+	if ($book != "")
 	{
-		foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = $query") as $row) // good practice to do each one
+		foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = '$book'") as $row) // good practice to do each one
 		{
 		  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
 		}
