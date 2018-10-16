@@ -19,7 +19,7 @@ $book = $_GET["book"];
 
 	if ($book != "")
 	{
-		foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = '$book'") as $row) // good practice to do each one
+		foreach ($db->query("SELECT book, chapter, verse, content FROM Scriptures WHERE book = :book") as $row) // good practice to do each one
 		{
 		  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
 		}
