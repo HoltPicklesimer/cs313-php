@@ -34,7 +34,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	?>
 
 	<form action="scriptures.php" method="get">
-		Search: <input type="text" name="name">
+		Search: <input type="text" name="book">
 		<button type="submit">Search</button>
 	</form>
 
