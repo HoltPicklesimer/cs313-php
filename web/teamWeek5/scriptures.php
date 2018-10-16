@@ -26,7 +26,7 @@ if (isset($_GET))
 	?>
 
 	<form action="Scriptures.php" method="get">
-		Search: <input type="text" name="name" />
+		Search: <input type="text" name="name">
 		<button type="submit">Search</button>
 	</form>
 
