@@ -1,7 +1,8 @@
 <?php
 require "dbConnect.php";
 
-$query = $_GET["name"];
+if (isset($_GET))
+	$query = $_GET["name"];
 
 ?>
 
