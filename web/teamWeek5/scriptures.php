@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>SCripture Resources</title>
+	<title>Scripture Resources</title>
 </head>
 <body>
 
