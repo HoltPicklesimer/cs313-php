@@ -5,4 +5,13 @@
 	background-color: lightgray;
 	text-align:left;
 	align-self:center;
+	padding: 15px;
+}
+
+.product{
+	border: 1px solid black;
+	background-color: lightgray;
+	border-radius: 5px;
+	padding: 16px;
+	margin: auto;
 }
