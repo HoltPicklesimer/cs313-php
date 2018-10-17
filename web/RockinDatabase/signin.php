@@ -37,6 +37,7 @@
 	<h2>Sign In</h2>
 	
 </div>
+
 <form align="left">
 		<p>Username: <input type="text" name="user"></p>
 		<p>Password: <input type="text" name="pass"></p>
