@@ -31,11 +31,13 @@
 
 <div class="container" align="center">
 	<h2>Sign Up</h2>
-	<form class="sm-form" method="post" action="signup.php">
+	<div class="col-sm-4"></div>
+	<form class="sm-form col-sm-4" method="post" action="signin.php">
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="text" name="pass"></p>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
 	</form>
+	<div class="col-sm-4"></div>
 </div>
 
 </body>
