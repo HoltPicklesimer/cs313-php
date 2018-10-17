@@ -31,7 +31,7 @@
 
 <div class="container" align="center">
 	<h2>Sign Up</h2>
-	<form class="sm-form" align="left" method="post" action="signup.php">
+	<form class="sm-form" method="post" action="signup.php">
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="text" name="pass"></p>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
