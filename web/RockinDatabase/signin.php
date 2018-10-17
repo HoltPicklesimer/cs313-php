@@ -29,7 +29,7 @@
 
 <body>
 
-<?php include "header.php"; ?>
+	WHY ARE YOU DOING THIS??
 
 <div class="container" align="center">
 	<h1>Welcome to My Rockin' Database.</h1>
