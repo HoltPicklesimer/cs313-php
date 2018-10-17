@@ -41,7 +41,7 @@
 		<p>Username: <input type="text" name="user"></p>
 		<p>Password: <input type="text" name="pass"></p>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
-	</form>
+</form>
 
 </body>
 
