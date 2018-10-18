@@ -1,6 +1,6 @@
 <?php
 
-// require "connectDb.php";
+require "connectDb.php";
 
 if (!isset($_SESSION))
 	session_start();

@@ -16,5 +16,10 @@ try
 
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
+catch (PDOException $ex) // This part is only for debugging!!!!! Do not include this in the final product!!
+{
+  echo 'Error!: ' . $ex->getMessage();
+  die();
+}
 
 ?>
