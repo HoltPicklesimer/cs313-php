@@ -1,0 +1,6 @@
+CREATE TABLE actor
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	gender CHAR(1)
+)
