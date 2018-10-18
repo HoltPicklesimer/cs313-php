@@ -19,3 +19,5 @@ CREATE TABLE actor_movie
 	actor_id INT NOT NULL REFERENCES actor(id),
 	movie_id INT NOT NULL REFERENCES movie(id)
 );
+
+INSERT INTO actor ()

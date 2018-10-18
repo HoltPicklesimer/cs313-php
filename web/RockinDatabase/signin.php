@@ -10,7 +10,7 @@ echo "start";
 if ($_POST)
 {
 	echo "post";
-	if (isset($_POST["signin"]))
+	if (isset($_POST["submit"]))
 	{
 		echo "sign in";
 		// $user = htmlspecialchars($_POST["user"]);
@@ -73,7 +73,7 @@ if ($_POST)
 		<h2>Sign In</h2>
 		<p>Username: <input type="text" name="user"></p>
 		<p>Password: <input type="text" name="pass"></p>
-		<button class="btn-success" type="submit" value="signin">Sign-In</button>
+		<button class="btn-success" type="submit" value="signedin" name="submit">Sign-In</button>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
 	</form>
 	<div class="col-sm-4"></div>
