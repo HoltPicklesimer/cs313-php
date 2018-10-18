@@ -6,31 +6,26 @@ require "connectDb.php";
 if (!isset($_SESSION))
 	session_start();
 
-echo "start";
-
 if ($_POST)
 {
-	echo "post";
 	if (isset($_POST["submit"]))
 	{
-		echo "sign in";
 		$user = htmlspecialchars($_POST["user"]);
 		$pass = htmlspecialchars($_POST["pass"]);
 
-		if ($user != "" && $pass != "")
-		{
-			echo "user and pass";
-			echo $user; echo $pass;
-			// See if the user and pass match
-			// $stmt = $db->prepare('SELECT * FROM Scriptures WHERE book=:book');
-			// $stmt->bindValue(':book', $book, PDO::PARAM_STR);
-			// $stmt->execute();
-			// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		echo "user and pass";
+		echo $user; echo $pass;
+		// See if the user and pass match
+		$stmt = $db->prepare('SELECT username, password FROM users WHERE user=:user AND password=:pass');
+		$stmt->bindValue(':user', $user, PDO::PARAM_STR);
+		$stmt->bindValue(':pass', $pass, PDO::PARAM_STR);
+		$stmt->execute();
+		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-			// if they do, redirect to the next page
+		// if they do, redirect to the next page
+		echo $users;
 
-			// otherwise reload the page with errors
-		}
+		// otherwise reload the page with errors
 	}
 }
 
