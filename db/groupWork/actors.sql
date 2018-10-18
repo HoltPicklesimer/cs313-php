@@ -2,5 +2,20 @@ CREATE TABLE actor
 (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(100) NOT NULL,
-	gender CHAR(1)
-)
+	birthYear SMALLINT
+);
+
+CREATE TABLE movie
+(
+	id SERIAL PRIMARY KEY,
+	title VATCHAR(100) NOT NULL,
+	runtime SMALLINT,
+	year SMALLINT
+);
+
+CREATE TABLE actor_movie
+(
+	id SERIAL PRIMARY KEY,
+	actor_id INT NOT NULL REFERENCES actor(id),
+	movie_id INT NOT NULL REFERENCES movie(id),
+);
