@@ -1,6 +1,6 @@
 <?php
 
-// require "connectDb.php";
+require "connectDb.php";
 
 if (!isset($_SESSION))
 	session_start();
@@ -31,8 +31,6 @@ if ($_POST)
 			// otherwise reload the page with errors
 		}
 	}
- //  header("Location: " . $_SERVER['REQUEST_URI']);
- //  exit();
 }
 
 ?>

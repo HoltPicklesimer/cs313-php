@@ -26,3 +26,23 @@ INSERT INTO actor (name, birthYear) VALUES
 ('Tom Cruise', 1962),
 ('Meryl Streep', 1949),
 ('Carrie Fisher', 1956);
+
+SELECT name, birthYear FROM actor ORDER BY birthYear;
+
+INSERT INTO movie (title, runtime, year) VALUES
+('It''s a wonderful life', 120, 1957),
+('The Devil wears Prada', 125, 2006),
+('Guardians of the Galaxy', 140, 2014);
+
+INSERT INTO actor_movie (actor_id, movie_id) VALUES
+(2, 6),
+(1, 4),
+(1, 4),
+(4, 5),
+(1, 5);
+
+SELECT * FROM movie WHERE title = 'It''s a wonderful life';
+SELECT * FROM movie WHERE title LIKE '%w%';
+
+SELECT * FROM movie m
+JOIN actor_movie am ON m.id = am.movie_id;
