@@ -12,9 +12,7 @@ if ($_POST)
 	{
 		$user = htmlspecialchars($_POST["user"]);
 		$pass = htmlspecialchars($_POST["pass"]);
-
-		echo "user and pass";
-		echo $user; echo $pass;
+		
 		// See if the user and pass match
 		$stmt = $db->prepare('SELECT username, password FROM users WHERE user=:user AND password=:pass');
 		$stmt->bindValue(':user', $user, PDO::PARAM_STR);
