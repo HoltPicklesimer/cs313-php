@@ -37,12 +37,15 @@ INSERT INTO movie (title, runtime, year) VALUES
 INSERT INTO actor_movie (actor_id, movie_id) VALUES
 (2, 6),
 (1, 4),
-(1, 4),
+(1, 6),
 (4, 5),
 (1, 5);
 
 SELECT * FROM movie WHERE title = 'It''s a wonderful life';
 SELECT * FROM movie WHERE title LIKE '%w%';
 
-SELECT * FROM movie m
-JOIN actor_movie am ON m.id = am.movie_id;
+SELECT a.name, m.title FROM movie m
+JOIN actor_movie am ON m.id = am.movie_id
+JOIN actor a ON am.actor_id = a.id
+WHERE m.title = 'The Devil wears Prada'
+ORDER BY a.birthYear;
