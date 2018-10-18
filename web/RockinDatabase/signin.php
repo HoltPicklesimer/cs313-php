@@ -5,6 +5,8 @@
 if (!isset($_SESSION))
 	session_start();
 
+echo "start";
+
 if ($_POST)
 {
 	echo "post";
