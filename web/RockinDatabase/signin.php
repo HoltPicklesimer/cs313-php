@@ -7,13 +7,16 @@ if (!isset($_SESSION))
 
 if ($_POST)
 {
+	echo "post";
 	if (isset($_POST["signin"]))
 	{
+		echo "sigin in";
 		$user = htmlspecialchars($_POST["user"]);
 		$pass = htmlspecialchars($_POST["pass"]);
 
 		if ($user != "" && $pass != "")
 		{
+			echo "user and pass";
 			echo $user; echo $pass;
 			// See if the user and pass match
 			// $stmt = $db->prepare('SELECT * FROM Scriptures WHERE book=:book');
