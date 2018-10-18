@@ -12,9 +12,9 @@ if ($_POST)
 	echo "post";
 	if (isset($_POST["signin"]))
 	{
-		echo "sigin in";
-		$user = htmlspecialchars($_POST["user"]);
-		$pass = htmlspecialchars($_POST["pass"]);
+		echo "sign in";
+		// $user = htmlspecialchars($_POST["user"]);
+		// $pass = htmlspecialchars($_POST["pass"]);
 
 		// if ($user != "" && $pass != "")
 		// {

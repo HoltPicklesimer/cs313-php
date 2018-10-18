@@ -17,5 +17,5 @@ CREATE TABLE actor_movie
 (
 	id SERIAL PRIMARY KEY,
 	actor_id INT NOT NULL REFERENCES actor(id),
-	movie_id INT NOT NULL REFERENCES movie(id),
+	movie_id INT NOT NULL REFERENCES movie(id)
 );
