@@ -7,7 +7,7 @@ if (!isset($_SESSION))
 
 echo "start";
 
-if ($_POST)
+if (isset($_POST))
 {
 	echo "post";
 	if (isset($_POST["signin"]))
