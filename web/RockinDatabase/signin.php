@@ -13,23 +13,23 @@ if ($_POST)
 	if (isset($_POST["submit"]))
 	{
 		echo "sign in";
-		// $user = htmlspecialchars($_POST["user"]);
-		// $pass = htmlspecialchars($_POST["pass"]);
+		$user = htmlspecialchars($_POST["user"]);
+		$pass = htmlspecialchars($_POST["pass"]);
 
-		// if ($user != "" && $pass != "")
-		// {
-		// 	echo "user and pass";
-		// 	echo $user; echo $pass;
-		// 	// See if the user and pass match
-		// 	// $stmt = $db->prepare('SELECT * FROM Scriptures WHERE book=:book');
-		// 	// $stmt->bindValue(':book', $book, PDO::PARAM_STR);
-		// 	// $stmt->execute();
-		// 	// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		if ($user != "" && $pass != "")
+		{
+			echo "user and pass";
+			echo $user; echo $pass;
+			// See if the user and pass match
+			// $stmt = $db->prepare('SELECT * FROM Scriptures WHERE book=:book');
+			// $stmt->bindValue(':book', $book, PDO::PARAM_STR);
+			// $stmt->execute();
+			// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-		// 	// if they do, redirect to the next page
+			// if they do, redirect to the next page
 
-		// 	// otherwise reload the page with errors
-		// }
+			// otherwise reload the page with errors
+		}
 	}
  //  header("Location: " . $_SERVER['REQUEST_URI']);
  //  exit();
