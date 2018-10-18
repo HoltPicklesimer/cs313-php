@@ -30,9 +30,9 @@
 <body>
 
 <div class="container" align="center">
-	<h2>Sign Up</h2>
 	<div class="col-sm-4"></div>
-	<form class="sm-form col-sm-4" method="post" action="signin.php">
+	<form class="sm-form col-sm-4" method="post" action="signup.php">
+		<h2>Sign Up</h2>
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="text" name="pass"></p>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
