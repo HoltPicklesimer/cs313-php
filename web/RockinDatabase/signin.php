@@ -1,5 +1,6 @@
 <?php
 
+// Connect to the Database
 require "connectDb.php";
 
 if (!isset($_SESSION))

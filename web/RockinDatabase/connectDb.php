@@ -18,7 +18,7 @@ try
 }
 catch (PDOException $ex) // This part is only for debugging!!!!! Do not include this in the final product!!
 {
-  echo 'Error!: ' . $ex->getMessage();
+  echo 'ERROR: ' . $ex->getMessage();
   die();
 }
 
