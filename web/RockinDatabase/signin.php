@@ -26,7 +26,7 @@ if ($_POST)
 		{
 			$_SESSION["signInError"] = false;
 			$_SESSION["userId"] = $users[0]["id"];
-			echo $_SESSION["userId"];
+			header('Location: user.php');
 		}
 		else
 		{
