@@ -67,7 +67,7 @@ if ($_POST)
 <div class="container align-middle" align="center">
 	<h1>Welcome to My Rockin' Database.</h1>
 	<h3>Search songs, song reviews, and artists and find music videos!</h3>
-	<div class="col-sm-4 centerVertically"></div>
+	<div class="col-sm-4 centerDiv"></div>
 	<form class="sm-form col-sm-4" method="post" action="signin.php">
 		<h2>Sign In</h2>
 		<p>Username: <input type="text" name="user"></p>
@@ -76,7 +76,7 @@ if ($_POST)
 		<p class="text-danger">*Either your Username or Password were entered incorrectly.
 		Please enter your correct Username and Password.</p>
 <?php } ?>
-		<button class="btn btn-info" type="submit" value="signedin" name="submit">Sign-In</button>
+		<button class="btn btn-info" type="submit" value="signedin" name="submit">Sign-In</button><br/>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
 	</form>
 	<div class="col-sm-4"></div>

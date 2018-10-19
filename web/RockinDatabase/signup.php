@@ -70,7 +70,7 @@ if ($_POST)
 <body>
 
 <div class="container align-middle" align="center">
-	<div class="col-sm-4 centerVertically"></div>
+	<div class="col-sm-4 centerDiv"></div>
 	<form class="sm-form col-sm-4" method="post" action="signup.php">
 		<h2>Sign Up</h2>
 		<p>Create a Username: <input type="text" name="user"></p>
@@ -79,7 +79,7 @@ if ($_POST)
 		<p class="text-danger">*Either that username has already been taken or you did not
 		enter a Username or Password.</p>
 <?php } ?>
-		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-In</button>
+		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-In</button><br/>
 		<p><a class="text-info" href="signin.php">Back to Log-In</a></p>
 	</form>
 	<div class="col-sm-4"></div>
