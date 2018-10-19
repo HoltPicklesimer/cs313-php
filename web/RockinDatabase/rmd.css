@@ -7,6 +7,5 @@
 }
 
 .centerDiv{
-	display: table-cell;
-  vertical-align: middle;
+	align-items: center;
 }
