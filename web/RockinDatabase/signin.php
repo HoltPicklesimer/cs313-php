@@ -21,7 +21,7 @@ if ($_POST)
 		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		// if they do, redirect to the next page
-		echo $users;
+		echo $users[0];
 
 		// otherwise reload the page with errors
 	}
