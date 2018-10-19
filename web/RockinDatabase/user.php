@@ -24,11 +24,11 @@ $stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
 $stmt->execute();
 $userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+print_r($userId);
 print_r($userList);
 
-$username = $userList[0]["username"];
 
-print_r($userInfo);
+$username = $userList[0]["username"];
 
 ?>
 
