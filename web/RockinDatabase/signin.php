@@ -23,6 +23,7 @@ if ($_POST)
 
 		// if they do, redirect to the next page
 		echo $users;
+		print_r($users);
 
 		// otherwise reload the page with errors
 	}
