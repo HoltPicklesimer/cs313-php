@@ -14,7 +14,8 @@ if ($_SESSION["userId"] < 1)
 
 $stmt = $db->prepare('SELECT u.id, u.username, s.name, s.contributor_id, s.url,
 	s.release_date, s.lyrics, s.artist_id, s.genre_id
-	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id');
+	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id
+	WHERE u.id = ps.user_id');
 $stmt->execute();
 $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -23,10 +24,6 @@ $id = $_SESSION["userId"];
 $stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
 $stmt2->execute();
 $userList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
-print_r($id);
-print_r($userList);
-
 
 $username = $userList[0]["username"];
 
@@ -63,7 +60,15 @@ $username = $userList[0]["username"];
 <?php include "header.php"; ?>
 
 <div class="container">
+	<br/>
 	<h1>Welcome <?php echo $username; ?></h1>
+	<a href="song.php"><span class="text-info">Add a New Song to the Database</span></a>
+	<span align="right">Search Songs: <input type="text" name="searchSongs"></span><br/>
+	<a href="artist.php"<span class="text-info">Add a New Artist to the Database</span></a>
+	<span align="right">Search Artists: <input type="text" name="searchSongs"></span><br/>
+	<br/>
+	<hr class="style14">
+	<br/>
 </div>
 
 </body>
