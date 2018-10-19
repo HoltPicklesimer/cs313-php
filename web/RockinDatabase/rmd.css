@@ -7,6 +7,5 @@
 }
 
 .centerDiv{
-	display: flex;
-	flex-direction: column;
+	vertical-align: middle;
 }
