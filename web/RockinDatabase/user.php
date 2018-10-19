@@ -1,4 +1,25 @@
 <?php
+
+// Connect to the Database
+require "connectDb.php";
+
+if (!isset($_SESSION))
+	session_start();
+
+// If the user is not logged in, go to the Log-In Screen
+if (!isset($_SESSION["userId"]))
+	header('Location: signin.php');
+if ($_SESSION["userId"] < 1)
+	header('Location: signin.php');
+
+$stmt = $db->prepare('SELECT u.username, u.id, s.name, s.contributor_id, s.url,
+	s.release_date, s.lyrics, s.artist_id, s.genre_id
+	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id');
+$stmt->execute();
+$userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+print_r($userInfo);
+
 ?>
 
 
@@ -32,7 +53,7 @@
 <?php include "header.php"; ?>
 
 <div class="container">
-	<h1>Welcome!</h1>
+	<h1>Welcome </h1>
 </div>
 
 </body>
