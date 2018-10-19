@@ -69,7 +69,7 @@ if ($_POST)
 
 <body>
 
-<div class="container align-middle centerDiv" align="center">
+<div class="container align-items-center h-100" align="center">
 	<div class="col-sm-4"></div>
 	<form class="sm-form col-sm-4" method="post" action="signup.php">
 		<h2>Sign Up</h2>

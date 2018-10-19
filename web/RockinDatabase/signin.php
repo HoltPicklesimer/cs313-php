@@ -64,7 +64,7 @@ if ($_POST)
 
 <body>
 
-<div class="container align-middle centerDiv" align="center">
+<div class="container align-items-center h-100" align="center">
 	<h1>Welcome to My Rockin' Database.</h1>
 	<h3>Search songs, song reviews, and artists and find music videos!</h3>
 	<div class="col-sm-4"></div>
