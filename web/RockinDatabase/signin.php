@@ -21,7 +21,6 @@ if ($_POST)
 		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		// if they do, redirect to the next page, otherwise reload the page with errors
-		print_r($users);
 		if (!empty($users))
 		{
 			$_SESSION["signInError"] = false;
@@ -74,7 +73,8 @@ if ($_POST)
 		<p>Username: <input type="text" name="user"></p>
 		<p>Password: <input type="text" name="pass"></p>
 <?php if (isset($_SESSION["signInError"]) && $_SESSION["signInError"]) { ?>
-		<p class="text-danger">*Either your Username or Password were entered incorrectly. Please enter your correct Username and Password.</p>
+		<p class="text-danger">*Either your Username or Password were entered incorrectly.
+		Please enter your correct Username and Password.</p>
 <?php } ?>
 		<button class="btn-success" type="submit" value="signedin" name="submit">Sign-In</button>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>

@@ -1,4 +1,43 @@
 <?php
+
+// Connect to the Database
+require "connectDb.php";
+
+if (!isset($_SESSION))
+	session_start();
+
+if ($_POST)
+{
+	if (isset($_POST["submit"]))
+	{
+		$user = htmlspecialchars($_POST["user"]);
+		$pass = htmlspecialchars($_POST["pass"]);
+
+		// See if the username is already taken
+		$stmt = $db->prepare('SELECT username FROM users WHERE username=:user');
+		$stmt->bindValue(':user', $user, PDO::PARAM_STR);
+		$stmt->execute();
+		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		// if it is not taken, redirect to the user page
+		// and create the account, otherwise reload the page with errors
+		if (!empty($users) && $user != "" && $pass != "")
+		{
+			$_SESSION["signUpError"] = false;
+			$_SESSION["signUpComplete"] = true;
+			// Create the account here
+
+			// And redirect to the user page
+			header('Location: user.php');
+		}
+		else
+		{
+			$_SESSION["signUpError"] = true;
+			$_SESSION["signUpComplete"] = false;
+		}
+	}
+}
+
 ?>
 
 
@@ -29,13 +68,16 @@
 
 <body>
 
-<div class="container" align="center">
+<div class="container align-middle" align="center">
 	<div class="col-sm-4"></div>
 	<form class="sm-form col-sm-4" method="post" action="signup.php">
 		<h2>Sign Up</h2>
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="text" name="pass"></p>
-		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
+<?php if (isset($_SESSION["signUpError"]) && $_SESSION["signUpError"]) { ?>
+		<p class="text-danger">*That username has already been taken.</p>
+<?php } ?>
+		<p><a class="text-info" href="signup.php">Sign Up</a></p>
 	</form>
 	<div class="col-sm-4"></div>
 </div>
