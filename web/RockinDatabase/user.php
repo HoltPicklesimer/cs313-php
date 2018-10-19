@@ -12,11 +12,19 @@ if (!isset($_SESSION["userId"]))
 if ($_SESSION["userId"] < 1)
 	header('Location: signin.php');
 
-$stmt = $db->prepare('SELECT u.username, u.id, s.name, s.contributor_id, s.url,
+$stmt = $db->prepare('SELECT u.id, u.username, s.name, s.contributor_id, s.url,
 	s.release_date, s.lyrics, s.artist_id, s.genre_id
 	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id');
 $stmt->execute();
 $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$id = $_SESSION["userId"];
+// Get the username
+$stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
+$stmt->execute();
+$userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$username = $userList[0]["username"];
 
 print_r($userInfo);
 
@@ -53,7 +61,7 @@ print_r($userInfo);
 <?php include "header.php"; ?>
 
 <div class="container">
-	<h1>Welcome </h1>
+	<h1>Welcome <?php echo $username; ?></h1>
 </div>
 
 </body>
