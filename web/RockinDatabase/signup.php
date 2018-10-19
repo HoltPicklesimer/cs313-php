@@ -27,6 +27,7 @@ if ($_POST)
 			$_SESSION["signUpComplete"] = true;
 			// Create the account here
 
+			// $_SESSION["userId"] = ;
 			// And redirect to the user page
 			header('Location: user.php');
 		}
