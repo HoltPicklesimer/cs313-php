@@ -70,7 +70,8 @@ if ($_POST)
 <body>
 
 <div class="container" align="center">
-	<div class="col-sm-4"></div><br/><br/>
+	<br/><br/><br/>
+	<div class="col-sm-4"></div>
 	<form class="sm-form col-sm-4" method="post" action="signup.php">
 		<h2>Sign Up</h2>
 		<p>Create a Username: <input type="text" name="user"></p>
