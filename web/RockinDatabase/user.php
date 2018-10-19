@@ -63,13 +63,14 @@ $username = $userList[0]["username"];
 	<br/>
 	<h1>Welcome <?php echo $username; ?></h1>
 	<div class="col-sm-8">
-	<a href="song.php"><span class="text-info">Add a New Song to the Database</span></a>
+	<a href="song.php"><span class="text-info">Add a New Song to the Database</span></a></br>
 	<a href="artist.php"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 	<div class="col-sm-4">
 		Search: <input type="text" name="searchSongs"><br/>
 	</div>
 	<br/>
+	<h2>Your Playlist:</h2>
 	<hr class="style14">
 	<br/>
 </div>
