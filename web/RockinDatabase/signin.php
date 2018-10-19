@@ -14,7 +14,8 @@ if ($_POST)
 		$pass = htmlspecialchars($_POST["pass"]);
 
 		// See if the user and pass match
-		$stmt = $db->prepare('SELECT username, password FROM users WHERE username=:user AND password=:pass');
+		// $stmt = $db->prepare('SELECT username, password FROM users WHERE username=:user AND password=:pass');
+		$stmt = $db->prepare('SELECT * FROM users');
 		$stmt->bindValue(':user', $user, PDO::PARAM_STR);
 		$stmt->bindValue(':pass', $pass, PDO::PARAM_STR);
 		$stmt->execute();
