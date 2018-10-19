@@ -21,7 +21,7 @@ if ($_POST)
 
 		// if it is not taken, redirect to the user page
 		// and create the account, otherwise reload the page with errors
-		if (!empty($users) && $user != "" && $pass != "")
+		if (empty($users) && $user != "" && $pass != "")
 		{
 			$_SESSION["signUpError"] = false;
 			$_SESSION["signUpComplete"] = true;
@@ -75,9 +75,11 @@ if ($_POST)
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="text" name="pass"></p>
 <?php if (isset($_SESSION["signUpError"]) && $_SESSION["signUpError"]) { ?>
-		<p class="text-danger">*That username has already been taken.</p>
+		<p class="text-danger">*Either that username has already been taken or you did not
+		enter a Username or Password.</p>
 <?php } ?>
-		<p><a class="text-info" href="signup.php">Sign Up</a></p>
+		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-In</button>
+		<p><a class="text-info" href="signin.php">Back to Log-In</a></p>
 	</form>
 	<div class="col-sm-4"></div>
 </div>

@@ -76,7 +76,7 @@ if ($_POST)
 		<p class="text-danger">*Either your Username or Password were entered incorrectly.
 		Please enter your correct Username and Password.</p>
 <?php } ?>
-		<button class="btn-success" type="submit" value="signedin" name="submit">Sign-In</button>
+		<button class="btn btn-info" type="submit" value="signedin" name="submit">Sign-In</button>
 		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
 	</form>
 	<div class="col-sm-4"></div>
