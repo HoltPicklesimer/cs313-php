@@ -24,7 +24,7 @@ $stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
 $stmt->execute();
 $userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-print_r($userId);
+print_r($id);
 print_r($userList);
 
 
