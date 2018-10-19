@@ -21,8 +21,8 @@ $userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $id = $_SESSION["userId"];
 // Get the username
 $stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
-$stmt->execute();
-$userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt2->execute();
+$userList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 print_r($id);
 print_r($userList);
