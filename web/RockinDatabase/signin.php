@@ -14,16 +14,24 @@ if ($_POST)
 		$pass = htmlspecialchars($_POST["pass"]);
 
 		// See if the user and pass match
-		$stmt = $db->prepare('SELECT username, password FROM users WHERE username=:user AND password=:pass');
+		$stmt = $db->prepare('SELECT username, password, id FROM users WHERE username=:user AND password=:pass');
 		$stmt->bindValue(':user', $user, PDO::PARAM_STR);
 		$stmt->bindValue(':pass', $pass, PDO::PARAM_STR);
 		$stmt->execute();
 		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-		// if they do, redirect to the next page
+		// if they do, redirect to the next page, otherwise reload the page with errors
 		print_r($users);
-
-		// otherwise reload the page with errors
+		if (!empty($users))
+		{
+			$_SESSION["signInError"] = false;
+			$_SESSION["userId"] = $users[0]["id"];
+			echo $_SESSION["userId"];
+		}
+		else
+		{
+			$_SESSION["signInError"] = true;
+		}
 	}
 }
 
