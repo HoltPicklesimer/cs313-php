@@ -67,7 +67,7 @@ if ($_POST)
 <div class="container align-middle" align="center">
 	<h1>Welcome to My Rockin' Database.</h1>
 	<h3>Search songs, song reviews, and artists and find music videos!</h3>
-	<div class="col-sm-4"></div>
+	<div class="col-sm-4 centerVertically"></div>
 	<form class="sm-form col-sm-4" method="post" action="signin.php">
 		<h2>Sign In</h2>
 		<p>Username: <input type="text" name="user"></p>
