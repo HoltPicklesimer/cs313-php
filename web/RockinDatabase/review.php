@@ -54,7 +54,7 @@ if ($reviewId > 0)
 		FROM reviews r
 		JOIN users u ON u.id = r.user_id
 		JOIN songs s ON r.song_id = s.id
-		WHERE id = $reviewId");
+		WHERE r.id = $reviewId");
 	$stmt->execute();
 	$reviewList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
