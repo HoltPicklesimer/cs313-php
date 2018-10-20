@@ -116,7 +116,7 @@ foreach ($playlist as $song) {
 	</div>
 	<div class="col-sm-3">
 		<form method="post" action="user.php">
-			<button type="submit" name="delete" value="<?php echo psId; ?>"></button>
+			<button type="submit" name="delete" value="<?php echo psId; ?>">Remove Song from Playlist</button>
 		</form>
 	</div>
 	<p>Genre: <?php echo $genre; ?><br/>
