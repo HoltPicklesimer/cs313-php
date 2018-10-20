@@ -18,6 +18,11 @@ $id = $_SESSION["userId"];
 // Edit the artist if editing and submitted
 if ($_POST)
 {
+	// Get the artist id
+	$artistId = $_POST["applyChanges"];
+
+	// Editing?
+	$edit = 0;
 	// if (isset($_POST["applyChanges"]))
 }
 else
@@ -170,7 +175,7 @@ foreach ($playlist as $song) {
 <?php } ?>
 		  </select>
 		</div>
-		<button type="submit" name="applyChanges" value="sent" class="btn btn-info">Save Changes</button>
+		<button type="submit" name="applyChanges" value="<?php echo $artistId; ?>" class="btn btn-info">Save Changes</button>
 	</form>
 
 </div>
