@@ -53,7 +53,7 @@ $stmt = $db->prepare("
 	FROM songs s
 	JOIN artists a ON a.id = s.artist_id
 	JOIN genres g ON s.genre_id = g.id
-	WHERE a.id = $artistId");
+	WHERE s.id = $songId");
 $stmt->execute();
 $songList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $song = $songList[0];
