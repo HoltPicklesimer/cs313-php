@@ -8,10 +8,15 @@
 
 .header{
 	background-color: #05145e;
+	color: white;
 	box-shadow: 7px 7px 4px grey;
 }
 
 .headerLinks{
 	padding: 15px;
+	color: white;
+}
+
+.headerLinks:visited, .headerLinks:hover{
 	color: white;
 }
