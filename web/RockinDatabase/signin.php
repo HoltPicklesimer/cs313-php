@@ -84,7 +84,7 @@ if ($_POST)
 		Please enter your correct Username and Password.</p>
 <?php } ?>
 		<button class="btn btn-info" type="submit" value="signedin" name="submit">Sign-In</button><br/>
-		<p><a class="text-info" href="signup.php">Don't Have an Account? Click here to sign up!</a></p>
+		<p><a class="text-info" href="signup.php" style="color:darkblue">Don't Have an Account? Click here to sign up!</a></p>
 	</form>
 	<div class="col-sm-4"></div>
 </div>
