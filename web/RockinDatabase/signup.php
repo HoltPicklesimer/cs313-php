@@ -79,7 +79,7 @@ if ($_POST)
 	<form class="sm-form col-sm-4" method="post" action="signup.php">
 		<h2>Sign Up</h2>
 		<p>Create a Username: <input type="text" name="user"></p>
-		<p>Create a Password: <input type="text" name="pass"></p>
+		<p>Create a Password: <input type="password" name="pass"></p>
 <?php if (isset($_SESSION["signUpError"]) && $_SESSION["signUpError"]) { ?>
 		<p class="text-danger">*Either that username has already been taken or you did not
 		enter a Username or Password.</p>

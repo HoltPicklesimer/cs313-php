@@ -78,7 +78,7 @@ if ($_POST)
 	<form class="sm-form col-sm-4" method="post" action="signin.php">
 		<h2>Sign In</h2>
 		<p>Username: <input type="text" name="user"></p>
-		<p>Password: <input type="text" name="pass"></p>
+		<p>Password: <input type="password" name="pass"></p>
 <?php if (isset($_SESSION["signInError"]) && $_SESSION["signInError"]) { ?>
 		<p class="text-danger">*Either your Username or Password were entered incorrectly.
 		Please enter your correct Username and Password.</p>
