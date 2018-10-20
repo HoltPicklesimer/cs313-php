@@ -12,14 +12,16 @@ if (!isset($_SESSION["userId"]))
 if ($_SESSION["userId"] < 1)
 	header('Location: signin.php');
 
-$stmt = $db->prepare('SELECT u.username, s.name, s.contributor_id, s.url,
+// Get the user id
+$id = $_SESSION["userId"];
+
+$stmt = $db->prepare("SELECT u.username, s.name, s.contributor_id, s.url,
 	s.release_date, s.lyrics, s.artist_id, s.genre_id
 	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id
-	WHERE u.id = ps.user_id');
+	WHERE u.id = $id");
 $stmt->execute();
 $playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$id = $_SESSION["userId"];
 // Get the username
 $stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
 $stmt2->execute();
