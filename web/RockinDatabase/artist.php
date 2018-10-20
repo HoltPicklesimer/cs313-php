@@ -15,16 +15,18 @@ if ($_SESSION["userId"] < 1)
 // Get the user id
 $id = $_SESSION["userId"];
 
-// Get the artist id
-$artistId = $_GET["id"];
-
-// Editing?
-$edit = $_GET["edit"];
-
 // Edit the artist if editing and submitted
 if ($_POST)
 {
 	// if (isset($_POST["applyChanges"]))
+}
+else
+{
+	// Get the artist id
+	$artistId = $_GET["id"];
+
+	// Editing?
+	$edit = $_GET["edit"];
 }
 
 $stmt = $db->prepare("
