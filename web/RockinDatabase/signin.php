@@ -42,7 +42,7 @@ if ($_POST)
 
 <head>
 
-  <title>Rockin' Database Home</title>
+  <title>Rockin' Database Sign-In</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 

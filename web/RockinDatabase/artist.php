@@ -19,26 +19,37 @@ $id = $_SESSION["userId"];
 $artistId = $_GET["id"];
 
 // Editing?
-$edit = $_GET[""]
+$edit = $_GET["edit"];
+
+// Edit the artist if editing and submitted
+if ($_POST)
+{
+	// if (isset($_POST["applyChanges"]))
+}
 
 $stmt = $db->prepare("
-	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
+	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, ps.id AS ps_id,
 	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
 	FROM users u
 	JOIN playlistsongs ps ON ps.user_id = u.id
 	JOIN songs s ON s.id = ps.song_id
 	JOIN artists a ON a.id = s.artist_id
 	JOIN genres g ON s.genre_id = g.id
-	WHERE u.id = $id");
+	WHERE a.id = $artistId");
 $stmt->execute();
 $playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the username
-$stmt2 = $db->prepare("SELECT username FROM users WHERE id = $id");
+$stmt2 = $db->prepare("SELECT name, contributor_id, genre_id FROM artists WHERE id = $artistId");
 $stmt2->execute();
-$userList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$artistList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-$username = $userList[0]["username"];
+$artistName = $artistList[0]["name"];
+
+// Get all genres
+$stmt3 = $db->prepare("SELECT id, name FROM genres");
+$stmt3->execute();
+$genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -48,7 +59,7 @@ $username = $userList[0]["username"];
 
 <head>
 
-  <title>Rockin' Database Home</title>
+  <title>Artist Page</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -72,24 +83,27 @@ $username = $userList[0]["username"];
 
 <?php include "header.php"; ?>
 
+<?php if (!edit) { // if the user is not editing?>
 <div class="container">
 	<br/>
 	
-	<div class="col-sm-8">
-		<h1>Welcome <?php echo $username; ?></h1>
+	<div class="col-sm-7">
+		<h1><?php echo $artistName; ?></h1>
 	</div>
-	<div class="col-sm-4">
-		Search Songs and Artists: <input type="text" name="searchSongs"><br/>
+	<div class="col-sm-5" style="text-align:right">
+		<form method="get" action="results.php">
+			<input type="text" name="searchSongs">
+			<button type="submit" name="search" value="sent" class="btn btn-info">Search Songs and Artists</button>
+		</form>
+		<br/>
 		<a href="song.php?id=0&edit=true"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=true"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 	<br/>
 	<br/>
 	<br/>
-	<h2>Your Playlist:</h2>
-</div>
-	
-<div class="container">
+	<a href="artist.php?id=$artistId&edit=true"><span class="text-info">Edit this Artist</span></a>
+	<h2>Songs by this Artist:</h2>
 
 <?php
 
@@ -102,10 +116,22 @@ foreach ($playlist as $song) {
 	$genre = $song["genre_name"];
 	$artistName = $song["artist_name"];
 	$artistId = $song["artist_id"];
+	$psId = $song["ps_id"];
 ?>
 	<hr class="style14">
-	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=false" class="text-info"><?php echo $songName; ?></a> by
-	<a href="song.php?id=<?php echo $artistId; ?>&edit=false" class="text-info"><?php echo $artistName; ?></a></h3>
+	<div class="col-sm-9">
+	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=false" class="text-info"><?php echo $songName; ?></a></h3>
+	</div>
+	<div class="col-sm-3">
+		<form method="post" action="artist.php">
+			<button type="submit" name="delete" class="btn btn-danger" value="<?php echo $psId; ?>">
+				DELETE SONG
+			</button>
+		</form>
+	</div>
+	<br/>
+	<br/>
+	<br/>
 	<p>Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
@@ -117,6 +143,42 @@ foreach ($playlist as $song) {
 ?>
 
 </div>
+
+<?php } else { // The user is editing ?>
+
+<div class="container">
+	<br/>
+	
+	<div class="col-sm-7">
+		<h1><?php echo "Edit Page for: " . $artistName; ?></h1>
+	</div>
+	<div class="col-sm-5" style="text-align:right">
+		<form method="get" action="results.php">
+			<input type="text" name="searchSongs">
+			<button type="submit" name="search" value="sent" class="btn btn-info">Search Songs and Artists</button>
+		</form>
+		<br/>
+		<a href="song.php?id=0&edit=true"><span class="text-info">Add a New Song to the Database</span></a></br>
+		<a href="artist.php?id=0&edit=true"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
+
+	<form method="post" action="artist.php">
+		Artist Name: <input type="text" name="newName" value="<?php echo $artistName; ?>"><br/>
+		Genre:
+		<div class="form-group">
+		  <label for="sel1">Select Genre</label>
+		  <select class="form-control" id="sel1" name="newGenre">
+<?php foreach ($genreList as $genreItem) { ?>
+<option value="<?php echo $genreItem['id']; ?>"><?php echo $genreItem["name"]; ?></option>
+<?php } ?>
+		  </select>
+		</div>
+		<button type="submit" name="applyChanges" value="sent" class="btn btn-info">Apply Changes</button>
+	</form>
+
+</div>
+
+<?php } ?>
 
 </body>
 
