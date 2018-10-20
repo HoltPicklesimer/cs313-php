@@ -77,7 +77,7 @@ $username = $userList[0]["username"];
 <?php
 
 foreach ($playlist as $song) {
-	echo $song["name"];
+	echo $song;
 }
 
 ?>
