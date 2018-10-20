@@ -21,6 +21,10 @@
 	color: white;
 }
 
+.container{
+	background-color: white;
+}
+
 body{
 	background-image: url("night2.jpg");
 	background-color: black;
@@ -28,9 +32,4 @@ body{
 	background-repeat: no-repeat;
 	color: white;
 	background-size: 100% auto;
-}
-
-.container{
-	background-color: white;
-	size: auto 100%;
 }
