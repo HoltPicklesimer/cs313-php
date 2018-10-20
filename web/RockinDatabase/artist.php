@@ -116,7 +116,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 	
 	<div class="col-sm-7">
 		<h1><?php echo $artistName; ?></h1>
-		<p><?php echo $artistGenre; ?></p>
+		<p><?php echo $artistGenre; ?><br/>
 		<p>Contributed by <?php echo $artistCon; ?></p>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
