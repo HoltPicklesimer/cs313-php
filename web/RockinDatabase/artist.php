@@ -207,7 +207,7 @@ foreach ($playlist as $song) {
 <option value="<?php echo $genreItem['id']; ?>"><?php echo $genreItem["name"]; ?></option>
 <?php } ?>
 		  </select>
-		</div>
+		</div><div class="col-xs-8"></div>
 		<button type="submit" name="applyChanges" value="<?php echo $artistId; ?>" class="btn btn-info">Save Changes</button>
 		<button type="submit" name="deleteArtist" value="<?php echo $artistId; ?>" class="btn btn-danger">DELETE ARTIST</button><br/>
 	</form>
