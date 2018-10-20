@@ -65,7 +65,7 @@ $stmt2 = $db->prepare("
 	FROM artists a
 	JOIN users u ON u.id = a.contributor_id
 	JOIN genres g ON g.id = a.genre_id
-	WHERE id = $artistId");
+	WHERE a.id = $artistId");
 $stmt2->execute();
 $artistList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
