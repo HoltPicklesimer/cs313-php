@@ -109,16 +109,14 @@ foreach ($playlist as $song) {
 	$artistId = $song["artist_id"];
 	$psId = $song["ps_id"];
 	$stmtRating = $db->prepare("
-		SELECT  AVG(rating) AS avgRating
+		SELECT  AVG(rating) AS avg_rating
 		FROM reviews r
 		JOIN users u ON u.id = r.user_id
 		JOIN songs s ON r.song_id = s.id
 		WHERE u.id = $id");
 	$stmtRating->execute();
 	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
-	$rating = $ratingList[0]["avgRating"];
-	print_r($ratingList);
-	print_r($rating);
+	$rating = $ratingList[0]["avg_rating"];
 ?>
 	<hr class="style14">
 	<div class="col-sm-9">
