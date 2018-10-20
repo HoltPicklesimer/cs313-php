@@ -148,12 +148,7 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 	<br/>
 	<a href="song.php?id=<?php echo $songId; ?>&edit=1"><span class="text-info">Edit this Song</span></a>
 
-	<div class="col-sm-9">
 	<p>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></p>
-	</div>
-	<div class="col-sm-3"></div>
-	<br/>
-	<br/>
 	<br/>
 	<br/>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
