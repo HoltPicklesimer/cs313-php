@@ -200,14 +200,14 @@ foreach ($playlist as $song) {
 
 	<form method="post" action="artist.php">
 		Artist Name: <input type="text" name="newName" size="50" value="<?php echo $artistName; ?>"><br/>
-		<div class="form-group col-xs-4">
+		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
 		  <select class="form-control" id="sel1" name="newGenre">
 <?php foreach ($genreList as $genreItem) { ?>
 <option value="<?php echo $genreItem['id']; ?>"><?php echo $genreItem["name"]; ?></option>
 <?php } ?>
 		  </select>
-		</div><div class="col-xs-8"></div>
+		</div>
 		<button type="submit" name="applyChanges" value="<?php echo $artistId; ?>" class="btn btn-info">Save Changes</button>
 		<button type="submit" name="deleteArtist" value="<?php echo $artistId; ?>" class="btn btn-danger">DELETE ARTIST</button><br/>
 	</form>
