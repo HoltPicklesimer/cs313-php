@@ -73,9 +73,13 @@ $username = $userList[0]["username"];
 		<h1>Welcome <?php echo $username; ?></h1>
 	</div>
 	<div class="col-sm-4">
-		Search Songs and Artists: <input type="text" name="searchSongs"><br/>
-		<a href="song.php?id=0"><span class="text-info">Add a New Song to the Database</span></a></br>
-		<a href="artist.php?id=0"><span class="text-info">Add a New Artist to the Database</span></a>
+		<form method="get" action="results.php">
+			<input type="text" name="searchSongs">
+			<button type="submit" name="search" value="sent" class="btn btn-info">Search Songs and Artists</button>
+		</form>
+		<br/>
+		<a href="song.php?id=0&edit=true"><span class="text-info">Add a New Song to the Database</span></a></br>
+		<a href="artist.php?id=0&edit=true"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 	<br/>
 	<br/>
@@ -98,8 +102,8 @@ foreach ($playlist as $song) {
 	$artistId = $song["artist_id"];
 ?>
 	<hr class="style14">
-	<h3><a href="song.php?id=<?php echo $songId; ?>" class="text-info"><?php echo $songName; ?></a> by
-	<a href="song.php?id=<?php echo $artistId; ?>" class="text-info"><?php echo $artistName; ?></a></h3>
+	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=false" class="text-info"><?php echo $songName; ?></a> by
+	<a href="song.php?id=<?php echo $artistId; ?>&edit=false" class="text-info"><?php echo $artistName; ?></a></h3>
 	<p>Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
