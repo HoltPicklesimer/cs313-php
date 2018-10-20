@@ -121,6 +121,7 @@ foreach ($playlist as $song) {
 			</button>
 		</form>
 	</div>
+	<br/>
 	<p>Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
