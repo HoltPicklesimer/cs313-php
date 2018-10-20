@@ -71,14 +71,16 @@ $username = $userList[0]["username"];
 	
 	<div class="col-sm-8">
 		<h1>Welcome <?php echo $username; ?></h1>
-		<br/>
-		<h2>Your Playlist:</h2>
 	</div>
 	<div class="col-sm-4">
 		Search Songs and Artists: <input type="text" name="searchSongs"><br/>
-		<a href="song.php"><span class="text-info">Add a New Song to the Database</span></a></br>
-		<a href="artist.php"><span class="text-info">Add a New Artist to the Database</span></a>
+		<a href="song.php?id=0"><span class="text-info">Add a New Song to the Database</span></a></br>
+		<a href="artist.php?id=0"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
+	<br/>
+	<br/>
+	<br/>
+	<h2>Your Playlist:</h2>
 </div>
 	
 <div class="container">
@@ -98,8 +100,8 @@ foreach ($playlist as $song) {
 	<hr class="style14">
 	<h3><a href="song.php?id=<?php echo $songId; ?>" class="text-info"><?php echo $songName; ?></a> by
 	<a href="song.php?id=<?php echo $artistId; ?>" class="text-info"><?php echo $artistName; ?></a></h3>
-	<p>Genre: <?php echo $genre; ?>
-	<?php echo $releaseDate; ?></p>
+	<p>Genre: <?php echo $genre; ?><br/>
+	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
 <?php } ?>
