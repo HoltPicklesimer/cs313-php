@@ -79,10 +79,10 @@ if ($_POST)
 <div class="container">
 	<br/>
 	
-	<div class="col-sm-6">
+	<div class="col-sm-7">
 		<h1>Welcome <?php echo $username; ?></h1>
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-5 align-right">
 		<form method="get" action="results.php">
 			<input type="text" name="searchSongs">
 			<button type="submit" name="search" value="sent" class="btn btn-info">Search Songs and Artists</button>
@@ -116,7 +116,9 @@ foreach ($playlist as $song) {
 	</div>
 	<div class="col-sm-3">
 		<form method="post" action="user.php">
-			<button type="submit" name="delete" value="<?php echo $psId; ?>">Remove Song from Playlist</button>
+			<button type="submit" name="delete" class="btn btn-danger" value="<?php echo $psId; ?>">
+				Remove Song from Playlist
+			</button>
 		</form>
 	</div>
 	<p>Genre: <?php echo $genre; ?><br/>
