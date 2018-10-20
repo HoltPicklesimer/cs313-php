@@ -18,14 +18,25 @@ $id = $_SESSION["userId"];
 // Edit the artist if editing and submitted
 if ($_POST)
 {
-	// Get the artist id
-	$artistId = $_POST["applyChanges"];
+	// If the artist is being deleted
+	if (isset($_POST["deleteArtist"]))
+	{
+		// Get the artist id
+		$artistId = $_POST["applyChanges"];
+		// Remove from the database
+		// Then redirect to the user's page
+	}
+	else
+	{
+		// Get the artist id
+		$artistId = $_POST["applyChanges"];
 
-	// Editing?
-	$edit = 0;
-	// Sanatize the inputs
-	// if (isset($_POST["applyChanges"]))
-	// Insert into the database and reload the page
+		// Editing?
+		$edit = 0;
+		// Sanatize the inputs
+		// if (isset($_POST["applyChanges"]))
+		// Insert into the database and reload the page
+	}
 }
 else
 {
@@ -187,6 +198,7 @@ foreach ($playlist as $song) {
 		  </select>
 		</div>
 		<button type="submit" name="applyChanges" value="<?php echo $artistId; ?>" class="btn btn-info">Save Changes</button>
+		<button type="submit" name="deleteArtist" value="<?php echo $artistId; ?>" class="btn btn-danger">DELETE ARTIST</button>
 	</form>
 
 </div>
