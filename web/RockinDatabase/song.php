@@ -199,7 +199,7 @@ foreach ($reviewList as $review) {
 	<br/>
 	
 	<div class="col-sm-7">
-	<h1><?php echo "Review for: " . $songName; ?></h1>
+	<h1><?php echo "Edit Song: " . $songName; ?></h1>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">
@@ -232,13 +232,13 @@ foreach ($reviewList as $review) {
 		  </select>
 		</div>
 
-		Release Date (Format YYYY-MM-DD):
-		<input type="text" name="newReleaseDate" maxlength="10" value="<?php echo $releaseDate; ?>"><br/>
+		Release Date:
+		<input type="text" name="newReleaseDate" value="<?php echo $releaseDate; ?>"><br/>
 		Music Video Link: <input type="text" name="newURL" size="100" value="<?php echo $url; ?>"><br/>
-		Lyrics: <br/><textarea rows="50" cols="150" name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
+		Lyrics: <br/><textarea rows="20" cols="150" name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
 
 		<button type="submit" name="applyChanges" value="<?php echo $songId; ?>" class="btn btn-info">Save Changes</button>
-		<button type="submit" name="deleteSong" value="<?php echo $songId; ?>" class="btn btn-danger">DELETE SONG</button>
+		<button type="submit" name="deleteSong" value="<?php echo $songId; ?>" class="btn btn-danger">DELETE SONG</button><br/>
 	</form>
 
 </div>
