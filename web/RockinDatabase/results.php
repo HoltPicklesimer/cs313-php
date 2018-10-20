@@ -29,7 +29,7 @@ if ($_GET)
 $searchTerm = "%" . $searchItem . "%";
 
 $stmt = $db->prepare("SELECT s.id AS song_id, s.name AS song_name, a.id AS artist_id, a.name AS artist_name, g.name AS genre_name
-	FROM songs
+	FROM songs s
 	JOIN artists a ON s.artist_id = a.id
 	JOIN genres g ON s.genre_id = g.id
 	WHERE s.name LIKE :searchTerm
