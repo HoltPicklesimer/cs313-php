@@ -6,6 +6,6 @@
 	margin: auto;
 }
 
-select{
-	color:blue;
+.selection{
+	max-width: 50%;
 }
