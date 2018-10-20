@@ -22,8 +22,8 @@ if ($_POST)
 	if (isset($_POST["deleteArtist"]))
 	{
 		// Get the artist id
-		$artistId = $_POST["applyChanges"];
-		// Remove from the database
+		$artistId = $_POST["deleteArtist"];
+		// Remove from the database if id is not 0
 		// Then redirect to the user's page
 	}
 	else
