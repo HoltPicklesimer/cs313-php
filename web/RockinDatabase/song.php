@@ -155,6 +155,7 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 	<br/>
 	<br/>
 	<br/>
+	<br/>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
