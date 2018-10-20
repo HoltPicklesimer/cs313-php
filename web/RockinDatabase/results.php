@@ -26,12 +26,15 @@ if ($_GET)
 	}
 }
 
+$searchTerm = "%" . $searchItem . "%";
+
 $stmt = $db->prepare("SELECT s.id AS song_id, s.name AS song_name, a.id AS artist_id, a.name AS artist_name, g.name AS genre_name
 	FROM songs
 	JOIN artists a ON s.artist_id = a.id
 	JOIN genres g ON s.genre_id = g.id
-	WHERE s.name LIKE %:searchItem%");
-$stmt->bindValue(':searchItem', $searchItem, PDO::PARAM_STR);
+	WHERE s.name LIKE :searchTerm
+	OR a.name LIKE :searchTerm");
+$stmt->bindValue(':searchTerm', $searchTerm, PDO::PARAM_STR);
 $stmt->execute();
 $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
