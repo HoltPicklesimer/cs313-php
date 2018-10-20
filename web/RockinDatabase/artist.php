@@ -83,7 +83,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include "header.php"; ?>
 
-<?php if (!$edit) { // if the user is not editing?>
+<?php if ($edit == FALSE) { // if the user is not editing?>
 <div class="container">
 	<br/>
 	
