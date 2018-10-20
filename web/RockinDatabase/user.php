@@ -112,7 +112,7 @@ foreach ($playlist as $song) {
 	<hr class="style14">
 	<div class="col-sm-9">
 	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=false" class="text-info"><?php echo $songName; ?></a> by
-	<a href="song.php?id=<?php echo $artistId; ?>&edit=false" class="text-info"><?php echo $artistName; ?></a></h3>
+	<a href="artist.php?id=<?php echo $artistId; ?>&edit=false" class="text-info"><?php echo $artistName; ?></a></h3>
 	</div>
 	<div class="col-sm-3">
 		<form method="post" action="user.php">
