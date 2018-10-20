@@ -15,10 +15,10 @@ if ($_SESSION["userId"] < 1)
 // Get the user id
 $id = $_SESSION["userId"];
 
-// Edit the artist if editing and submitted
+// Edit the song if editing and submitted
 if ($_POST)
 {
-	// If the artist is being deleted
+	// If the song is being deleted
 	if (isset($_POST["deleteSong"]))
 	{
 		// Get the song id
@@ -154,8 +154,6 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 	<a href="song.php?id=<?php echo $songId; ?>&edit=1"><span class="text-info">Edit this Song</span></a>
 
 	<p>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></p>
-	<br/>
-	<br/>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
