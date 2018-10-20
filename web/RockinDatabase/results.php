@@ -30,8 +30,7 @@ $stmt = $db->prepare("SELECT s.id AS song_id, s.name AS song_name, a.id AS artis
 	FROM songs
 	JOIN artists a ON s.artist_id = a.id
 	JOIN genres g ON s.genre_id = g.id
-	WHERE s.name LIKE %:searchItem%
-	OR a.name LIKE %:searchItem%");
+	WHERE s.name LIKE %:searchItem%");
 $stmt->bindValue(':searchItem', $searchItem, PDO::PARAM_STR);
 $stmt->execute();
 $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
