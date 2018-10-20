@@ -2,7 +2,7 @@
 
 	<h1>My Rockin' Database</h1>
 
-	<a href="user.php" class="text-white">Home</a>
-	<a href="siginin.php" class="text-white">Log Out</a>
+	<p class="text-white"><a href="user.php" style="padding: 15px">Home</a>
+	<a href="siginin.php" style="padding: 15px">Log Out</a></p>
 
 </div>
