@@ -82,7 +82,7 @@ if ($_POST)
 	<div class="col-sm-7">
 		<h1>Welcome <?php echo $username; ?></h1>
 	</div>
-	<div class="col-sm-5 align-right">
+	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">
 			<input type="text" name="searchSongs">
 			<button type="submit" name="search" value="sent" class="btn btn-info">Search Songs and Artists</button>
@@ -121,6 +121,7 @@ foreach ($playlist as $song) {
 			</button>
 		</form>
 	</div>
+	<br/>
 	<br/>
 	<p>Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
