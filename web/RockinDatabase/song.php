@@ -212,7 +212,7 @@ foreach ($reviewList as $review) {
 	</div>
 
 	<form method="post" action="song.php">
-		Song Name: <input type="text" name="newName" size="100" value="<?php echo $songName; ?>"><br/>
+		Song Name: <input type="text" name="newName" size="50" value="<?php echo $songName; ?>"><br/>
 
 		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
@@ -234,8 +234,8 @@ foreach ($reviewList as $review) {
 
 		Release Date (Format YYYY-MM-DD):
 		<input type="text" name="newReleaseDate" maxlength="10" value="<?php echo $releaseDate; ?>"><br/>
-		Music Video Link: <input type="text" name="newURL" size="300" value="<?php echo $url; ?>"><br/>
-		Lyrics: <br/><textarea rows="300" cols="200" name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
+		Music Video Link: <input type="text" name="newURL" size="100" value="<?php echo $url; ?>"><br/>
+		Lyrics: <br/><textarea rows="250" cols="75" name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
 
 		<button type="submit" name="applyChanges" value="<?php echo $songId; ?>" class="btn btn-info">Save Changes</button>
 		<button type="submit" name="deleteSong" value="<?php echo $songId; ?>" class="btn btn-danger">DELETE SONG</button>
