@@ -6,6 +6,9 @@ require "connectDb.php";
 if (!isset($_SESSION))
 	session_start();
 
+$_SESSION["userId"] = "";
+unset($_SESSION["userId"]);
+
 if ($_POST)
 {
 	if (isset($_POST["submit"]))
