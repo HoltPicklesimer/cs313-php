@@ -47,43 +47,48 @@ else
 	$edit = $_GET["edit"];
 }
 
-$stmt = $db->prepare("
-	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
-	s.lyrics, s.contributor_id, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
-	FROM songs s
-	JOIN artists a ON a.id = s.artist_id
-	JOIN genres g ON s.genre_id = g.id
-	WHERE s.id = $songId");
-$stmt->execute();
-$songList = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$song = $songList[0];
-$songName = $song["song_name"];
-$songId = $song["song_id"];
-$songCon = $song["contributor_id"];
-$url = $song["url"];
-$releaseDate = $song["release_date"];
-$lyrics = $song["lyrics"];
-$genre = $song["genre_name"];
-$artistName = $song["artist_name"];
-$artistId = $song["artist_id"];
-$psId = $song["ps_id"];
-$stmtRating = $db->prepare("
-	SELECT  AVG(rating) AS avg_rating
-	FROM reviews r
-	JOIN songs s ON r.song_id = s.id
-	WHERE s.id = $songId");
-$stmtRating->execute();
-$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
-$rating = $ratingList[0]["avg_rating"];
+if (songId > 0)
+{
 
-// Get the reviews
-$stmt2 = $db->prepare("SELECT r.id, r.user_id, r.publish_date,
-	r.content, r.rating, u.username
-	FROM reviews r
-	JOIN users u ON u.id = r.user_id
-	WHERE song_id = $songId");
-$stmt2->execute();
-$reviewList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+	$stmt = $db->prepare("
+		SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
+		s.lyrics, s.contributor_id, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
+		FROM songs s
+		JOIN artists a ON a.id = s.artist_id
+		JOIN genres g ON s.genre_id = g.id
+		WHERE s.id = $songId");
+	$stmt->execute();
+	$songList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$song = $songList[0];
+	$songName = $song["song_name"];
+	$songId = $song["song_id"];
+	$songCon = $song["contributor_id"];
+	$url = $song["url"];
+	$releaseDate = $song["release_date"];
+	$lyrics = $song["lyrics"];
+	$genre = $song["genre_name"];
+	$artistName = $song["artist_name"];
+	$artistId = $song["artist_id"];
+	$psId = $song["ps_id"];
+	$stmtRating = $db->prepare("
+		SELECT  AVG(rating) AS avg_rating
+		FROM reviews r
+		JOIN songs s ON r.song_id = s.id
+		WHERE s.id = $songId");
+	$stmtRating->execute();
+	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
+	$rating = $ratingList[0]["avg_rating"];
+
+	// Get the reviews
+	$stmt2 = $db->prepare("SELECT r.id, r.user_id, r.publish_date,
+		r.content, r.rating, u.username
+		FROM reviews r
+		JOIN users u ON u.id = r.user_id
+		WHERE song_id = $songId");
+	$stmt2->execute();
+	$reviewList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+	
+}
 
 // Get all genres
 $stmt3 = $db->prepare("SELECT id, name FROM genres");
