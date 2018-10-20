@@ -12,12 +12,12 @@ if (!isset($_SESSION["userId"]))
 if ($_SESSION["userId"] < 1)
 	header('Location: signin.php');
 
-$stmt = $db->prepare('SELECT u.id, u.username, s.name, s.contributor_id, s.url,
+$stmt = $db->prepare('SELECT u.username, s.name, s.contributor_id, s.url,
 	s.release_date, s.lyrics, s.artist_id, s.genre_id
 	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id
 	WHERE u.id = ps.user_id');
 $stmt->execute();
-$userInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $id = $_SESSION["userId"];
 // Get the username
@@ -64,10 +64,9 @@ $username = $userList[0]["username"];
 	
 	<div class="col-sm-8">
 		<h1>Welcome <?php echo $username; ?></h1>
-		
 	</div>
 	<div class="col-sm-4">
-		Search: <input type="text" name="searchSongs"><br/>
+		Search Songs and Artists: <input type="text" name="searchSongs"><br/>
 		<a href="song.php"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
@@ -75,6 +74,13 @@ $username = $userList[0]["username"];
 	<br/>
 	<br/>
 	<h2>Your Playlist:</h2>
+<?php
+
+foreach ($playlist as $song) {
+	echo $song["name"];
+}
+
+?>
 	<hr class="style14">
 	<br/>
 </div>
