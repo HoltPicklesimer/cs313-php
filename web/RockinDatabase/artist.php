@@ -28,12 +28,10 @@ if ($_POST)
 }
 
 $stmt = $db->prepare("
-	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, ps.id AS ps_id,
+	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
 	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
-	FROM users u
-	JOIN playlistsongs ps ON ps.user_id = u.id
-	JOIN songs s ON s.id = ps.song_id
-	JOIN artists a ON a.id = s.artist_id
+	FROM artists a
+	JOIN songs s ON a.id = s.artist_id
 	JOIN genres g ON s.genre_id = g.id
 	WHERE a.id = $artistId");
 $stmt->execute();
@@ -122,13 +120,7 @@ foreach ($playlist as $song) {
 	<div class="col-sm-9">
 	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=0" class="text-info"><?php echo $songName; ?></a></h3>
 	</div>
-	<div class="col-sm-3">
-		<form method="post" action="artist.php">
-			<button type="submit" name="delete" class="btn btn-danger" value="<?php echo $psId; ?>">
-				DELETE SONG
-			</button>
-		</form>
-	</div>
+	<div class="col-sm-3"></div>
 	<br/>
 	<br/>
 	<br/>
