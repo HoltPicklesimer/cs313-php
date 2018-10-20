@@ -124,6 +124,14 @@ foreach ($playlist as $song) {
 	$artistName = $song["artist_name"];
 	$artistId = $song["artist_id"];
 	$psId = $song["ps_id"];
+	$stmtRating = $db->prepare("
+		SELECT  AVG(rating) AS avg_rating
+		FROM reviews r
+		JOIN songs s ON r.song_id = s.id
+		WHERE s.id = $songId");
+	$stmtRating->execute();
+	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
+	$rating = $ratingList[0]["avg_rating"];
 ?>
 	<hr class="style14">
 	<div class="col-sm-9">
@@ -133,7 +141,8 @@ foreach ($playlist as $song) {
 	<br/>
 	<br/>
 	<br/>
-	<p>Genre: <?php echo $genre; ?><br/>
+	<p>Rating: <?php echo number_format($rating, 2) . "/5"; ?><br/>
+	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
