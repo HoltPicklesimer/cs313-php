@@ -32,8 +32,8 @@ $stmt = $db->prepare("SELECT s.id AS song_id, s.name AS song_name, a.id AS artis
 	FROM songs s
 	JOIN artists a ON s.artist_id = a.id
 	JOIN genres g ON s.genre_id = g.id
-	WHERE s.name LIKE :searchTerm
-	OR a.name LIKE :searchTerm");
+	WHERE UPPER(s.name) LIKE UPPER(:searchTerm)
+	OR UPPER(a.name) LIKE UPPER(:searchTerm)");
 $stmt->bindValue(':searchTerm', $searchTerm, PDO::PARAM_STR);
 $stmt->execute();
 $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
