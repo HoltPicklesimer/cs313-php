@@ -100,7 +100,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 	<br/>
 	<br/>
 	<br/>
-	<a href="artist.php?id=$artistId&edit=1"><span class="text-info">Edit this Artist</span></a>
+	<a href="artist.php?id=<?php echo $artistId; ?>&edit=1"><span class="text-info">Edit this Artist</span></a>
 	<h2>Songs by this Artist:</h2>
 
 <?php
