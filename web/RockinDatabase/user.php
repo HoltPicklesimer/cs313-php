@@ -16,7 +16,7 @@ if ($_SESSION["userId"] < 1)
 $id = $_SESSION["userId"];
 
 $stmt = $db->prepare("
-	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, ps.id AS ps_id
+	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, ps.id AS ps_id,
 	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
 	FROM users u
 	JOIN playlistsongs ps ON ps.user_id = u.id
