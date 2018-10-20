@@ -83,7 +83,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include "header.php"; ?>
 
-<?php if (!$edit) { // if the user is not editing?>
+<?php if ($edit == false) { // if the user is not editing?>
 <div class="container">
 	<br/>
 	
@@ -150,7 +150,11 @@ foreach ($playlist as $song) {
 	<br/>
 	
 	<div class="col-sm-7">
+<?php if ($artistId != 0) { ?>
 		<h1><?php echo "Edit Page for: " . $artistName; ?></h1>
+<?php } else { ?>
+		<h1>Add Artist</h1>
+<?php } ?>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">
@@ -164,7 +168,6 @@ foreach ($playlist as $song) {
 
 	<form method="post" action="artist.php">
 		Artist Name: <input type="text" name="newName" value="<?php echo $artistName; ?>"><br/>
-		Genre:
 		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
 		  <select class="form-control" id="sel1" name="newGenre">
