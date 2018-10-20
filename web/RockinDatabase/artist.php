@@ -202,7 +202,7 @@ foreach ($playlist as $song) {
 		Artist Name: <input type="text" name="newName" size="50" value="<?php echo $artistName; ?>"><br/>
 		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
-		  <select class="form-control selection" id="sel1" name="newGenre">
+		  <select class="form-control input-medium" id="sel1" name="newGenre">
 <?php foreach ($genreList as $genreItem) { ?>
 <option value="<?php echo $genreItem['id']; ?>"><?php echo $genreItem["name"]; ?></option>
 <?php } ?>
