@@ -79,7 +79,9 @@ $username = $userList[0]["username"];
 		<a href="song.php"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
+</div>
 	
+<div class="container">
 
 <?php
 
