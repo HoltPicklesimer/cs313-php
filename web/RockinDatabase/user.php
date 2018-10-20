@@ -117,6 +117,7 @@ foreach ($playlist as $song) {
 	$stmtRating->execute();
 	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
 	$rating = $ratingList[0]["avgRating"];
+	echo $ratingList;
 ?>
 	<hr class="style14">
 	<div class="col-sm-9">
