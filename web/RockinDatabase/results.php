@@ -87,7 +87,7 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	<br/>
 	<br/>
 
-<?php foreach ($resultList $song) {
+<?php foreach ($resultList as $song) {
 	$songName = $song["song_name"];
 	$songId = $song["song_id"];
 	$genre = $song["genre_name"];
