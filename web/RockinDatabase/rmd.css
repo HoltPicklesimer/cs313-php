@@ -20,3 +20,12 @@
 .headerLinks:visited, .headerLinks:hover{
 	color: white;
 }
+
+body{
+	background-image: url("night.jpg");
+	background-color: black;
+}
+
+.container{
+	background-color: white;
+}

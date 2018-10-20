@@ -69,6 +69,10 @@ if ($_POST)
 
 <body>
 
+<div class="container-fluid header">
+	<h1>My Rockin' Database</h1>
+</div>
+
 <div class="container" align="center">
 	<br/><br/><br/>
 	<div class="col-sm-4"></div>

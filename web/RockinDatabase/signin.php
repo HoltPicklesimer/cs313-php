@@ -67,6 +67,10 @@ if ($_POST)
 
 <body>
 
+<div class="container-fluid header">
+	<h1>My Rockin' Database</h1>
+</div>
+
 <div class="container" align="center">
 	<h1>Welcome to My Rockin' Database.</h1>
 	<h3>Search songs, song reviews, and artists and find music videos!</h3><br/>
