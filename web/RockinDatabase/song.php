@@ -47,7 +47,7 @@ else
 	$edit = $_GET["edit"];
 }
 
-if (songId > 0)
+if ($songId > 0)
 {
 
 	$stmt = $db->prepare("
