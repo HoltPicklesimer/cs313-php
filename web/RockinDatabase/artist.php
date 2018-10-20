@@ -23,7 +23,9 @@ if ($_POST)
 
 	// Editing?
 	$edit = 0;
+	// Sanatize the inputs
 	// if (isset($_POST["applyChanges"]))
+	// Insert into the database and reload the page
 }
 else
 {
