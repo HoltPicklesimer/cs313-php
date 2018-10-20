@@ -85,7 +85,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 <?php if ($edit == false) { // if the user is not editing?>
 <div class="container">
-	<br/>
+	<br/>Hello
 	
 	<div class="col-sm-7">
 		<h1><?php echo $artistName; ?></h1>
