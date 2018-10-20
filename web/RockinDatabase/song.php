@@ -149,7 +149,7 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 	<a href="song.php?id=<?php echo $songId; ?>&edit=1"><span class="text-info">Edit this Song</span></a>
 
 	<div class="col-sm-9">
-	<h3>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></h3>
+	<p>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></p>
 	</div>
 	<div class="col-sm-3"></div>
 	<br/>
@@ -187,7 +187,7 @@ foreach ($reviewList as $review) {
 	<br/>
 	<br/>
 	<br/>
-	<p>Date Published: <?php echo $reviewDate; ?><br/>
+	<p>Date Published: <?php echo date("F jS, Y", strtotime($reviewDate)); ?><br/>
 	Rating: <?php echo $reviewRating . "/5"; ?></p>
 	<p><?php echo $reviewContent; ?></p>
 
