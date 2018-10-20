@@ -57,12 +57,21 @@ $stmt = $db->prepare("
 $stmt->execute();
 $playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Get the username
-$stmt2 = $db->prepare("SELECT name, contributor_id, genre_id FROM artists WHERE id = $artistId");
+// Get the contributor and genre
+$stmt2 = $db->prepare("
+	SELECT a.name AS name,
+	u.username AS user,
+	g.name AS genre
+	FROM artists a
+	JOIN users u ON u.id = a.contributor_id
+	JOIN genres g ON g.id = a.genre_id
+	WHERE id = $artistId");
 $stmt2->execute();
 $artistList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 $artistName = $artistList[0]["name"];
+$artistCon = $artistList[0]["user"];
+$artistGenre = $artistList[0]["genre"];
 
 // Get all genres
 $stmt3 = $db->prepare("SELECT id, name FROM genres");
@@ -107,6 +116,8 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 	
 	<div class="col-sm-7">
 		<h1><?php echo $artistName; ?></h1>
+		<p><?php echo $artistGenre; ?></p>
+		<p>Contributed by <?php echo $artistCon; ?></p>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">

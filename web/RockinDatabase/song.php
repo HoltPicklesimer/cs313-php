@@ -18,19 +18,30 @@ $id = $_SESSION["userId"];
 // Edit the artist if editing and submitted
 if ($_POST)
 {
-	// Get the artist id
-	$artistId = $_POST["applyChanges"];
+	// If the artist is being deleted
+	if (isset($_POST["deleteSong"]))
+	{
+		// Get the song id
+		$songId = $_POST["deleteSong"];
+		// Remove from the database if id is not 0
+		// Then redirect to the user's page
+	}
+	else
+	{
+		// Get the song id
+		$songId = $_POST["applyChanges"];
 
-	// Editing?
-	$edit = 0;
-	// Sanatize the inputs
-	// if (isset($_POST["applyChanges"]))
-	// Insert into the database and reload the page
+		// Editing?
+		$edit = 0;
+		// Sanatize the inputs
+		// if (isset($_POST["applyChanges"]))
+		// Insert into the database and reload the page
+	}
 }
 else
 {
-	// Get the artist id
-	$artistId = $_GET["id"];
+	// Get the song id
+	$songId = $_GET["id"];
 
 	// Editing?
 	$edit = $_GET["edit"];
@@ -38,7 +49,7 @@ else
 
 $stmt = $db->prepare("
 	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
-	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
+	s.lyrics, s.contributor_id, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
 	FROM artists a
 	JOIN songs s ON a.id = s.artist_id
 	JOIN genres g ON s.genre_id = g.id
@@ -124,6 +135,14 @@ foreach ($playlist as $song) {
 	$artistName = $song["artist_name"];
 	$artistId = $song["artist_id"];
 	$psId = $song["ps_id"];
+	$stmtRating = $db->prepare("
+		SELECT  AVG(rating) AS avg_rating
+		FROM reviews r
+		JOIN songs s ON r.song_id = s.id
+		WHERE s.id = $songId");
+	$stmtRating->execute();
+	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
+	$rating = $ratingList[0]["avg_rating"];
 ?>
 	<hr class="style14">
 	<div class="col-sm-9">
@@ -133,7 +152,8 @@ foreach ($playlist as $song) {
 	<br/>
 	<br/>
 	<br/>
-	<p>Genre: <?php echo $genre; ?><br/>
+	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
+	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
@@ -178,6 +198,7 @@ foreach ($playlist as $song) {
 		  </select>
 		</div>
 		<button type="submit" name="applyChanges" value="<?php echo $artistId; ?>" class="btn btn-info">Save Changes</button>
+		<button type="submit" name="deleteArtist" value="<?php echo $artistId; ?>" class="btn btn-danger">DELETE ARTIST</button>
 	</form>
 
 </div>
