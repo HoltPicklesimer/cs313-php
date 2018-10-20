@@ -72,8 +72,6 @@ $username = $userList[0]["username"];
 	<div class="col-sm-8">
 		<h1>Welcome <?php echo $username; ?></h1>
 		<br/>
-		<br/>
-		<br/>
 		<h2>Your Playlist:</h2>
 	</div>
 	<div class="col-sm-4">
