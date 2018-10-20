@@ -112,7 +112,7 @@ foreach ($playlist as $song) {
 		SELECT  AVG(rating) AS avg_rating
 		FROM reviews r
 		JOIN songs s ON r.song_id = s.id
-		WHERE s.id = $song_id");
+		WHERE s.id = $songId");
 	$stmtRating->execute();
 	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
 	$rating = $ratingList[0]["avg_rating"];
