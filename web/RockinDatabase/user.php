@@ -16,7 +16,7 @@ if ($_SESSION["userId"] < 1)
 $id = $_SESSION["userId"];
 
 $stmt = $db->prepare("
-	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
+	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, ps.id AS ps_id
 	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
 	FROM users u
 	JOIN playlistsongs ps ON ps.user_id = u.id
@@ -33,6 +33,16 @@ $stmt2->execute();
 $userList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 $username = $userList[0]["username"];
+
+// Delete song if delete button is pressed
+if ($_POST)
+{
+	if (isset($_POST["delete"]))
+	{
+		// delete
+		// use $_POST["delete"] to get the id of the song to remove
+	}
+}
 
 ?>
 
@@ -69,10 +79,10 @@ $username = $userList[0]["username"];
 <div class="container">
 	<br/>
 	
-	<div class="col-sm-8">
+	<div class="col-sm-6">
 		<h1>Welcome <?php echo $username; ?></h1>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-6">
 		<form method="get" action="results.php">
 			<input type="text" name="searchSongs">
 			<button type="submit" name="search" value="sent" class="btn btn-info">Search Songs and Artists</button>
@@ -85,9 +95,6 @@ $username = $userList[0]["username"];
 	<br/>
 	<br/>
 	<h2>Your Playlist:</h2>
-</div>
-	
-<div class="container">
 
 <?php
 
@@ -100,10 +107,18 @@ foreach ($playlist as $song) {
 	$genre = $song["genre_name"];
 	$artistName = $song["artist_name"];
 	$artistId = $song["artist_id"];
+	$psId = $song["ps_id"];
 ?>
 	<hr class="style14">
+	<div class="col-sm-9">
 	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=false" class="text-info"><?php echo $songName; ?></a> by
 	<a href="song.php?id=<?php echo $artistId; ?>&edit=false" class="text-info"><?php echo $artistName; ?></a></h3>
+	</div>
+	<div class="col-sm-3">
+		<form method="post" action="user.php">
+			<button type="submit" name="delete" value="<?php echo psId; ?>"></button>
+		</form>
+	</div>
 	<p>Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
