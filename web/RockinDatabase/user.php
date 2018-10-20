@@ -15,9 +15,14 @@ if ($_SESSION["userId"] < 1)
 // Get the user id
 $id = $_SESSION["userId"];
 
-$stmt = $db->prepare("SELECT u.username, s.name, s.contributor_id, s.url,
-	s.release_date, s.lyrics, s.artist_id, s.genre_id
-	FROM users u JOIN playlistsongs ps ON ps.user_id = u.id JOIN songs s ON s.id = ps.song_id
+$stmt = $db->prepare("
+	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
+	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
+	FROM users u
+	JOIN playlistsongs ps ON ps.user_id = u.id
+	JOIN songs s ON s.id = ps.song_id
+	JOIN artists a ON a.id = s.artist_id
+	JOIN genres g ON s.genre_id = g.id
 	WHERE u.id = $id");
 $stmt->execute();
 $playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -76,15 +81,33 @@ $username = $userList[0]["username"];
 	<br/>
 	<br/>
 	<h2>Your Playlist:</h2>
+
 <?php
 
 foreach ($playlist as $song) {
-	print_r($song);
-}
-
+	$songName = $song["song_name"];
+	$songId = $song["song_id"];
+	$url = $song["url"];
+	$releaseDate = $song["release_date"];
+	$lyrics = $song["lyrics"];
+	$genre = $song["genre_name"];
+	$artistName = $song["artist_name"];
+	$artistId = $song["artist_id"];
 ?>
 	<hr class="style14">
 	<br/>
+	<h3><a href="song.php?id=<?php echo $songId; ?>" class="text-info"><?php echo $songName; ?></a> by
+	<a href="song.php?id=<?php echo $artistId; ?>" class="text-info"><?php echo $artistName; ?></a></h3>
+	<p>Genre: <?php echo $genre; ?></p>
+	<p><?php echo $release_date; ?></p>
+<?php if ($url != "") { ?>
+	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
+<?php } ?>
+	<p>Lyrics:<br/><?php echo $lyrics; ?></p>
+<?php
+}
+?>
+
 </div>
 
 </body>
