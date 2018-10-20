@@ -141,7 +141,7 @@ foreach ($playlist as $song) {
 	<br/>
 	<br/>
 	<br/>
-	<p>Rating: <?php echo number_format($rating, 2) . "/5"; ?><br/>
+	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
