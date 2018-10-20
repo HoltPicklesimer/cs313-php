@@ -50,24 +50,50 @@ else
 $stmt = $db->prepare("
 	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
 	s.lyrics, s.contributor_id, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
-	FROM artists a
-	JOIN songs s ON a.id = s.artist_id
+	FROM songs s
+	JOIN artists a ON a.id = s.artist_id
 	JOIN genres g ON s.genre_id = g.id
 	WHERE a.id = $artistId");
 $stmt->execute();
-$playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$songList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$song = $songList[0];
+$songName = $song["song_name"];
+$songId = $song["song_id"];
+$songCon = $song["contributor_id"];
+$url = $song["url"];
+$releaseDate = $song["release_date"];
+$lyrics = $song["lyrics"];
+$genre = $song["genre_name"];
+$artistName = $song["artist_name"];
+$artistId = $song["artist_id"];
+$psId = $song["ps_id"];
+$stmtRating = $db->prepare("
+	SELECT  AVG(rating) AS avg_rating
+	FROM reviews r
+	JOIN songs s ON r.song_id = s.id
+	WHERE s.id = $songId");
+$stmtRating->execute();
+$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
+$rating = $ratingList[0]["avg_rating"];
 
-// Get the username
-$stmt2 = $db->prepare("SELECT name, contributor_id, genre_id FROM artists WHERE id = $artistId");
+// Get the reviews
+$stmt2 = $db->prepare("SELECT r.id, r.user_id, r.publish_date,
+	r.content, r.rating, u.username
+	FROM reviews r
+	JOIN users u ON u.id = r.user_id
+	WHERE song_id = $songId");
 $stmt2->execute();
-$artistList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
-$artistName = $artistList[0]["name"];
+$reviewList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 // Get all genres
 $stmt3 = $db->prepare("SELECT id, name FROM genres");
 $stmt3->execute();
 $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+// Get all artists
+$stmt4 = $db->prepare("SELECT id, name FROM artists");
+$stmt4->execute();
+$artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -77,7 +103,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
 
-  <title>Artist Page</title>
+  <title>Song Page</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -106,7 +132,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 	<br/>
 	
 	<div class="col-sm-7">
-		<h1><?php echo $artistName; ?></h1>
+		<h1><?php echo $songName; ?></h1>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">
@@ -120,33 +146,10 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 	<br/>
 	<br/>
 	<br/>
-	<a href="artist.php?id=<?php echo $artistId; ?>&edit=1"><span class="text-info">Edit this Artist</span></a>
-	<h2>Songs by this Artist:</h2>
+	<a href="song.php?id=<?php echo $songId; ?>&edit=1"><span class="text-info">Edit this Song</span></a>
 
-<?php
-
-foreach ($playlist as $song) {
-	$songName = $song["song_name"];
-	$songId = $song["song_id"];
-	$url = $song["url"];
-	$releaseDate = $song["release_date"];
-	$lyrics = $song["lyrics"];
-	$genre = $song["genre_name"];
-	$artistName = $song["artist_name"];
-	$artistId = $song["artist_id"];
-	$psId = $song["ps_id"];
-	$stmtRating = $db->prepare("
-		SELECT  AVG(rating) AS avg_rating
-		FROM reviews r
-		JOIN songs s ON r.song_id = s.id
-		WHERE s.id = $songId");
-	$stmtRating->execute();
-	$ratingList = $stmtRating->fetchAll(PDO::FETCH_ASSOC);
-	$rating = $ratingList[0]["avg_rating"];
-?>
-	<hr class="style14">
 	<div class="col-sm-9">
-	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=0" class="text-info"><?php echo $songName; ?></a></h3>
+	<h3>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></h3>
 	</div>
 	<div class="col-sm-3"></div>
 	<br/>
@@ -159,6 +162,35 @@ foreach ($playlist as $song) {
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
 <?php } ?>
 	<p>Lyrics:<br/><?php echo $lyrics; ?></p>
+
+	<h2>Reviews:</h2>
+
+<?php
+foreach ($reviewList as $review) {
+	$reviewId = $review["id"];
+	$reviewConId = $review["user_id"];
+	$reviewCon = $review["username"];
+	$reviewDate = $review["publish_date"];
+	$reviewContent = $review["content"];
+	$reviewRating = $review["rating"];
+?>
+
+	<hr class="style14">
+	<div class="col-sm-9">
+<?php if ($id == $reviewConId) {?>
+	<h3><a href="review.php?id=<?php echo $reviewId; ?>&edit=0" class="text-info">Review by <?php echo $reviewCon; ?></a></h3>
+<?php } else { ?>
+	<h3>Review by <?php echo $reviewCon; ?></h3>
+<?php } ?>
+	</div>
+	<div class="col-sm-3"></div>
+	<br/>
+	<br/>
+	<br/>
+	<p>Date Published: <?php echo $reviewDate; ?><br/>
+	Rating: <?php echo $reviewRating . "/5"; ?></p>
+	<p><?php echo $reviewContent; ?></p>
+
 <?php
 }
 ?>
@@ -171,11 +203,7 @@ foreach ($playlist as $song) {
 	<br/>
 	
 	<div class="col-sm-7">
-<?php if ($artistId != 0) { ?>
-		<h1><?php echo "Edit Page for: " . $artistName; ?></h1>
-<?php } else { ?>
-		<h1>Add Artist</h1>
-<?php } ?>
+	<h1><?php echo "Review for: " . $songName; ?></h1>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">
@@ -187,8 +215,9 @@ foreach ($playlist as $song) {
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 
-	<form method="post" action="artist.php">
-		Artist Name: <input type="text" name="newName" value="<?php echo $artistName; ?>"><br/>
+	<form method="post" action="song.php">
+		Song Name: <input type="text" name="newName" value="<?php echo $songName; ?>"><br/>
+
 		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
 		  <select class="form-control" id="sel1" name="newGenre">
@@ -197,8 +226,22 @@ foreach ($playlist as $song) {
 <?php } ?>
 		  </select>
 		</div>
-		<button type="submit" name="applyChanges" value="<?php echo $artistId; ?>" class="btn btn-info">Save Changes</button>
-		<button type="submit" name="deleteArtist" value="<?php echo $artistId; ?>" class="btn btn-danger">DELETE ARTIST</button>
+
+		<div class="form-group">
+		  <label for="sel2">Select Artist</label>
+		  <select class="form-control" id="sel2" name="newArtist">
+<?php foreach ($artistList as $artistItem) { ?>
+<option value="<?php echo $artistItem['id']; ?>"><?php echo $artistItem["name"]; ?></option>
+<?php } ?>
+		  </select>
+		</div>
+
+		Release Date: <input type="text" name="newReleaseDate" value="<?php echo $releaseDate; ?>"><br/>
+		Music Video Link: <input type="text" name="newURL" value="<?php echo $url; ?>"><br/>
+		Lyrics: <br/><textarea name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
+
+		<button type="submit" name="applyChanges" value="<?php echo $songId; ?>" class="btn btn-info">Save Changes</button>
+		<button type="submit" name="deleteSong" value="<?php echo $songId; ?>" class="btn btn-danger">DELETE SONG</button>
 	</form>
 
 </div>
