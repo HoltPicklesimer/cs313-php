@@ -235,7 +235,7 @@ foreach ($reviewList as $review) {
 		Release Date (Format YYYY-MM-DD):
 		<input type="text" name="newReleaseDate" maxlength="10" value="<?php echo $releaseDate; ?>"><br/>
 		Music Video Link: <input type="text" name="newURL" size="100" value="<?php echo $url; ?>"><br/>
-		Lyrics: <br/><textarea rows="250" cols="75" name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
+		Lyrics: <br/><textarea rows="50" cols="150" name="newLyrics"><?php echo $lyrics; ?></textarea><br/>
 
 		<button type="submit" name="applyChanges" value="<?php echo $songId; ?>" class="btn btn-info">Save Changes</button>
 		<button type="submit" name="deleteSong" value="<?php echo $songId; ?>" class="btn btn-danger">DELETE SONG</button>
