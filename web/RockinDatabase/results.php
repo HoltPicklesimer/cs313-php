@@ -20,7 +20,7 @@ $searchItem = "";
 // Get the searched item
 if ($_GET)
 {
-	if (isset(htmlspecialchars($_GET["searchSongs"])))
+	if (isset($_GET["searchSongs"]))
 	{
 		$searchItem = htmlspecialchars($_GET["searchSongs"]);
 	}
