@@ -20,6 +20,11 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	<h1>Scriptures Resources</h1>
 
+	<form action="scriptures.php" method="get">
+		Search: <input type="text" name="book">
+		<button type="submit">Search</button>
+	</form>
+
 	<?php
 
 	if ($book != "")
@@ -33,10 +38,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	?>
 
-	<form action="scriptures.php" method="get">
-		Search: <input type="text" name="book">
-		<button type="submit">Search</button>
-	</form>
+
 
 </body>
 
