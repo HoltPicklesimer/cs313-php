@@ -22,7 +22,7 @@
 	color: white;
 }
 
-body{
+body, :not(input){
 	background-image: url("night2.jpg");
 	background-color: black;
 	background-position: center;
