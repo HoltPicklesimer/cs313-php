@@ -4,7 +4,6 @@ require "dbConnect.php";
 
 if ($_POST)
 {
-	$newName
 }
 
 $stmt = $db->prepare('SELECT id, name FROM ScriptureTopics');
