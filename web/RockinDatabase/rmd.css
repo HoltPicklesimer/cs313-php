@@ -35,6 +35,6 @@ body{
 	color: lightblue;
 }
 
-.input, textarea, select{
+.input, textarea, select, form{
 	color: black;
 }
