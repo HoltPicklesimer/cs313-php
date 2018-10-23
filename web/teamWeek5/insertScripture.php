@@ -15,11 +15,11 @@ $topicList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-	<form method="post" action="insertScripture.php">
-		<input type="text" name="book"><br/>
-		<input type="text" name="chapter"><br/>
-		<input type="text" name="verse"><br/>
-		<input type="text" name="content"><br/>
+	<form method="post" action="insertion.php">
+		Book: <input type="text" name="book"><br/>
+		Chapter: <input type="text" name="chapter"><br/>
+		Verse: <input type="text" name="verse"><br/>
+		Content: <input type="text" name="content"><br/>
 		
 <?php foreach($topicList as $topic) {
 			$topicName = $topic["name"];
