@@ -22,11 +22,7 @@
 	color: white;
 }
 
-.input, textarea, select, form{
-	color: black;
-}
-
-body, :not(input){
+body{
 	background-image: url("night2.jpg");
 	background-color: black;
 	background-position: center;
@@ -37,4 +33,8 @@ body, :not(input){
 
 .text-info{
 	color: lightblue;
+}
+
+input, textarea, select, form{
+	color: black;
 }
