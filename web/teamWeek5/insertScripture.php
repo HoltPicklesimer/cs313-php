@@ -2,7 +2,7 @@
 
 require "dbConnect.php";
 
-$stmt = $db->prepare('SELECT id, name FROM ScriptureTopics');
+$stmt = $db->prepare('SELECT id, name FROM Topics');
 $stmt->execute();
 $topicList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
