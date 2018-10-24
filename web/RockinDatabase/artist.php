@@ -232,7 +232,7 @@ foreach ($playlist as $song) {
 	</div>
 	</div>
 
-	<form method="post" action="artist.php">
+	<form method="post" action="artist.php?id=<?php echo $artistId; ?>&edit=1">
 		Artist Name: <input type="text" name="newName" size="50" value="<?php echo $artistName; ?>"><br/>
 		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
