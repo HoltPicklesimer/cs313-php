@@ -65,7 +65,7 @@ if ($_POST)
 			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
 		}
 		// Redirect
-		header("Location: artist.php&id=" . $artistId . "&edit=0");
+		header("Location: artist.php?id=" . $artistId . "&edit=0");
 	}
 }
 else
