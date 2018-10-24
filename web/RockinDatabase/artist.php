@@ -208,9 +208,6 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 	</div>
-	<br/>
-	<br/>
-	<br/>
 	<p>Genre: <?php echo $artistGenre; ?><br/>
 	<p>Contributed by <?php echo $artistCon; ?></p>
 	<a href="artist.php?id=<?php echo $artistId; ?>&edit=1"><span class="text-info">Edit this Artist</span></a>

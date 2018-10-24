@@ -133,9 +133,6 @@ foreach ($playlist as $song) {
 		</form>
 	</div>
 	</div>
-	<br/>
-	<br/>
-	<br/>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
