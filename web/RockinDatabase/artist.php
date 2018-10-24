@@ -61,7 +61,7 @@ if ($_POST)
 			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 			$stmt3->execute();
-			alert("$artistName was updated successfully.")
+			alert("$artistName was updated successfully.");
 		}
 		// Insert into the database and reload the page
 	}
