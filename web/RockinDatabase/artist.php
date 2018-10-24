@@ -120,31 +120,38 @@ else
 	$edit = $_GET["edit"];
 }
 
-$stmt = $db->prepare("
-	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
-	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
-	FROM artists a
-	JOIN songs s ON a.id = s.artist_id
-	JOIN genres g ON s.genre_id = g.id
-	WHERE a.id = $artistId");
-$stmt->execute();
-$playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($artistId > 0)
+{
 
-// Get the contributor and genre
-$stmt2 = $db->prepare("
-	SELECT a.name AS name,
-	u.username AS user,
-	g.name AS genre
-	FROM artists a
-	JOIN users u ON u.id = a.contributor_id
-	JOIN genres g ON g.id = a.genre_id
-	WHERE a.id = $artistId");
-$stmt2->execute();
-$artistList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+	$stmt = $db->prepare("
+		SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
+		s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
+		FROM artists a
+		JOIN songs s ON a.id = s.artist_id
+		JOIN genres g ON s.genre_id = g.id
+		WHERE a.id = $artistId");
+	$stmt->execute();
+	$playlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$artistName = $artistList[0]["name"];
-$artistCon = $artistList[0]["user"];
-$artistGenre = $artistList[0]["genre"];
+	// Get the contributor and genre
+	$stmt2 = $db->prepare("
+		SELECT a.name AS name,
+		a.genre_id AS genre_id,
+		u.username AS user,
+		g.name AS genre
+		FROM artists a
+		JOIN users u ON u.id = a.contributor_id
+		JOIN genres g ON g.id = a.genre_id
+		WHERE a.id = $artistId");
+	$stmt2->execute();
+	$artistList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+	$artistName = $artistList[0]["name"];
+	$artistCon = $artistList[0]["user"];
+	$artistGenre = $artistList[0]["genre"];
+	$genreId = $artistList[0]["genre_id"];
+
+}
 
 // Get all genres
 $stmt3 = $db->prepare("SELECT id, name FROM genres");
@@ -278,7 +285,9 @@ foreach ($playlist as $song) {
 		  <label for="sel1">Select Genre</label>
 		  <select class="form-control" id="sel1" name="newGenre">
 <?php foreach ($genreList as $genreItem) { ?>
-<option value="<?php echo $genreItem['id']; ?>"><?php echo $genreItem["name"]; ?></option>
+<option value="<?php echo $genreItem['id']; ?>" <?php if ($genreId == $genreItem['id']) echo 'selected="selected"' ?>>
+	<?php echo $genreItem["name"]; ?>
+</option>
 <?php } ?>
 		  </select>
 		</div>
