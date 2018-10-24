@@ -267,7 +267,7 @@ foreach ($playlist as $song) {
 
 <?php }
 			
-			if ($message != "") { ?>
+			{ ?>
 
 <script type="text/javascript">alert($message);</script>
 
