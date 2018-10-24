@@ -19,17 +19,17 @@ $id = $_SESSION["userId"];
 if ($_POST)
 {
 	// If the artist is being deleted
-	if (isset($_POST["deleteArtist"]))
+	if (isset($_GET["deleteArtist"]))
 	{
 		// Get the artist id
-		$artistId = $_POST["deleteArtist"];
+		$artistId = $_GET["deleteArtist"];
 		// Remove from the database if id is not 0
 		// Then redirect to the user's page
 	}
 	else
 	{
 		// Get the artist id, name, and genre given
-		$artistId = $_POST["applyChanges"];
+		$artistId = htmlspecialchars($_GET["applyChanges"]);
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
@@ -57,9 +57,10 @@ if ($_POST)
 		}
 		else // Updating an existing artist
 		{
-			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = $artistId");
+			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = :id");
 			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
+			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT)
 			$stmt3->execute();
 			echo '<script type="text/javascript">alert("$artistName was updated successfully.");</script>';
 		}
