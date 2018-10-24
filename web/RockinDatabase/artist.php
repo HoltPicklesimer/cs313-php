@@ -28,19 +28,23 @@ if ($_POST)
 		// Remove from the database if id is not 0
 		if ($artistId != 0)
 		{
-			// Remove all reviews to songs by the artist, songs by the artist,
-			// and the artist themself
-			$stmt = $db->prepare('DELETE FROM reviews WHERE song_id = (SELECT id FROM songs WHERE artist_id = :id)');
+			// Remove all playlist associations to songs by the artist, reviews to songs by the artist,
+			// songs by the artist, and the artist themself
+			$stmt = $db->prepare('DELETE FROM playlistsongs WHERE song_id = (SELECT id FROM songs WHERE artist_id = :id)');
 			$stmt->bindValue(':id', $artistId, PDO::PARAM_INT);
 			$stmt->execute();
 
-			$stmt2 = $db->prepare('DELETE FROM songs WHERE artist_id = :id');
+			$stmt2 = $db->prepare('DELETE FROM reviews WHERE song_id = (SELECT id FROM songs WHERE artist_id = :id)');
 			$stmt2->bindValue(':id', $artistId, PDO::PARAM_INT);
 			$stmt2->execute();
 
-			$stmt = $db->prepare('DELETE FROM artists WHERE id = :id');
-			$stmt->bindValue(':id', $artistId, PDO::PARAM_INT);
-			$stmt->execute();
+			$stmt3 = $db->prepare('DELETE FROM songs WHERE artist_id = :id');
+			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT);
+			$stmt3->execute();
+
+			$stmt4 = $db->prepare('DELETE FROM artists WHERE id = :id');
+			$stmt4->bindValue(':id', $artistId, PDO::PARAM_INT);
+			$stmt4->execute();
 
 			$message = 'Artist successfully removed from the Database.';
 		}
