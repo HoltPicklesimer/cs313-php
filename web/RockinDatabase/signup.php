@@ -36,7 +36,7 @@ if ($_POST)
 			$stmt2->bindValue(':password', $pass, PDO::PARAM_STR);
 			$stmt2->execute();
 			$userId = $stmt2->fetch(PDO::FETCH_ASSOC);
-			$_SESSION["userId"] = $userId;
+			$_SESSION["userId"] = $userId["id"];
 			// And redirect to the user page
 			header('Location: user.php');
 		}
@@ -93,7 +93,7 @@ if ($_POST)
 		<p class="text-danger">*Either that username has already been taken or you did not
 		enter a Username or Password.</p>
 <?php } ?>
-		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-In</button><br/>
+		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-Up</button><br/>
 		<p><a class="text-info" href="signin.php" style="color:darkblue">Back to Log-In</a></p>
 	</form>
 	<div class="col-sm-4"></div>
