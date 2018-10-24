@@ -44,7 +44,7 @@ if ($_POST)
 
 			if (empty($artistList)) // Not taken, add to database
 			{
-				$stmt2 = $db->prepare("INSERT INTO artists (name, genre, contributor_id) VALUES (:name, :genre, $id)");
+				$stmt2 = $db->prepare("INSERT INTO artists (name, genre_id, contributor_id) VALUES (:name, :genre, $id)");
 				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
 				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 				$stmt2->execute();
