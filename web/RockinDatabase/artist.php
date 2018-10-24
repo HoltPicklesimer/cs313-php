@@ -30,6 +30,7 @@ if ($_POST)
 	{
 		// Get the artist id, name, and genre given
 		$artistId = htmlspecialchars($_POST["applyChanges"]);
+		echo $artistId;
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
@@ -48,11 +49,11 @@ if ($_POST)
 				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
 				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 				$stmt2->execute();
-				echo '<script type="text/javascript">alert("$artistName was added successfully.");</script>';
+				echo '<script type="text/javascript">alert("' . $artistName . '"was added successfully.");</script>';
 			}
 			else
 			{
-				echo '<script type="text/javascript">alert("Sorry, $artistName is already in the database.");</script>';
+				echo '<script type="text/javascript">alert("Sorry, ' . $artistName . ' is already in the database.");</script>';
 			}
 		}
 		else // Updating an existing artist
@@ -62,7 +63,7 @@ if ($_POST)
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT);
 			$stmt3->execute();
-			echo '<script type="text/javascript">alert("$artistName was updated successfully.");</script>';
+			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
 		}
 		// Insert into the database and reload the page
 	}
