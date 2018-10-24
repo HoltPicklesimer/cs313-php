@@ -15,6 +15,8 @@ if ($_SESSION["userId"] < 1)
 // Get the user id
 $id = $_SESSION["userId"];
 
+$message = "";
+
 // Edit the artist if editing and submitted
 if ($_POST)
 {
@@ -58,11 +60,11 @@ if ($_POST)
 
 				$edit = 0;
 
-				echo '<script type="text/javascript">alert("' . $artistName . ' was added successfully.");</script>';
+				$message = $artistName . ' was added successfully.';
 			}
 			else // Already in the database
 			{
-				echo '<script type="text/javascript">alert("Sorry, ' . $artistName . ' is already in the database.");</script>';
+				$message = 'Sorry, ' . $artistName . ' is already in the database.';
 				// Continue editing
 				$edit = 1;
 				$artistId = 0;
@@ -77,7 +79,7 @@ if ($_POST)
 			$stmt3->execute();
 
 			$edit = 0;
-			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
+			$message = $artistName . ' was updated successfully.';
 		}
 		// Redirect
 		// header("Location: artist.php?id=" . $artistId . "&edit=0");
@@ -262,6 +264,12 @@ foreach ($playlist as $song) {
 	</form>
 
 </div>
+
+<?php }
+			
+			if ($message != "") { ?>
+
+<script type="text/javascript">alert($message);</script>
 
 <?php } ?>
 
