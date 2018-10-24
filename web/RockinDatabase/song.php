@@ -99,7 +99,7 @@ if ($_POST)
 				$message = 'Sorry, ' . $songName . ' is already in the database.';
 				// Continue editing
 				$edit = 1;
-				$songName = 0;
+				$songId = 0;
 			}
 		}
 		else // Updating an existing song

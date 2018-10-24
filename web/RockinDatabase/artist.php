@@ -247,9 +247,7 @@ foreach ($playlist as $song) {
 	Released: <?php echo $releaseDate; ?></p>
 <?php if ($url != "") { ?>
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
-<?php } ?>
-	<p>Lyrics:<br/><?php echo $lyrics; ?></p>
-<?php
+<?php }
 }
 ?>
 
