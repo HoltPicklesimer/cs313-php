@@ -304,7 +304,9 @@ foreach ($reviewList as $review) {
 		  <label for="sel1">Select Genre</label>
 		  <select class="form-control" id="sel1" name="newGenre">
 <?php foreach ($genreList as $genreItem) { ?>
-<option value="<?php echo $genreItem['id']; ?>"><?php echo $genreItem["name"]; ?></option>
+<option value="<?php echo $genreItem['id']; ?>" <?php if ($genreId == $genreItem['id']) echo 'selected="selected"' ?>>
+	<?php echo $genreItem["name"]; ?>
+</option>
 <?php } ?>
 		  </select>
 		</div>
@@ -313,7 +315,9 @@ foreach ($reviewList as $review) {
 		  <label for="sel2">Select Artist</label>
 		  <select class="form-control" id="sel2" name="newArtist">
 <?php foreach ($artistList as $artistItem) { ?>
-<option value="<?php echo $artistItem['id']; ?>"><?php echo $artistItem["name"]; ?></option>
+<option value="<?php echo $artistItem['id']; ?>" <?php if ($artistId == $artistItem['id']) echo 'selected="selected"' ?>>
+	<?php echo $artistItem["name"]; ?>
+</option>
 <?php } ?>
 		  </select>
 		</div>
