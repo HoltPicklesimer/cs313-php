@@ -87,9 +87,6 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 	</div>
-	<br/>
-	<br/>
-	<br/>
 
 <?php foreach ($resultList as $song) {
 	$songName = $song["song_name"];
