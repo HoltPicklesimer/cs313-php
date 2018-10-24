@@ -22,20 +22,103 @@ if ($_POST)
 	if (isset($_POST["deleteSong"]))
 	{
 		// Get the song id
-		$songId = $_POST["deleteSong"];
+		$songId = htmlspecialchars($_POST["deleteSong"]);
 		// Remove from the database if id is not 0
-		// Then redirect to the user's page
+		if ($songId != 0)
+		{
+			// Remove all playlist associations to the song, reviews to song, and the song itself
+			$stmt = $db->prepare('DELETE FROM playlistsongs WHERE song_id = :id');
+			$stmt->bindValue(':id', $songId, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$stmt2 = $db->prepare('DELETE FROM reviews WHERE song_id = :id');
+			$stmt2->bindValue(':id', $songId, PDO::PARAM_INT);
+			$stmt2->execute();
+
+			$stmt3 = $db->prepare('DELETE FROM songs WHERE id = :id');
+			$stmt3->bindValue(':id', $songId, PDO::PARAM_INT);
+			$stmt3->execute();
+
+			$message = 'Song successfully removed from the Database.';
+		}
+		// Go into edit mode
+		$songId = 0;
+		$edit = 1;
 	}
 	else
 	{
-		// Get the song id
-		$songId = $_POST["applyChanges"];
+		// Get the song information
+		$songId = htmlspecialchars($_POST["applyChanges"]);
+		$songName = htmlspecialchars($_POST["newName"]);
+		$songGenre = htmlspecialchars($_POST["newGenre"]);
+		$songLyrics = htmlspecialchars($_POST["newLyrics"]);
+		$songArtist = htmlspecialchars($_POST["newArtist"]);
+		$songReleaseDate = htmlspecialchars($_POST["newReleaseDate"]);
+		$songURL = htmlspecialchars($_POST["newURL"]);
 
-		// Editing?
-		$edit = 0;
-		// Sanatize the inputs
-		// if (isset($_POST["applyChanges"]))
-		// Insert into the database and reload the page
+		if ($artistName == "") // No name given
+		{
+			$message = 'Please enter a name for the artist.';
+			$edit = 1;
+		}
+		else if ($songId == 0) // Adding a new song
+		{
+			// Make sure the song is not already in the database
+			$stmt = $db->prepare('SELECT id FROM songs WHERE name = :name AND artist_id = :artist');
+			$stmt->bindValue(':name', $songName, PDO::PARAM_STR);
+			$stmt->bindValue(':artist', $songArtist, PDO::PARAM_INT);
+			$stmt->execute();
+			$songList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			if (empty($songList)) // Not taken, add to database
+			{
+				$stmt2 = $db->prepare("INSERT INTO songs
+					(name, genre_id, contributor_id, artist_id, lyrics, release_date, url)
+					VALUES (:name, :genre, $id, :artist, :lyrics, :release, :url)");
+				$stmt2->bindValue(':name', $songName, PDO::PARAM_STR);
+				$stmt2->bindValue(':genre', $songGenre, PDO::PARAM_INT);
+				$stmt2->bindValue(':artist', $songArtist, PDO::PARAM_INT);
+				$stmt2->bindValue(':lyrics', $songLyrics, PDO::PARAM_STR);
+				$stmt2->bindValue(':release', $songReleaseDate, PDO::PARAM_INT);
+				$stmt2->bindValue(':url', $songURL, PDO::PARAM_STR);
+				$stmt2->execute();
+
+				// Get the newly added id
+				$stmt3 = $db->prepare("SELECT id FROM songs WHERE name = :name AND artist_id = :artist");
+				$stmt3->bindValue(':name', $songName, PDO::PARAM_STR);
+				$stmt3->bindValue(':artist', $songArtist, PDO::PARAM_INT);
+				$stmt3->execute();
+				$songId = $stmt3->fetch(PDO::FETCH_ASSOC)["id"];
+
+				$edit = 0;
+
+				$message = $songName . ' was added successfully.';
+			}
+			else // Already in the database
+			{
+				$message = 'Sorry, ' . $songName . ' is already in the database.';
+				// Continue editing
+				$edit = 1;
+				$songName = 0;
+			}
+		}
+		else // Updating an existing song
+		{
+			$stmt = $db->prepare("UPDATE songs
+				SET name = :name, genre_id = :genre, artist_id = :artist, lyrics = :lyrics,
+				release_date = :release, url = :url WHERE id = :id");
+			$stmt->bindValue(':name', $songName, PDO::PARAM_STR);
+			$stmt->bindValue(':genre', $songGenre, PDO::PARAM_INT);
+			$stmt->bindValue(':artist', $songArtist, PDO::PARAM_INT);
+			$stmt->bindValue(':lyrics', $songLyrics, PDO::PARAM_STR);
+			$stmt->bindValue(':release', $songReleaseDate, PDO::PARAM_INT);
+			$stmt->bindValue(':url', $songURL, PDO::PARAM_STR);
+			$stmt->bindValue(':id', $songId, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$edit = 0;
+			$message = $songName . ' was updated successfully.';
+		}
 	}
 }
 else
@@ -246,7 +329,7 @@ foreach ($reviewList as $review) {
 
 </div>
 
-<?php } ?>
+<?php } if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; } ?>
 
 </body>
 

@@ -59,8 +59,12 @@ if ($_POST)
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
-		// Editing or adding a new artist?
-		if ($artistId == 0) // Adding a new artist
+		if ($artistName == "") // No name given
+		{
+			$message = 'Please enter a name for the artist.';
+			$edit = 1;
+		}
+		else if ($artistId == 0) // Adding a new artist
 		{
 			// Make sure the artist is not already in the database
 			$stmt = $db->prepare('SELECT id FROM artists WHERE name = :name');
@@ -76,11 +80,11 @@ if ($_POST)
 				$stmt2->execute();
 
 				// Get the newly added id
-				$stmt2 = $db->prepare("SELECT id FROM artists WHERE name = :name AND genre_id = :genre");
-				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
-				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
-				$stmt2->execute();
-				$artistId = $stmt2->fetch(PDO::FETCH_ASSOC)["id"];
+				$stmt3 = $db->prepare("SELECT id FROM artists WHERE name = :name AND genre_id = :genre");
+				$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
+				$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
+				$stmt3->execute();
+				$artistId = $stmt3->fetch(PDO::FETCH_ASSOC)["id"];
 
 				$edit = 0;
 
@@ -96,17 +100,15 @@ if ($_POST)
 		}
 		else // Updating an existing artist
 		{
-			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = :id");
-			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
-			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
-			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT);
-			$stmt3->execute();
+			$stmt = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = :id");
+			$stmt->bindValue(':name', $artistName, PDO::PARAM_STR);
+			$stmt->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
+			$stmt->bindValue(':id', $artistId, PDO::PARAM_INT);
+			$stmt->execute();
 
 			$edit = 0;
 			$message = $artistName . ' was updated successfully.';
 		}
-		// Redirect
-		// header("Location: artist.php?id=" . $artistId . "&edit=0");
 	}
 }
 else
@@ -233,9 +235,6 @@ foreach ($playlist as $song) {
 	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=0" class="text-info"><?php echo $songName; ?></a></h3>
 	</div>
 	<div class="col-sm-3"></div>
-	<br/>
-	<br/>
-	<br/>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>
