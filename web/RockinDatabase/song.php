@@ -56,9 +56,9 @@ if ($_POST)
 		$songReleaseDate = htmlspecialchars($_POST["newReleaseDate"]);
 		$songURL = htmlspecialchars($_POST["newURL"]);
 
-		if ($artistName == "") // No name given
+		if ($artistName === "") // No name given
 		{
-			$message = 'Please enter a name for the artist.';
+			$message = 'Please enter a name for the song.';
 			$edit = 1;
 		}
 		else if ($songId == 0) // Adding a new song

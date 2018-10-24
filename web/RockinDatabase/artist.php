@@ -59,7 +59,7 @@ if ($_POST)
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
-		if ($artistName == "") // No name given
+		if ($artistName === "") // No name given
 		{
 			$message = 'Please enter a name for the artist.';
 			$edit = 1;
