@@ -142,6 +142,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 		<h1><?php echo $artistName; ?></h1>
 	</div>
@@ -153,6 +154,7 @@ $genreList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 		<br/>
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
 	</div>
 	<br/>
 	<br/>
@@ -209,6 +211,7 @@ foreach ($playlist as $song) {
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 <?php if ($artistId != 0) { ?>
 		<h1><?php echo "Edit Page for: " . $artistName; ?></h1>
@@ -224,6 +227,7 @@ foreach ($playlist as $song) {
 		<br/>
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
 	</div>
 
 	<form method="post" action="artist.php">
