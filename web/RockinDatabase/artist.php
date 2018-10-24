@@ -24,9 +24,29 @@ if ($_POST)
 	if (isset($_POST["deleteArtist"]))
 	{
 		// Get the artist id
-		$artistId = $_POST["deleteArtist"];
+		$artistId = htmlspecialchars($_POST["deleteArtist"]);
 		// Remove from the database if id is not 0
-		// Then redirect to the user's page
+		if ($artistId != 0)
+		{
+			// Remove all reviews to songs by the artist, songs by the artist,
+			// and the artist themself
+			$stmt = $db->prepare('DELETE FROM reviews WHERE song_id = (SELECT id FROM songs WHERE artist_id = :id)');
+			$stmt->bindValue(':id', $artistId, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$stmt2 = $db->prepare('DELETE FROM songs WHERE artist_id = :id');
+			$stmt2->bindValue(':id', $artistId, PDO::PARAM_INT);
+			$stmt2->execute();
+
+			$stmt = $db->prepare('DELETE FROM artists WHERE id = :id');
+			$stmt->bindValue(':id', $artistId, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$message = 'Artist successfully removed from the Database.';
+		}
+		// Go into edit mode
+		$artistId = 0;
+		$edit = 1;
 	}
 	else
 	{
