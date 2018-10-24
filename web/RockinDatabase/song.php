@@ -51,7 +51,7 @@ if ($_POST)
 		$songId = htmlspecialchars($_POST["applyChanges"]);
 		$songName = htmlspecialchars($_POST["newName"]);
 		$songGenre = htmlspecialchars($_POST["newGenre"]);
-		$songLyrics = htmlspecialchars($_POST["newLyrics"]);
+		$songLyrics = nl2br(htmlspecialchars($_POST["newLyrics"]));
 		$songArtist = htmlspecialchars($_POST["newArtist"]);
 		$songReleaseDate = htmlspecialchars($_POST["newReleaseDate"]);
 		$songURL = htmlspecialchars($_POST["newURL"]);
