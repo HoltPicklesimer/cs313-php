@@ -84,7 +84,6 @@ if ($_POST)
 		// Redirect
 		// header("Location: artist.php?id=" . $artistId . "&edit=0");
 	}
-	if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; }
 }
 else
 {
@@ -266,7 +265,7 @@ foreach ($playlist as $song) {
 
 </div>
 
-<?php } ?>
+<?php } if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; } ?>
 
 </body>
 
