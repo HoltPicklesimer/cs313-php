@@ -19,17 +19,17 @@ $id = $_SESSION["userId"];
 if ($_POST)
 {
 	// If the artist is being deleted
-	if (isset($_GET["deleteArtist"]))
+	if (isset($_POST["deleteArtist"]))
 	{
 		// Get the artist id
-		$artistId = $_GET["deleteArtist"];
+		$artistId = $_POST["deleteArtist"];
 		// Remove from the database if id is not 0
 		// Then redirect to the user's page
 	}
 	else
 	{
 		// Get the artist id, name, and genre given
-		$artistId = htmlspecialchars($_GET["applyChanges"]);
+		$artistId = htmlspecialchars($_POST["applyChanges"]);
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
