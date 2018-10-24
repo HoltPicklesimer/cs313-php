@@ -57,6 +57,7 @@ if ($_POST)
 		}
 		else // Updating an existing artist
 		{
+			$artistId = $artistList[0]["id"];
 			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = :id");
 			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
@@ -65,7 +66,7 @@ if ($_POST)
 			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
 		}
 		// Redirect
-		// header("Location: artist.php?id=" . $artistId . "&edit=0");
+		header("Location: artist.php?id=" . $artistId . "&edit=0");
 	}
 }
 else
