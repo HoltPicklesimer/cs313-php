@@ -73,6 +73,7 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 		<h1>Results for: <?php echo $searchItem; ?></h1>
 	</div>
@@ -84,6 +85,7 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		<br/>
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
 	</div>
 	<br/>
 	<br/>
