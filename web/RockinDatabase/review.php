@@ -101,6 +101,7 @@ if ($reviewId > 0)
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 		<h1>Review for <?php echo $songName; ?></h1>
 	</div>
@@ -113,9 +114,7 @@ if ($reviewId > 0)
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
-	<br/>
-	<br/>
-	<br/>
+	</div>
 	<a href="review.php?id=<?php echo $reviewId; ?>&edit=1"><span class="text-info">Edit this Review</span></a>
 
 	<p>Published on <?php echo $reviewDate; ?><br/>
@@ -130,6 +129,7 @@ if ($reviewId > 0)
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 	<h1><?php echo "Edit Review for: " . $songName; ?></h1>
 	</div>
@@ -141,6 +141,7 @@ if ($reviewId > 0)
 		<br/>
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
 	</div>
 
 	<form method="post" action="review.php">

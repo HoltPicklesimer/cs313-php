@@ -238,10 +238,12 @@ foreach ($playlist as $song) {
 	$rating = $ratingList[0]["avg_rating"];
 ?>
 	<hr class="style14">
+	<div class="row">
 	<div class="col-sm-9">
 	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=0" class="text-info"><?php echo $songName; ?></a></h3>
 	</div>
 	<div class="col-sm-3"></div>
+	</div>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?><br/>
 	Released: <?php echo $releaseDate; ?></p>

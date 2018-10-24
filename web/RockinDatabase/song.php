@@ -220,6 +220,7 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 		<h1><?php echo $songName; ?></h1>
 	</div>
@@ -232,9 +233,7 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
-	<br/>
-	<br/>
-	<br/>
+	</div>
 	<a href="song.php?id=<?php echo $songId; ?>&edit=1"><span class="text-info">Edit this Song</span></a>
 
 	<p>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></p>
@@ -259,6 +258,7 @@ foreach ($reviewList as $review) {
 ?>
 
 	<hr class="style14">
+	<div class="row">
 	<div class="col-sm-9">
 <?php if ($id == $reviewConId) {?>
 	<h3><a href="review.php?id=<?php echo $reviewId; ?>&edit=0" class="text-info">Review by <?php echo $reviewCon; ?></a></h3>
@@ -267,9 +267,7 @@ foreach ($reviewList as $review) {
 <?php } ?>
 	</div>
 	<div class="col-sm-3"></div>
-	<br/>
-	<br/>
-	<br/>
+	</div>
 	<p>Date Published: <?php echo date("F jS, Y", strtotime($reviewDate)); ?><br/>
 	Rating: <?php echo $reviewRating . "/5"; ?></p>
 	<p><?php echo $reviewContent; ?></p>
@@ -285,6 +283,7 @@ foreach ($reviewList as $review) {
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 	<h1><?php echo "Edit Song: " . $songName; ?></h1>
 	</div>
@@ -296,6 +295,7 @@ foreach ($reviewList as $review) {
 		<br/>
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
 	</div>
 
 	<form method="post" action="song.php">
