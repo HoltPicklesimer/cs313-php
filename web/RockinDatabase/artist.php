@@ -28,13 +28,41 @@ if ($_POST)
 	}
 	else
 	{
-		// Get the artist id
+		// Get the artist id, name, and genre given
 		$artistId = $_POST["applyChanges"];
+		$artistName = htmlspecialchars($_POST["newName"]);
+		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
-		// Editing?
-		$edit = 0;
-		// Sanatize the inputs
-		// if (isset($_POST["applyChanges"]))
+		// Editing or adding a new artist?
+		if ($artistId == 0) // Adding a new artist
+		{
+			// Make sure the artist is not already in the database
+			$stmt = $db->prepare('SELECT id FROM artists WHERE name = :name');
+			$stmt->bindValue(':name', $artistName, PDO::PARAM_STR);
+			$stmt->execute();
+			$artistList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			if (empty($artistList)) // Not taken, add to database
+			{
+				$stmt2 = $db->prepare("INSERT INTO artists (name, genre, contributor_id) VALUES (:name, :genre, $id)");
+				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
+				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
+				$stmt2->execute();
+				alert("$artistName was added successfully.");
+			}
+			else
+			{
+				alert("Sorry, $artistName is already in the database.");
+			}
+		}
+		else // Updating an existing artist
+		{
+			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = $artistId");
+			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
+			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
+			$stmt3->execute();
+			alert("$artistName was updated successfully.")
+		}
 		// Insert into the database and reload the page
 	}
 }
