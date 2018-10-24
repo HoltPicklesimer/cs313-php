@@ -55,6 +55,9 @@ if ($_POST)
 				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 				$stmt2->execute();
 				$artistId = $stmt2->fetch(PDO::FETCH_ASSOC)["id"];
+
+				$edit = 0;
+
 				echo '<script type="text/javascript">alert("' . $artistName . ' was added successfully.");</script>';
 			}
 			else // Already in the database
@@ -72,6 +75,8 @@ if ($_POST)
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT);
 			$stmt3->execute();
+
+			$edit = 0;
 			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
 		}
 		// Redirect
