@@ -30,6 +30,7 @@ if ($_POST)
 	{
 		// Get the artist id, name, and genre given
 		$artistId = htmlspecialchars($_POST["applyChanges"]);
+		echo $artistId;
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
@@ -57,7 +58,6 @@ if ($_POST)
 		}
 		else // Updating an existing artist
 		{
-			$artistId = $artistList[0]["id"];
 			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = :id");
 			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
