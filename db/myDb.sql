@@ -24,7 +24,7 @@ CREATE TABLE songs
 		id SERIAL PRIMARY KEY
 	, name VARCHAR(100) NOT NULL
 	, contributor_id INT NOT NULL REFERENCES users(id)
-	, url VARCHAR(500) UNIQUE
+	, url VARCHAR(500)
 	, release_date VARCHAR(50)
 	, lyrics TEXT
 	, artist_id INT NOT NULL REFERENCES artists(id)

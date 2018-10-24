@@ -134,7 +134,7 @@ if ($songId > 0)
 {
 
 	$stmt = $db->prepare("
-		SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date,
+		SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, s.genre_id AS genre_id,
 		s.lyrics, s.contributor_id, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
 		FROM songs s
 		JOIN artists a ON a.id = s.artist_id
@@ -150,6 +150,7 @@ if ($songId > 0)
 	$releaseDate = $song["release_date"];
 	$lyrics = $song["lyrics"];
 	$genre = $song["genre_name"];
+	$genreId = $song["genre_id"];
 	$artistName = $song["artist_name"];
 	$artistId = $song["artist_id"];
 	$psId = $song["ps_id"];
