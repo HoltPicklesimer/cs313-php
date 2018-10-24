@@ -60,7 +60,7 @@ if ($_POST)
 			$stmt3 = $db->prepare("UPDATE artists SET name = :name, genre_id = :genre WHERE id = :id");
 			$stmt3->bindValue(':name', $artistName, PDO::PARAM_STR);
 			$stmt3->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
-			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT)
+			$stmt3->bindValue(':id', $artistId, PDO::PARAM_INT);
 			$stmt3->execute();
 			echo '<script type="text/javascript">alert("$artistName was updated successfully.");</script>';
 		}
