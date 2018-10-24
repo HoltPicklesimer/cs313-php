@@ -38,3 +38,7 @@ body{
 input, textarea, select{
 	color: black;
 }
+
+textarea{
+	white-space: pre-wrap;
+}
