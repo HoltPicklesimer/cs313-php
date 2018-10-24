@@ -48,11 +48,21 @@ if ($_POST)
 				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
 				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 				$stmt2->execute();
+
+				// Get the newly added id
+				$stmt2 = $db->prepare("SELECT id FROM artists WHERE name = :name AND genre_id = :genre");
+				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
+				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
+				$stmt2->execute();
+				$artistId = $stmt2->fetch(PDO::FETCH_ASSOC)["id"];
 				echo '<script type="text/javascript">alert("' . $artistName . ' was added successfully.");</script>';
 			}
-			else
+			else // Already in the database
 			{
 				echo '<script type="text/javascript">alert("Sorry, ' . $artistName . ' is already in the database.");</script>';
+				// Continue editing
+				$edit = 1;
+				$artistId = 0;
 			}
 		}
 		else // Updating an existing artist
@@ -66,8 +76,6 @@ if ($_POST)
 		}
 		// Redirect
 		// header("Location: artist.php?id=" . $artistId . "&edit=0");
-		$edit = 0;
-		$artistId = htmlspecialchars($_POST["applyChanges"]);
 	}
 }
 else
@@ -234,7 +242,7 @@ foreach ($playlist as $song) {
 	</div>
 	</div>
 
-	<form method="post" action="artist.php?id=<?php echo $artistId; ?>&edit=1">
+	<form method="post" action="artist.php">
 		Artist Name: <input type="text" name="newName" size="50" value="<?php echo $artistName; ?>"><br/>
 		<div class="form-group">
 		  <label for="sel1">Select Genre</label>
