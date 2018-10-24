@@ -48,7 +48,7 @@ if ($_POST)
 				$stmt2->bindValue(':name', $artistName, PDO::PARAM_STR);
 				$stmt2->bindValue(':genre', $artistGenre, PDO::PARAM_INT);
 				$stmt2->execute();
-				echo '<script type="text/javascript">alert("' . $artistName . '"was added successfully.");</script>';
+				echo '<script type="text/javascript">alert("' . $artistName . 'was added successfully.");</script>';
 			}
 			else
 			{
@@ -65,7 +65,7 @@ if ($_POST)
 			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
 		}
 		// Redirect
-		header("Location: artist.php?id=" . $artistId . "&edit=0");
+		// header("Location: artist.php?id=" . $artistId . "&edit=0");
 	}
 }
 else
