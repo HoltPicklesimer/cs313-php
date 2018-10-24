@@ -265,7 +265,7 @@ foreach ($playlist as $song) {
 
 </div>
 
-<?php } if ($message != "") { echo "<script type='text/javascript'>alert('" . $message . "');</script>"; } ?>
+<?php } if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; } ?>
 
 </body>
 
