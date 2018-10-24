@@ -42,8 +42,6 @@ if ($_POST)
 			$stmt->execute();
 			$artistList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-			print_r($artistList);
-
 			if (empty($artistList)) // Not taken, add to database
 			{
 				$stmt2 = $db->prepare("INSERT INTO artists (name, genre_id, contributor_id) VALUES (:name, :genre, $id)");
@@ -66,7 +64,8 @@ if ($_POST)
 			$stmt3->execute();
 			echo '<script type="text/javascript">alert("' . $artistName . ' was updated successfully.");</script>';
 		}
-		// Insert into the database and reload the page
+		// Redirect
+		header("Location: artist.php&id=$artistId&edit=0");
 	}
 }
 else

@@ -79,6 +79,7 @@ if ($_POST)
 <div class="container">
 	<br/>
 	
+	<div class="row">
 	<div class="col-sm-7">
 		<h1>Welcome <?php echo $username; ?></h1>
 	</div>
@@ -90,6 +91,7 @@ if ($_POST)
 		<br/>
 		<a href="song.php?id=0&edit=1"><span class="text-info">Add a New Song to the Database</span></a></br>
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
+	</div>
 	</div>
 	<br/>
 	<br/>
@@ -118,6 +120,7 @@ foreach ($playlist as $song) {
 	$rating = $ratingList[0]["avg_rating"];
 ?>
 	<hr class="style14">
+	<div class="row">
 	<div class="col-sm-9">
 	<h3><a href="song.php?id=<?php echo $songId; ?>&edit=0" class="text-info"><?php echo $songName; ?></a> by
 	<a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></h3>
@@ -128,6 +131,7 @@ foreach ($playlist as $song) {
 				Remove Song from Playlist
 			</button>
 		</form>
+	</div>
 	</div>
 	<br/>
 	<br/>
