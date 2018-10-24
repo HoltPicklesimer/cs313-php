@@ -30,7 +30,6 @@ if ($_POST)
 	{
 		// Get the artist id, name, and genre given
 		$artistId = htmlspecialchars($_POST["applyChanges"]);
-		echo $artistId;
 		$artistName = htmlspecialchars($_POST["newName"]);
 		$artistGenre = htmlspecialchars($_POST["newGenre"]);
 
@@ -42,6 +41,8 @@ if ($_POST)
 			$stmt->bindValue(':name', $artistName, PDO::PARAM_STR);
 			$stmt->execute();
 			$artistList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			print_r($artistList);
 
 			if (empty($artistList)) // Not taken, add to database
 			{
