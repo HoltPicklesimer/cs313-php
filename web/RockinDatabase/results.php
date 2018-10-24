@@ -106,10 +106,17 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 	<hr class="style14">
+	<div class="col-sm-9">
 	<h4><a href="song.php?id=<?php echo $songId; ?>&edit=0" class="text-info"><?php echo $songName; ?></a> by
 	<a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></h4>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
 	Genre: <?php echo $genre; ?></p>
+	</div>
+	<div class="col-sm-3">
+		<form action="results.php" method="post">
+			<button class="btn btn-info" type="submit" name="create" value="<?php echo $songId; ?>">Add to Playlist</button>
+		</form>
+	</div>
 
 <?php } ?>
 
