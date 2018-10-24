@@ -66,6 +66,8 @@ if ($_POST)
 		}
 		// Redirect
 		// header("Location: artist.php?id=" . $artistId . "&edit=0");
+		$edit = 0;
+		$artistId = htmlspecialchars($_POST["applyChanges"]);
 	}
 }
 else
