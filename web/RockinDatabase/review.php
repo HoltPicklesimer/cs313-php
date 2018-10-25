@@ -22,26 +22,76 @@ if ($_POST)
 	if (isset($_POST["deleteReview"]))
 	{
 		// Get the review id
-		$reviewId = $_POST["deleteReview"];
+		$reviewId = htmlspecialchars($_POST["deleteReview"]);
 		// Remove from the database if id is not 0
-		// Then redirect to the user's page
+		if ($reviewId > 0)
+		{
+			// Remove the review from the database
+			$stmt = $db->prepare('DELETE FROM reviews WHERE id = :id');
+			$stmt->bindValue(':id', $reviewId, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$message = 'Your Review was successfully removed from the Database.';
+		}
+		// Go back to the 
+		header('Location: user.php');
 	}
 	else
 	{
-		// Get the review id
+		// Get the review information
 		$reviewId = $_POST["applyChanges"];
+		$reviewRating = $_POST["newRating"];
+		$reviewContent = $_POST["newContent"];
+		$reviewSong = $_POST["songId"];
 
-		// Editing?
-		$edit = 0;
-		// Sanatize the inputs
-		// if (isset($_POST["applyChanges"]))
-		// Insert into the database and reload the page
+		if ($reviewId == 0) // Writing a new review
+		{
+			// Insert the review into the review table
+			$stmt2 = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
+				VALUES (:user, :song, SYSDATE, :content, :rating)");
+			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':song', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
+			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
+			$stmt->execute();
+
+			// Get the newly added id
+			$stmt2 = $db->prepare("SELECT id FROM reviews WHERE user_id = :user AND song_id = :song
+				AND content=:content AND rating=:rating");
+			$stmt2->bindValue(':user', $id, PDO::PARAM_INT);
+			$stmt2->bindValue(':song', $id, PDO::PARAM_INT);
+			$stmt2->bindValue(':content', $reviewContent, PDO::PARAM_STR);
+			$stmt2->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
+			$stmt2->execute();
+			$reviewId = $stmt2->fetch(PDO::FETCH_ASSOC)["id"];
+
+			$edit = 0;
+
+			$message = 'Your review was published successfully.';
+		}
+		else // Editing an existing review
+		{
+			$stmt = $db->prepare("UPDATE reviews SET user_id = :user, song_id = :song,
+				publish_date = SYSDATE, content = :content, rating = :rating WHERE id = :id");
+			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':song', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
+			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
+			$stmt->bindValue(':id', $reviewId, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$edit = 0;
+			$message = 'Your review was updated successfully.';
+		}
 	}
 }
 else
 {
-	// Get the song id
+	// Get the review id
 	$reviewId = $_GET["id"];
+
+	// Get the song id
+	$songId = $_GET["songId"];
 
 	// Editing?
 	$edit = $_GET["edit"];
@@ -117,7 +167,7 @@ if ($reviewId > 0)
 	</div>
 	<a href="review.php?id=<?php echo $reviewId; ?>&edit=1"><span class="text-info">Edit this Review</span></a>
 
-	<p>Published on <?php echo $reviewDate; ?><br/>
+	<p>Published on <?php echo echo date("F jS, Y", strtotime($reviewDate)); ?><br/>
 	Rating: <?php echo $reviewRating . "/5"; ?></p>
 	<hr class="style14">
 	<p><?php echo $reviewContent; ?></p>
@@ -158,6 +208,8 @@ if ($reviewId > 0)
 		</div>
 
 		Write your review below: <br/><textarea rows="20" cols="150" name="newContent"><?php echo $reviewContent; ?></textarea><br/>
+
+		<input type="hidden" name="songId" value="<?php echo $songId; ?>">
 
 		<button type="submit" name="applyChanges" value="<?php echo $reviewId; ?>" class="btn btn-info">Save Changes</button>
 		<button type="submit" name="deleteReview" value="<?php echo $reviewId; ?>" class="btn btn-danger">DELETE REVIEW</button><br/>

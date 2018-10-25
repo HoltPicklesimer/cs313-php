@@ -15,6 +15,8 @@ if ($_SESSION["userId"] < 1)
 // Get the user id
 $id = $_SESSION["userId"];
 
+$message = "";
+
 // Edit the song if editing and submitted
 if ($_POST)
 {
@@ -235,6 +237,7 @@ $artistList = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 	</div>
 	</div>
 	<a href="song.php?id=<?php echo $songId; ?>&edit=1"><span class="text-info">Edit this Song</span></a>
+	<a href="song.php?id=0&songId=<?php echo $songId; ?>&edit=1"><span class="text-info">Write a Review for this Song</span></a>
 
 	<p>Artist: <a href="artist.php?id=<?php echo $artistId; ?>&edit=0" class="text-info"><?php echo $artistName; ?></a></p>
 	<p>Rating: <?php echo round($rating) . "/5"; ?><br/>
