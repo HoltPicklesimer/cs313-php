@@ -39,10 +39,10 @@ if ($_POST)
 	else
 	{
 		// Get the review information
-		$reviewId = $_POST["applyChanges"];
-		$reviewRating = $_POST["newRating"];
-		$reviewContent = $_POST["newContent"];
-		$reviewSong = $_POST["songId"];
+		$reviewId = htmlspecialchars($_POST["applyChanges"]);
+		$reviewRating = htmlspecialchars($_POST["newRating"]);
+		$reviewContent = nl2br(htmlspecialchars($_POST["newContent"]));
+		$reviewSong = htmlspecialchars($_POST["songId"]);
 
 		if ($reviewId == 0) // Writing a new review
 		{
@@ -50,7 +50,7 @@ if ($_POST)
 			$stmt2 = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
 				VALUES (:user, :song, SYSDATE, :content, :rating)");
 			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
-			$stmt->bindValue(':song', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
 			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
 			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
 			$stmt->execute();
@@ -59,7 +59,7 @@ if ($_POST)
 			$stmt2 = $db->prepare("SELECT id FROM reviews WHERE user_id = :user AND song_id = :song
 				AND content=:content AND rating=:rating");
 			$stmt2->bindValue(':user', $id, PDO::PARAM_INT);
-			$stmt2->bindValue(':song', $id, PDO::PARAM_INT);
+			$stmt2->bindValue(':song', $reviewSong, PDO::PARAM_INT);
 			$stmt2->bindValue(':content', $reviewContent, PDO::PARAM_STR);
 			$stmt2->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
 			$stmt2->execute();
@@ -74,7 +74,7 @@ if ($_POST)
 			$stmt = $db->prepare("UPDATE reviews SET user_id = :user, song_id = :song,
 				publish_date = SYSDATE, content = :content, rating = :rating WHERE id = :id");
 			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
-			$stmt->bindValue(':song', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
 			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
 			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
 			$stmt->bindValue(':id', $reviewId, PDO::PARAM_INT);
