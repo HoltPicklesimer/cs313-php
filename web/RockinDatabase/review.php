@@ -58,7 +58,7 @@ if ($_POST)
 			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
 			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
 			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
-			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_STR);
+			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
 			$stmt->execute();
 
 			// Get the newly added id
