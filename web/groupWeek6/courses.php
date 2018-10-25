@@ -27,7 +27,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($courses as $course) {
 	$id = $course['id'];
 	$name = $course['name'];
-	$code = $course['course'];
+	$code = $course['code'];
 
 	echo "<li><p>$code - $name</p></li>\n";
 }
