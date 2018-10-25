@@ -50,45 +50,45 @@ if ($_POST)
 		print_r($reviewContent); echo "<br/>";
 		print_r($reviewSong); echo "<br/>";
 
-		// if ($reviewId == 0) // Writing a new review
-		// {
-		// 	// Insert the review into the review table
-		// 	$stmt2 = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
-		// 		VALUES (:user, :song, SYSDATE, :content, :rating)");
-		// 	$stmt->bindValue(':user', $id, PDO::PARAM_INT);
-		// 	$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
-		// 	$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
-		// 	$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
-		// 	$stmt->execute();
+		if ($reviewId == 0) // Writing a new review
+		{
+			// Insert the review into the review table
+			$stmt2 = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
+				VALUES (:user, :song, GETDATE(), :content, :rating)");
+			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
+			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
+			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_STR);
+			$stmt->execute();
 
-		// 	// Get the newly added id
-		// 	$stmt2 = $db->prepare("SELECT id FROM reviews WHERE user_id = :user AND song_id = :song
-		// 		AND content=:content AND rating=:rating");
-		// 	$stmt2->bindValue(':user', $id, PDO::PARAM_INT);
-		// 	$stmt2->bindValue(':song', $reviewSong, PDO::PARAM_INT);
-		// 	$stmt2->bindValue(':content', $reviewContent, PDO::PARAM_STR);
-		// 	$stmt2->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
-		// 	$stmt2->execute();
-		// 	$reviewId = $stmt2->fetch(PDO::FETCH_ASSOC)["id"];
+			// Get the newly added id
+			$stmt2 = $db->prepare("SELECT id FROM reviews WHERE user_id = :user AND song_id = :song
+				AND content=:content AND rating=:rating");
+			$stmt2->bindValue(':user', $id, PDO::PARAM_INT);
+			$stmt2->bindValue(':song', $reviewSong, PDO::PARAM_INT);
+			$stmt2->bindValue(':content', $reviewContent, PDO::PARAM_STR);
+			$stmt2->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
+			$stmt2->execute();
+			$reviewId = $stmt2->fetch(PDO::FETCH_ASSOC)["id"];
 
-		// 	$edit = 0;
+			$edit = 0;
 
-		// 	$message = 'Your review was published successfully.';
-		// }
-		// else // Editing an existing review
-		// {
-		// 	$stmt = $db->prepare("UPDATE reviews SET user_id = :user, song_id = :song,
-		// 		publish_date = SYSDATE, content = :content, rating = :rating WHERE id = :id");
-		// 	$stmt->bindValue(':user', $id, PDO::PARAM_INT);
-		// 	$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
-		// 	$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
-		// 	$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
-		// 	$stmt->bindValue(':id', $reviewId, PDO::PARAM_INT);
-		// 	$stmt->execute();
+			$message = 'Your review was published successfully.';
+		}
+		else // Editing an existing review
+		{
+			$stmt = $db->prepare("UPDATE reviews SET user_id = :user, song_id = :song,
+				publish_date = GETDATE(), content = :content, rating = :rating WHERE id = :id");
+			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
+			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
+			$stmt->bindValue(':rating', $reviewRating, PDO::PARAM_INT);
+			$stmt->bindValue(':id', $reviewId, PDO::PARAM_INT);
+			$stmt->execute();
 
-		// 	$edit = 0;
-		// 	$message = 'Your review was updated successfully.';
-		// }
+			$edit = 0;
+			$message = 'Your review was updated successfully.';
+		}
 	}
 }
 else
