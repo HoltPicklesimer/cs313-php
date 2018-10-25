@@ -44,16 +44,10 @@ if ($_POST)
 		$reviewContent = nl2br(htmlspecialchars($_POST["newContent"]));
 		$reviewSong = htmlspecialchars($_POST["songId"]);
 
-		print_r($id); echo "<br/>";
-		print_r($reviewId); echo "<br/>";
-		print_r($reviewRating); echo "<br/>";
-		print_r($reviewContent); echo "<br/>";
-		print_r($reviewSong); echo "<br/>";
-
 		if ($reviewId == 0) // Writing a new review
 		{
 			// Insert the review into the review table
-			$stmt2 = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
+			$stmt = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
 				VALUES (:user, :song, GETDATE(), :content, :rating)");
 			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
 			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
