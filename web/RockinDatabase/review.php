@@ -167,7 +167,7 @@ if ($reviewId > 0)
 	</div>
 	<a href="review.php?id=<?php echo $reviewId; ?>&edit=1"><span class="text-info">Edit this Review</span></a>
 
-	<p>Published on <?php echo echo date("F jS, Y", strtotime($reviewDate)); ?><br/>
+	<p>Published on <?php echo date("F jS, Y", strtotime($reviewDate)); ?><br/>
 	Rating: <?php echo $reviewRating . "/5"; ?></p>
 	<hr class="style14">
 	<p><?php echo $reviewContent; ?></p>
