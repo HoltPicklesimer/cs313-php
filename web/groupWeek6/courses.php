@@ -24,12 +24,12 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php
 
-foreach ($course as $course) {
+foreach ($courses as $course) {
 	$id = $course['id'];
 	$name = $course['name'];
 	$code = $course['course'];
 
-	echo "<li><p>$code - $name</p></li>";
+	echo "<li><p>$code - $name</p></li>\n";
 }
 
 ?>
