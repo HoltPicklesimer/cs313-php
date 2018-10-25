@@ -48,7 +48,7 @@ if ($_POST)
 		{
 			// Insert the review into the review table
 			$stmt = $db->prepare("INSERT INTO reviews (user_id, song_id, publish_date, content, rating)
-				VALUES (:user, :song, GETDATE(), :content, :rating)");
+				VALUES (:user, :song, CURRENT_DATE, :content, :rating)");
 			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
 			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
 			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
@@ -72,7 +72,7 @@ if ($_POST)
 		else // Editing an existing review
 		{
 			$stmt = $db->prepare("UPDATE reviews SET user_id = :user, song_id = :song,
-				publish_date = GETDATE(), content = :content, rating = :rating WHERE id = :id");
+				publish_date = CURRENT_DATE, content = :content, rating = :rating WHERE id = :id");
 			$stmt->bindValue(':user', $id, PDO::PARAM_INT);
 			$stmt->bindValue(':song', $reviewSong, PDO::PARAM_INT);
 			$stmt->bindValue(':content', $reviewContent, PDO::PARAM_STR);
