@@ -199,11 +199,11 @@ if ($reviewId > 0)
 		<div class="form-group">
 		  <label for="sel1">Select Rating: </label>
 		  <select class="form-control" id="sel1" name="newRating">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
 		  </select>
 		</div>
 
