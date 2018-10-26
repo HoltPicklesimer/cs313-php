@@ -44,7 +44,7 @@ if ($_POST)
 		$psId = htmlspecialchars($_POST["delete"]);
 
 		$stmt2 = $db->prepare("DELETE FROM playlistsongs WHERE id = :psid");
-		$stmt2->bindValue(':psid', $psid, PDO::PARAM_INT);
+		$stmt2->bindValue(':psid', $psId, PDO::PARAM_INT);
 		$stmt2->execute();
 
 		$message = "The song was removed from your playlist.";
