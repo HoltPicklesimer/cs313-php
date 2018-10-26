@@ -37,7 +37,7 @@ if ($_POST)
 		// Find any occurrence of the song in the playlist already
 		$stmt = $db->prepare("SELECT user_id, song_id FROM playlistsongs WHERE user_id = :user AND song_id = :song");
 		$stmt->bindValue(':user', $id, PARAM_INT);
-		$stmt->bindValue(':song', $songId, PARAM_INT);
+		$stmt->bindValue(':song', (int)$songId, PARAM_INT);
 		$stmt->execute();
 		$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
