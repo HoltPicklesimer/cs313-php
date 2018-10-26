@@ -35,7 +35,7 @@ if ($_POST)
 		$songId = htmlspecialchars($_POST["add"]);
 
 		// Find any occurrence of the song in the playlist already
-		$stmt = $db->prepare("SELECT FROM playlistsongs user_id, song_id WHERE user_id = :user AND song_id = :song)");
+		$stmt = $db->prepare("SELECT FROM playlistsongs user_id, song_id WHERE user_id = :user AND song_id = :song");
 		$stmt->bindValue(':user', $id, PARAM_INT);
 		$stmt->bindValue(':song', $songId, PARAM_INT);
 		$stmt->execute();
