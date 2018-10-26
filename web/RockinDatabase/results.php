@@ -26,6 +26,37 @@ if ($_GET)
 	}
 }
 
+$message = "";
+
+if ($_POST)
+{
+	if (isset($_POST["add"]))
+	{
+		$songId = htmlspecialchars($_POST["add"]);
+
+		// Find any occurrence of the song in the playlist already
+		$stmt = $db->prepare("SELECT FROM playlistsongs user_id, song_id WHERE user_id = :user AND song_id = :song)");
+		$stmt->bindValue(':user', $id, PARAM_INT);
+		$stmt->bindValue(':song', $songId, PARAM_INT);
+		$stmt->execute();
+		$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		if (empty($list)) //  if the song is not already in the user's playlist, insert it
+		{
+			$stmt2 = $db->prepare("INSERT INTO playlistsongs (user_id, song_id) VALUES (:user, :song)");
+			$stmt2->bindValue(':user', $id, PARAM_INT);
+			$stmt2->bindValue(':song', $songId, PARAM_INT);
+			$stmt2->execute();
+
+			$message = "The song was added to your playlist.";
+		}
+		else
+		{
+			$message = "That song is already in your playlist.";
+		}
+	}
+}
+
 $searchTerm = "%" . $searchItem . "%";
 
 $stmt = $db->prepare("SELECT s.id AS song_id, s.name AS song_name, a.id AS artist_id, a.name AS artist_name, g.name AS genre_name
@@ -114,12 +145,12 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	</div>
 	<div class="col-sm-3">
 		<form action="results.php?searchSongs=<?php echo $searchItem; ?>&search=sent" method="post">
-			<button class="btn btn-info" type="submit" name="create" value="<?php echo $songId; ?>">Add to Playlist</button>
+			<button class="btn btn-info" type="submit" name="add" value="<?php echo $songId; ?>">Add to Playlist</button>
 		</form>
 	</div>
 	</div>
 
-<?php } ?>
+<?php } if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; } ?>
 
 </div>
 
