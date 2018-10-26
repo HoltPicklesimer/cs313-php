@@ -34,6 +34,8 @@ $userList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 $username = $userList[0]["username"];
 
+$message = "";
+
 // Delete song if delete button is pressed
 if ($_POST)
 {
@@ -144,7 +146,7 @@ foreach ($playlist as $song) {
 <?php if ($url != "") { ?>
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
 <?php }
-} ?>
+}  if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; } ?>
 
 </div>
 
