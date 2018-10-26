@@ -113,7 +113,7 @@ $resultList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	Genre: <?php echo $genre; ?></p>
 	</div>
 	<div class="col-sm-3">
-		<form action="results.php" method="post">
+		<form action="results.php?searchSongs=<?php echo $searchItem; ?>&search=sent" method="post">
 			<button class="btn btn-info" type="submit" name="create" value="<?php echo $songId; ?>">Add to Playlist</button>
 		</form>
 	</div>
