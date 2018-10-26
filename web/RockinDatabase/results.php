@@ -32,10 +32,10 @@ if ($_POST)
 {
 	if (isset($_POST["add"]))
 	{
-		$songId = htmlspecialchars($_POST["add"]);
+		$songId = (int)htmlspecialchars($_POST["add"]);
 
 		// Find any occurrence of the song in the playlist already
-		$stmt = $db->prepare("SELECT FROM playlistsongs user_id, song_id WHERE user_id = :user AND song_id = :song");
+		$stmt = $db->prepare("SELECT user_id, song_id FROM playlistsongs WHERE user_id = :user AND song_id = :song");
 		$stmt->bindValue(':user', $id, PARAM_INT);
 		$stmt->bindValue(':song', $songId, PARAM_INT);
 		$stmt->execute();
