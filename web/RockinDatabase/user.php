@@ -15,6 +15,21 @@ if ($_SESSION["userId"] < 1)
 // Get the user id
 $id = $_SESSION["userId"];
 
+// Delete song if delete button is pressed
+if ($_POST)
+{
+	if (isset($_POST["delete"]))
+	{
+		$psId = htmlspecialchars($_POST["delete"]);
+
+		$stmt2 = $db->prepare("DELETE FROM playlistsongs WHERE id = :psid");
+		$stmt2->bindValue(':psid', $psId, PDO::PARAM_INT);
+		$stmt2->execute();
+
+		$message = "The song was removed from your playlist.";
+	}
+}
+
 $stmt = $db->prepare("
 	SELECT s.name AS song_name, s.url, s.id AS song_id, s.release_date, ps.id AS ps_id,
 	s.lyrics, g.name AS genre_name, a.name AS artist_name, a.id AS artist_id
@@ -35,21 +50,6 @@ $userList = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 $username = $userList[0]["username"];
 
 $message = "";
-
-// Delete song if delete button is pressed
-if ($_POST)
-{
-	if (isset($_POST["delete"]))
-	{
-		$psId = htmlspecialchars($_POST["delete"]);
-
-		$stmt2 = $db->prepare("DELETE FROM playlistsongs WHERE id = :psid");
-		$stmt2->bindValue(':psid', $psId, PDO::PARAM_INT);
-		$stmt2->execute();
-
-		$message = "The song was removed from your playlist.";
-	}
-}
 
 ?>
 
