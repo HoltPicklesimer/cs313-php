@@ -39,8 +39,13 @@ if ($_POST)
 {
 	if (isset($_POST["delete"]))
 	{
-		// delete
-		// use $_POST["delete"] to get the id of the song to remove
+		$psId = htmlspecialchars($_POST["delete"]);
+
+		$stmt2 = $db->prepare("DELETE FROM playlistsongs WHERE id = :psid");
+		$stmt2->bindValue(':psid', $psid, PDO::PARAM_INT);
+		$stmt2->execute();
+
+		$message = "The song was removed from your playlist.";
 	}
 }
 
