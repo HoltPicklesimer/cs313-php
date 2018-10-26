@@ -25,8 +25,6 @@ if ($_POST)
 		$stmt2 = $db->prepare("DELETE FROM playlistsongs WHERE id = :psid");
 		$stmt2->bindValue(':psid', $psId, PDO::PARAM_INT);
 		$stmt2->execute();
-
-		$message = "The song was removed from your playlist.";
 	}
 }
 
@@ -146,7 +144,7 @@ foreach ($playlist as $song) {
 <?php if ($url != "") { ?>
 	<p><a href="<?php echo $url; ?>" class="text-info" target="_blank">Watch the Music Video</a></p>
 <?php }
-}  if ($message != "") { echo "<script type='text/javascript'>$(document).ready(function(){alert('" . $message . "');});</script>"; } ?>
+} ?>
 
 </div>
 
