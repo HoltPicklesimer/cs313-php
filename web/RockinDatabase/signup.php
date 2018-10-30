@@ -26,14 +26,15 @@ if ($_POST)
 			$_SESSION["signUpError"] = false;
 			$_SESSION["signUpComplete"] = true;
 			// Create the account here
+			$hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 			$stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
 			$stmt->bindValue(':username', $user, PDO::PARAM_STR);
-			$stmt->bindValue(':password', $pass, PDO::PARAM_STR);
+			$stmt->bindValue(':password', $hashedPassword, PDO::PARAM_STR);
 			$stmt->execute();
 			// Get the new user id
 			$stmt2 = $db->prepare("SELECT id FROM users WHERE username = :username AND password = :password");
 			$stmt2->bindValue(':username', $user, PDO::PARAM_STR);
-			$stmt2->bindValue(':password', $pass, PDO::PARAM_STR);
+			$stmt2->bindValue(':password', $hashedPassword, PDO::PARAM_STR);
 			$stmt2->execute();
 			$userId = $stmt2->fetch(PDO::FETCH_ASSOC);
 			$_SESSION["userId"] = $userId["id"];

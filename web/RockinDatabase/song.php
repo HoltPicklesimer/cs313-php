@@ -126,10 +126,10 @@ if ($_POST)
 else
 {
 	// Get the song id
-	$songId = $_GET["id"];
+	$songId = htmlspecialchars($_GET["id"]);
 
 	// Editing?
-	$edit = $_GET["edit"];
+	$edit = htmlspecialchars($_GET["edit"]);
 }
 
 if ($songId > 0)

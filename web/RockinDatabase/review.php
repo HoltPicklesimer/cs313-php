@@ -86,13 +86,13 @@ if ($_POST)
 else
 {
 	// Get the review id
-	$reviewId = $_GET["id"];
+	$reviewId = htmlspecialchars($_GET["id"]);
 
 	// Get the song id
-	$songId = $_GET["songId"];
+	$songId = htmlspecialchars($_GET["songId"]);
 
 	// Editing?
-	$edit = $_GET["edit"];
+	$edit = htmlspecialchars($_GET["edit"]);
 }
 
 if ($reviewId > 0)

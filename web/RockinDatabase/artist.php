@@ -114,10 +114,10 @@ if ($_POST)
 else
 {
 	// Get the artist id
-	$artistId = $_GET["id"];
+	$artistId = htmlspecialchars($_GET["id"]);
 
 	// Editing?
-	$edit = $_GET["edit"];
+	$edit = htmlspecialchars($_GET["edit"]);
 }
 
 if ($artistId > 0)

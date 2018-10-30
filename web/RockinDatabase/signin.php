@@ -3,11 +3,12 @@
 // Connect to the Database
 require "connectDb.php";
 
-if (!isset($_SESSION))
-	session_start();
-
 $_SESSION["userId"] = "";
 unset($_SESSION["userId"]);
+session_destroy();
+
+if (!isset($_SESSION))
+	session_start();
 
 if ($_POST)
 {
@@ -17,14 +18,15 @@ if ($_POST)
 		$pass = htmlspecialchars($_POST["pass"]);
 
 		// See if the user and pass match
-		$stmt = $db->prepare('SELECT username, password, id FROM users WHERE username=:user AND password=:pass');
+		$stmt = $db->prepare('SELECT username, password, id FROM users WHERE username=:user');
 		$stmt->bindValue(':user', $user, PDO::PARAM_STR);
-		$stmt->bindValue(':pass', $pass, PDO::PARAM_STR);
 		$stmt->execute();
 		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+		$checkPass = $users[0]["password"];
+
 		// if they do, redirect to the next page, otherwise reload the page with errors
-		if (!empty($users))
+		if (!empty($users) && password_verify($pass, $checkPass))
 		{
 			$_SESSION["signInError"] = false;
 			$_SESSION["userId"] = $users[0]["id"];
