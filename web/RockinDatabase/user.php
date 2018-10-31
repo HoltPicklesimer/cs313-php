@@ -6,6 +6,9 @@ require "connectDb.php";
 // Redirect if the user id is not set or invalid
 require("verifyUser.php");
 
+// Get the user id
+$id = $_SESSION["userId"];
+
 // Delete song if delete button is pressed
 if ($_POST)
 {

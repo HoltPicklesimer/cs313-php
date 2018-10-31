@@ -9,7 +9,4 @@ if (!isset($_SESSION["userId"]))
 if ($_SESSION["userId"] < 1)
 	header('Location: signin.php');
 
-// Get the user id
-$id = $_SESSION["userId"];
-
 ?>
