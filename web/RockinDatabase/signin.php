@@ -4,8 +4,8 @@
 require "connectDb.php";
 
 // THis is messing up
-$_SESSION["userId"] = "";
-unset($_SESSION["userId"]);
+// $_SESSION["userId"] = "";
+// unset($_SESSION["userId"]);
 // session_destroy();
 
 if (!isset($_SESSION))
