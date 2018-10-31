@@ -3,10 +3,6 @@
 // Connect to the Database
 require "connectDb.php";
 
-$_SESSION["userId"] = "";
-unset($_SESSION["userId"]);
-session_destroy();
-
 if (!isset($_SESSION))
 	session_start();
 
@@ -30,9 +26,7 @@ if ($_POST)
 		{
 			$_SESSION["signInError"] = false;
 			$_SESSION["userId"] = $users[0]["id"];
-			print_r($_SESSION);
-			print_r($users);
-			// header('Location: user.php');
+			header('Location: user.php');
 		}
 		else
 		{
