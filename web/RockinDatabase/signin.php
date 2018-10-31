@@ -3,6 +3,10 @@
 // Connect to the Database
 require "connectDb.php";
 
+$_SESSION["userId"] = "";
+unset($_SESSION["userId"]);
+session_destroy();
+
 if (!isset($_SESSION))
 	session_start();
 
