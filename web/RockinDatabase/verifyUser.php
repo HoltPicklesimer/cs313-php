@@ -9,6 +9,7 @@ if (!isset($_SESSION["userId"]) || $_SESSION["userId"] < 1)
 	$_SESSION["userId"] = "";
 	unset($_SESSION["userId"]);
 	session_destroy();
+	$_SESSION = [];
 	header('Location: signin.php');
 }
 

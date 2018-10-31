@@ -7,6 +7,7 @@ require "connectDb.php";
 // $_SESSION["userId"] = "";
 // unset($_SESSION["userId"]);
 session_destroy();
+$_SESSION = [];
 
 if (!isset($_SESSION))
 	session_start();
