@@ -30,7 +30,9 @@ if ($_POST)
 		{
 			$_SESSION["signInError"] = false;
 			$_SESSION["userId"] = $users[0]["id"];
-			header('Location: user.php');
+			print_r($_SESSION);
+			print_r($users);
+			// header('Location: user.php');
 		}
 		else
 		{
