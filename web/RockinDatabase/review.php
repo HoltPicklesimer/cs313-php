@@ -161,7 +161,9 @@ if ($reviewId > 0)
 		<a href="artist.php?id=0&edit=1"><span class="text-info">Add a New Artist to the Database</span></a>
 	</div>
 	</div>
-	<a href="review.php?id=<?php echo $reviewId; ?>&edit=1"><span class="text-info">Edit this Review</span></a>
+	<a href="review.php?id=<?php echo $reviewId; ?>&edit=1&songId=<?php echo $songId; ?>">
+		<span class="text-info">Edit this Review</span>
+	</a>
 
 	<p>Published on <?php echo date("F jS, Y", strtotime($reviewDate)); ?><br/>
 	Rating: <?php echo $reviewRating . "/5"; ?></p>
