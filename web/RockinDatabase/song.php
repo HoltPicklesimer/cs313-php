@@ -254,7 +254,10 @@ foreach ($reviewList as $review) {
 	<div class="row">
 	<div class="col-sm-9">
 <?php if ($id == $reviewConId) {?>
-	<h3><a href="review.php?id=<?php echo $reviewId; ?>&edit=0" class="text-info">Review by <?php echo $reviewCon; ?></a></h3>
+	<h3><a href="review.php?id=<?php echo $reviewId; ?>&edit=0&songId=<?php echo $songId; ?>" class="text-info">
+		Review by <?php echo $reviewCon; ?>
+		</a>
+	</h3>
 <?php } else { ?>
 	<h3>Review by <?php echo $reviewCon; ?></h3>
 <?php } ?>
