@@ -3,17 +3,7 @@
 // Connect to the Database
 require "connectDb.php";
 
-if (!isset($_SESSION))
-	session_start();
-
-// If the user is not logged in, go to the Log-In Screen
-if (!isset($_SESSION["userId"]))
-	header('Location: signin.php');
-if ($_SESSION["userId"] < 1)
-	header('Location: signin.php');
-
-// Get the user id
-$id = $_SESSION["userId"];
+require "verifyUser.php";
 
 // Edit the review if editing and submitted
 if ($_POST)
@@ -179,7 +169,7 @@ if ($reviewId > 0)
 	
 	<div class="row">
 	<div class="col-sm-7">
-	<h1><?php echo "Edit Review for: " . $songName; ?></h1>
+	<h1>Edit Review for: <?php echo $songName; ?></h1>
 	</div>
 	<div class="col-sm-5" style="text-align:right">
 		<form method="get" action="results.php">

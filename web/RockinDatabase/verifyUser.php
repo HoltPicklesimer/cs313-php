@@ -1,5 +1,7 @@
 <?php
 
+// Redirect if the user id is not set or invalid
+
 if (!isset($_SESSION))
 	session_start();
 
