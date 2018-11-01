@@ -91,8 +91,7 @@ if ($_POST)
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="password" name="pass"></p>
 <?php if (isset($_SESSION["signUpError"]) && $_SESSION["signUpError"]) { ?>
-		<p class="text-danger">*Either that username has already been taken or you did not
-		enter a Username or Password.</p>
+		<p class="text-danger">*Invalid Username and/or Password.</p>
 <?php } ?>
 		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-Up</button><br/>
 		<p><a class="text-info" href="signin.php" style="color:darkblue">Back to Log-In</a></p>

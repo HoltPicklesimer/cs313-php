@@ -78,8 +78,7 @@ if ($_POST)
 		<p>Username: <input type="text" name="user"></p>
 		<p>Password: <input type="password" name="pass"></p>
 <?php if (isset($_SESSION["signInError"]) && $_SESSION["signInError"]) { ?>
-		<p class="text-danger">*Either your Username or Password were entered incorrectly.
-		Please enter your correct Username and Password.</p>
+		<p class="text-danger">*Invalid Username and/or Password.</p>
 <?php } ?>
 		<button class="btn btn-info" type="submit" value="signedin" name="submit">Sign-In</button><br/>
 		<p><a class="text-info" href="signup.php" style="color:darkblue">Don't Have an Account? Click here to sign up!</a></p>
