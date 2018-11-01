@@ -83,6 +83,15 @@ else
 
 	// Editing?
 	$edit = htmlspecialchars($_GET["edit"]);
+
+	$songName = $stmt = $db->prepare("
+		SELECT s.name AS song_name
+		FROM reviews r
+		JOIN songs s ON r.song_id = s.id
+		WHERE r.id = :reviewId");
+	$stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
+	$stmt->execute();
+	$songName = $stmt->fetch(PDO::FETCH_ASSOC)["song_name"];
 }
 
 if ($reviewId > 0)
