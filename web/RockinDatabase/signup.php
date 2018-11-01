@@ -3,9 +3,6 @@
 // Connect to the Database
 require "connectDb.php";
 
-if (!isset($_SESSION))
-	session_start();
-
 if ($_POST)
 {
 	if (isset($_POST["submit"]))
@@ -23,8 +20,10 @@ if ($_POST)
 		// and create the account, otherwise reload the page with errors
 		if (empty($users) && $user != "" && $pass != "")
 		{
-			$_SESSION["signUpError"] = false;
-			$_SESSION["signUpComplete"] = true;
+			if (!isset($_SESSION))
+				session_start();
+
+			$signUpError = false;
 			// Create the account here
 			$hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 			$stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
@@ -43,8 +42,7 @@ if ($_POST)
 		}
 		else
 		{
-			$_SESSION["signUpError"] = true;
-			$_SESSION["signUpComplete"] = false;
+			$signUpError = true;
 		}
 	}
 }
@@ -90,7 +88,7 @@ if ($_POST)
 		<h2>Sign Up</h2>
 		<p>Create a Username: <input type="text" name="user"></p>
 		<p>Create a Password: <input type="password" name="pass"></p>
-<?php if (isset($_SESSION["signUpError"]) && $_SESSION["signUpError"]) { ?>
+<?php if (isset($signUpError) && $signUpError) { ?>
 		<p class="text-danger">*Invalid Username and/or Password.</p>
 <?php } ?>
 		<button class="btn btn-info" type="submit" value="signin" name="submit">Sign-Up</button><br/>

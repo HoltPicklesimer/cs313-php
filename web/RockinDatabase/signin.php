@@ -3,9 +3,6 @@
 // Connect to the Database
 require "connectDb.php";
 
-if (!isset($_SESSION))
-	session_start();
-
 if ($_POST)
 {
 	if (isset($_POST["submit"]))
@@ -24,13 +21,15 @@ if ($_POST)
 		// if they do, redirect to the next page, otherwise reload the page with errors
 		if (!empty($users) && password_verify($pass, $checkPass))
 		{
-			$_SESSION["signInError"] = false;
+			if (!isset($_SESSION))
+				session_start();
+			$signInError = false;
 			$_SESSION["userId"] = $users[0]["id"];
 			header('Location: user.php');
 		}
 		else
 		{
-			$_SESSION["signInError"] = true;
+			$signInError = true;
 		}
 	}
 }
@@ -77,7 +76,7 @@ if ($_POST)
 		<h2>Sign In</h2>
 		<p>Username: <input type="text" name="user"></p>
 		<p>Password: <input type="password" name="pass"></p>
-<?php if (isset($_SESSION["signInError"]) && $_SESSION["signInError"]) { ?>
+<?php if (isset($signInError) && $signInError) { ?>
 		<p class="text-danger">*Invalid Username and/or Password.</p>
 <?php } ?>
 		<button class="btn btn-info" type="submit" value="signedin" name="submit">Sign-In</button><br/>
