@@ -84,7 +84,7 @@ else
 	// Editing?
 	$edit = htmlspecialchars($_GET["edit"]);
 
-	$songName = $stmt = $db->prepare("
+	$stmt = $db->prepare("
 		SELECT name AS song_name
 		FROM songs
 		WHERE id = :song_id");
